@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import SharedLayout from '../SharedLayout.jsx'
+import SharedLayout from './SharedLayout.jsx'
 import './App.css'
 import { lazy } from 'react'
 import RestrictedRoute from './RestrictedRoute.jsx';
