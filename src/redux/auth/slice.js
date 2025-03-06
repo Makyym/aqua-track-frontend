@@ -26,7 +26,12 @@ const slice = createSlice({
             })
             .addCase(signUp.fulfilled, (state, { payload }) => {
                 state.isRefreshing = false;
-                state.user = payload.user;
+                state.user.email = payload.data.email;
+                state.user.gender = payload.data.gender;
+                state.user.weight = payload.data.weight;
+                state.user.dailyNorm = payload.data.dailyNorm;
+                state.user.activeTime = payload.data.dailySportTime;
+                state.user.avatarUrl = payload.data.avatarUrl;
                 state.token = payload.token;
                 state.isLoggedIn = true;
             })
@@ -38,8 +43,7 @@ const slice = createSlice({
             })
             .addCase(signIn.fulfilled, (state, { payload }) => {
                 state.isRefreshing = false;
-                state.user = payload.user;
-                state.token = payload.token;
+                state.token = payload.data.accessToken;
                 state.isLoggedIn = true;
             })
             .addCase(signIn.rejected, (state) => {

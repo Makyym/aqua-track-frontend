@@ -14,14 +14,6 @@ const TrackerPage = lazy(() => import ('./pages/TrackerPage/TrackerPage.jsx'));
 const NotFoundPage = lazy(() => import ('./pages/NotFoundPage/NotFoundPage.jsx'));
 
 function App() {
-  const dispatch = useDispatch();
-  const handleClick = () => {
-    const values = {
-      "email": "testMaks@mail.com",
-      "password": "123456"
-    }
-    dispatch(signUp(values));
-  };
   return (
     <SharedLayout>
       <Routes>
@@ -44,7 +36,6 @@ function App() {
         />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-      <button type='button' onClick={handleClick}>Click</button>
     </SharedLayout>
   )
 }
