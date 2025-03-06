@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 const SharedLayout = ({children}) => {
     return (
-        <div>
+        <div className="container">
             SharedLayout
             <Suspense fallback={null}>{children}</Suspense>
         </div>

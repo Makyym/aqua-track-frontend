@@ -4,6 +4,8 @@ import './App.css'
 import { lazy } from 'react'
 import RestrictedRoute from './RestrictedRoute.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
+import { useDispatch } from 'react-redux';
+import { signIn, signUp } from './redux/auth/operations.js';
 
 const HomePage = lazy(() => import ('./pages/HomePage/HomePage.jsx'));
 const SignInPage = lazy(() => import ('./pages/SignInPage/SignInPage.jsx'));
@@ -12,6 +14,14 @@ const TrackerPage = lazy(() => import ('./pages/TrackerPage/TrackerPage.jsx'));
 const NotFoundPage = lazy(() => import ('./pages/NotFoundPage/NotFoundPage.jsx'));
 
 function App() {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    const values = {
+      "email": "testMaks@mail.com",
+      "password": "123456"
+    }
+    dispatch(signUp(values));
+  };
   return (
     <SharedLayout>
       <Routes>
@@ -34,6 +44,7 @@ function App() {
         />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
+      <button type='button' onClick={handleClick}>Click</button>
     </SharedLayout>
   )
 }
