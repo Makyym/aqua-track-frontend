@@ -4,6 +4,8 @@ import './App.css';
 import { lazy } from 'react';
 import RestrictedRoute from './RestrictedRoute.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
+import { useDispatch } from 'react-redux';
+import { signIn, signUp } from './redux/auth/operations.js';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage.jsx'));

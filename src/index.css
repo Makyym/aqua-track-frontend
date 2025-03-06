@@ -29,15 +29,17 @@ html {
 /* mobile */
 .container {
   max-width: 375px;
+  padding: 16px;
   min-width: 320px;
   margin: 0 auto;
+  background: var(--main-white);
 }
 
 /* tablet */
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
-    margin: 0 auto;
+    padding: 32px;
   }
 }
 
