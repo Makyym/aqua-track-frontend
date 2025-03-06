@@ -1,4 +1,7 @@
-import { Formik } from 'formik';
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import { ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
 
 const SignUpForm = () => {
   const validationSchema = Yup.object({
@@ -59,3 +62,5 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+
+// підключити схему валідації до форміка
