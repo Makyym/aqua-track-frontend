@@ -1,0 +1,25 @@
+.calendarList {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 20px 18px;
+  padding: 0;
+
+  text-align: center;
+}
+.calendarItem {
+  text-align: center;
+}
+
+/* tablet */
+@media screen and (min-width: 768px) {
+  .calendarList {
+    gap: 15px 48px;
+  }
+}
+
+/* desktop */
+@media screen and (min-width: 1280px) {
+  .calendarList {
+    gap: 15px 43px;
+  }
+}
