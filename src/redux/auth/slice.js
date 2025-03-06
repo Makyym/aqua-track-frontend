@@ -21,6 +21,18 @@ const slice = createSlice({
     initialState,
     extraReducers: (builder) => {
         builder
+            .addCase(signUp.pending, (state) => {
+                state.isRefreshing = true;
+            })
+            .addCase(signUp.fulfilled, (state, { payload }) => {
+                state.isRefreshing = false;
+                state.user = payload.user;
+                state.token = payload.token;
+                state.isLoggedIn = true;
+            })
+            .addCase(signUp.rejected, (state) => {
+                state.isRefreshing = false;
+            })
             .addCase(signIn.pending, (state) => {
                 state.isRefreshing = true;
             })
