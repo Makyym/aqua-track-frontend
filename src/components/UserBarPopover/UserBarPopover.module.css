@@ -3,7 +3,7 @@
   background-color: var(--main-white);
   max-width: 137px;
   min-height: 72px;
-  top: 146px;
+  margin-top: 4px;
   display: flex;
   align-items: center;
   border-radius: 15px;
@@ -13,23 +13,24 @@
 }
 .btnSettings {
   display: flex;
-  position: absolute;
-  border: none;
-  padding-bottom: 40px;
 
-  background-color: var(--main-white);
+  border: none;
+
+  padding-bottom: 30px;
+  background-color: transparent;
   color: var(--main);
 }
 .btnSettings:hover {
   color: var(--grey-hover-focus);
 }
+
 .btnLogOut {
   display: flex;
   position: absolute;
+  padding-top: 14px;
   border: none;
-  margin-top: 8px;
   color: var(--main);
-  background-color: var(--main-white);
+  background-color: transparent;
 }
 .btnLogOut:hover {
   color: var(--grey-hover-focus);

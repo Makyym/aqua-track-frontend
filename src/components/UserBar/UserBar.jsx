@@ -1,16 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import UserBarPopover from '../UserBarPopover/UserBarPopover.jsx';
 import css from './UserBar.module.css';
 const UserBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [userName, setUserName] = useState('');
+  const userBarRef = useRef(null);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLogout = () => {
-    setIsOpen(false);
-  };
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (userBarRef.current && !userBarRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <div className={css.relativeHeader}>
@@ -28,7 +41,7 @@ const UserBar = () => {
         <span className={css.btnIcon}>▼</span>
       </button>
 
-      {isOpen && <UserBarPopover />}
+      {isOpen && <UserBarPopover closePopover={() => setIsOpen(false)} />}
     </div>
   );
 };
