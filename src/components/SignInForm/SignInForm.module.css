@@ -1,0 +1,12 @@
+.showPasswordButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+  font-size: 14px;
+  color: var(--main);
+}
+
+.showPasswordButton:hover {
+  text-decoration: underline;
+}
