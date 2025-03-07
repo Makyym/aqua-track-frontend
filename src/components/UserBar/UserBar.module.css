@@ -1,6 +1,6 @@
 .relativeHeader {
   display: flex;
-  position: relative;
+
   flex-direction: column;
   left: 20px;
 }
@@ -24,9 +24,9 @@
 .btnHeader {
   display: flex;
   align-items: center;
-  position: absolute;
+  max-width: 137px;
   padding: 12px 16px;
-  top: 92px;
+  margin-top: 20px;
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 14px;
