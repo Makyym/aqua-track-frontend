@@ -1,12 +1,27 @@
-import CalendarItem from "../CalendarItem/CalendarItem.jsx"
+import CalendarItem from '../CalendarItem/CalendarItem';
+import s from './Calendar.module.css';
 
-const Calendar = () => {
-    return (
-        <div>
-            Calendar
-            <CalendarItem />
-        </div>
-    )
-}
+const Calendar = ({ month, year, activeDate, handleActiveDay }) => {
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const daysArray = Array.from({ length: daysInMonth }, (_, i) => i + 1);
 
-export default Calendar
+  return (
+    <div>
+      <ul className={s.calendarList}>
+        {daysArray.map(day => (
+          <li key={day} className={s.calendarItem}>
+            <CalendarItem
+              day={day}
+              month={month}
+              year={year}
+              activeDate={activeDate}
+              handleActiveDay={handleActiveDay}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Calendar;
