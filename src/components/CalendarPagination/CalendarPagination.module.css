@@ -1,0 +1,81 @@
+.calendarPaginationContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.calendarTitle {
+  font-family: Poppins;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--main);
+}
+.paginationWrapper {
+  display: flex;
+}
+
+.calendarPagination {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.btnCalendarPagination {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  background-color: inherit;
+
+  border: none;
+  cursor: pointer;
+}
+.calendarPaginationText {
+  width: 120px;
+
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+.iconStatistic {
+  width: 20px;
+  height: 20px;
+}
+
+/* tablet */
+@media screen and (min-width: 768px) {
+  .calendarTitle {
+    font-size: 28px;
+    line-height: 1.14;
+  }
+  .calendarPagination {
+    margin-right: 20px;
+  }
+  .calendarPaginationText {
+    width: 135px;
+
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .iconStatistic {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* desktop */
+@media screen and (min-width: 1280px) {
+  .monthInfo {
+    width: 608px;
+  }
+}
