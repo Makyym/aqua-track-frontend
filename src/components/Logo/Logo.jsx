@@ -1,6 +1,8 @@
+import css from "./Logo.module.css"
+
 const Logo = () => {
     return (
-        <div>Logo</div>
+        <div className={css.logo}>AquaTrack</div>
     )
 }
 

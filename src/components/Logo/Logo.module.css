@@ -1,0 +1,12 @@
+.logo {
+    font-weight:700;
+font-size: 24px;
+line-height: 1;
+letter-spacing: -0.01em;
+text-transform: uppercase;
+color: #323f47;
+position: absolute;
+top: 64px;
+left: 64px;
+font-family: "Poppins", sans-serif;
+}

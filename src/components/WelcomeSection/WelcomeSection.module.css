@@ -1,0 +1,133 @@
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+    border:1px solid #f0eff4;
+    border-radius: 30px;
+    width: 672px;
+    height: 736px;
+    background: #f0eff4;
+}
+.section {
+    width: 547px;
+    height: 360px;
+    margin: 61px;
+    margin-top: 188px;
+    margin-bottom: 188px;
+
+}
+
+
+.title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: #323f47;
+  
+    
+}
+
+.text {
+    font-weight: 400;
+font-size: 16px;
+line-height: 1.5;
+letter-spacing: 0.06em;
+color: #2f2f2f;
+font-family: "Poppins", sans-serif;
+}
+
+.link{
+    display: flex;
+    gap: 16px;
+    width: 320px;
+    height: 60px;
+    margin-top: 32px;
+
+}
+.signup {
+    border-radius: 30px;
+padding: 18px 40px;
+width: 169px;
+height: 60px;
+background: #9be1a0;
+color: #323f47;
+font-family: "Poppins", sans-serif;
+}
+.signup:hover {
+    background: #87d28d;
+}
+
+.signin:hover{
+    border: 1px solid #87d28d;
+    color: #87d28d;
+}
+.signin {
+    border: 1px solid #323f47;
+border-radius: 30px;
+padding: 18px 40px;
+width: 135px;
+height: 60px;
+color: #323f47;
+font-family: "Poppins", sans-serif;
+
+
+}
+
+.name {
+    font-weight: 700;
+font-size: 16px;
+line-height: 1.5;
+letter-spacing: -0.01em;
+text-align: center;
+color: #323f47;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 766px){
+    .container{
+width: 343px;
+height: 411px;
+    }
+
+    .section{
+        width: 311px;
+height: 226px;
+
+    }
+    .title{
+        font-weight: 700;
+font-size: 38px;
+line-height: 1;
+margin-top: 16px;
+
+    }
+    .text{
+        font-weight: 400;
+font-size: 14px;
+line-height: 1.29;
+    }
+    .link{
+        width: 230px;
+height: 46px;
+    }
+
+    .name {
+font-size: 14px;
+line-height: 1.29;
+    }
+
+    .signin{
+        border-radius: 30px;
+padding: 14px 19px;
+width: 116px;
+height: 46px;
+    }
+}
