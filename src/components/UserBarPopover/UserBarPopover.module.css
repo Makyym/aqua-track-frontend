@@ -1,0 +1,42 @@
+.vidget {
+  position: relative;
+  background-color: var(--main-white);
+  max-width: 137px;
+  min-height: 72px;
+  top: 146px;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+
+  padding-left: 20px;
+  gap: 8px;
+}
+.btnSettings {
+  display: flex;
+  position: absolute;
+  border: none;
+  padding-bottom: 40px;
+
+  background-color: var(--main-white);
+  color: var(--main);
+}
+.btnSettings:hover {
+  color: var(--grey-hover-focus);
+}
+.btnLogOut {
+  display: flex;
+  position: absolute;
+  border: none;
+  margin-top: 8px;
+  color: var(--main);
+  background-color: var(--main-white);
+}
+.btnLogOut:hover {
+  color: var(--grey-hover-focus);
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}
