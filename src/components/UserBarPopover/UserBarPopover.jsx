@@ -1,9 +1,15 @@
 import { useState } from 'react';
 import css from './UserBarPopover.module.css';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
+import LogOutModal from '../LogOutModal/LogOutModal.jsx';
+import BaseModal from '../BaseModal/BaseModal.jsx';
 
 const UserBarPopover = () => {
   const [isSettingsOpen, setSettingsOpen] = useState(false);
   const [isLogoutOpen, setLogoutOpen] = useState(false);
+  const handleModalClose = () => {
+    setSettingsOpen(false)
+  };
 
   return (
     <div className={css.vidget}>
@@ -17,6 +23,9 @@ const UserBarPopover = () => {
         <UserSettingsModal close={() => setSettingsOpen(false)} />
       )}
       {isLogoutOpen && <LogOutModal close={() => setLogoutOpen(false)} />}
+      <BaseModal isOpen={isSettingsOpen} onRequestClose={handleModalClose}>
+        <UserSettingsModal />
+      </BaseModal>
     </div>
   );
 };
