@@ -1,6 +1,7 @@
 /* Mobile styles */
 .logo {
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 18px;
-  color: #323f47;
+  color: var(--main);
 }
