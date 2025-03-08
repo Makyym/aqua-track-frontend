@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
 
 axios.defaults.baseURL = 'https://project-aqt-api.onrender.com';
 axios.defaults.withCredentials = true;
@@ -13,27 +12,28 @@ export const clearAuthHeader = () => {
     axios.defaults.headers.common.Authorization = ``;
 };
 
-// const navigate = useNavigate();
-// axios.interceptors.response.use(
-//     response => response,
-//     async error => {
-//         const originalRequest = error.config;
-//         if (error.response.status === 401 && !originalRequest._retry) {
-//             originalRequest._retry = true;
-//             try {
-//                 const { data } = await axios.post('/users/refresh');
-//                 const token = data.data.accessToken;
-//                 setAuthHeader(token);
-//                 originalRequest.headers['Authorization'] = `Bearer ${token}`;
-//                 return axios(originalRequest);
-//             } catch (refreshError) {
-//                 window.location.href = '/login';
-//                 return Promise.reject(refreshError);
-//             }
-//         }
-//         return Promise.reject(error);
-//     }
-// );
+axios.interceptors.response.use(
+    response => response,
+    async error => {
+        const originalRequest = error.config;
+        const maxRetries = 3;
+        originalRequest._retryCount = originalRequest._retryCount || 0;
+        if (error.response.status === 401 && originalRequest._retryCount < maxRetries) {
+            originalRequest._retryCount += 1;
+            try {
+                const { data } = await axios.post('/users/refresh');
+                const token = data.data.accessToken;
+                setAuthHeader(token);
+                originalRequest.headers['Authorization'] = `Bearer ${token}`;
+                return axios(originalRequest);
+            } catch (refreshError) {
+                window.location.href = '/login';
+                return Promise.reject(refreshError);
+            }
+        }
+        return Promise.reject(error);
+    }
+);
 
 export const signUp = createAsyncThunk('auth/signUp', async (credentials, thunkAPI) => {
     try {
@@ -54,7 +54,6 @@ export const signUp = createAsyncThunk('auth/signUp', async (credentials, thunkA
 export const signIn = createAsyncThunk('auth/signIn', async (credentials, thunkAPI) => {
     try {
         const response = await axios.post('/users/login', credentials);
-        console.log(response.data.data.accessToken);
         setAuthHeader(response.data.data.accessToken);
         return response.data;
     } catch (error) {
