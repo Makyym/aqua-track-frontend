@@ -60,6 +60,7 @@ const slice = createSlice({
                 state.isRefreshing = true;
             })
             .addCase(refreshUser.rejected, (state, { payload }) => {
+                state.isLoggedIn = false;
                 state.isRefreshing = false;
             })
             .addCase(refreshToken.fulfilled, (state, { payload }) => {

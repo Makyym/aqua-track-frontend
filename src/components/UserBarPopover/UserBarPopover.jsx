@@ -19,12 +19,8 @@ const UserBarPopover = () => {
       <button className={css.btnLogOut} onClick={() => setLogoutOpen(true)}>
         Log out
       </button>
-      {isSettingsOpen && (
-        <UserSettingsModal close={() => setSettingsOpen(false)} />
-      )}
-      {isLogoutOpen && <LogOutModal close={() => setLogoutOpen(false)} />}
       <BaseModal isOpen={isSettingsOpen} onRequestClose={handleModalClose}>
-        <UserSettingsModal />
+        <UserSettingsModal close={handleModalClose}/>
       </BaseModal>
     </div>
   );
