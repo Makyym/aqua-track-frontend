@@ -33,33 +33,21 @@ export const signIn = createAsyncThunk('auth/signIn', async (credentials, thunkA
         const response = await axios.post('/users/login', credentials);
         setAuthHeader(response.data.data.accessToken);
         return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
-);
-
-export const signIn = createAsyncThunk(
-  'auth/signIn',
-  async (credentials, thunkAPI) => {
-    try {
-      const response = await axios.post('/users/login', credentials);
-      setAuthHeader(response.data.token);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    },
 );
 
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
-  try {
-    await axios.post('/users/logout');
-    clearAuthHeader();
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
+    try {
+        await axios.post('/users/logout');
+        clearAuthHeader();
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
 
 export const refreshUser = createAsyncThunk('auth/refreshUser', async (_, thunkAPI) => {
     try {
@@ -100,7 +88,6 @@ export const refreshToken = createAsyncThunk('auth/refreshToken', async (_, thun
 export const patchUser = createAsyncThunk('auth/patchUser', async (body, thunkAPI) => {
     try {
         const { data } = await axios.patch('/users/userinfo', body);
-        console.log(data);
         return data;
     } catch (error) {
         

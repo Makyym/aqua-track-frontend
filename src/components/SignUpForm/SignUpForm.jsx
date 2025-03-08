@@ -26,8 +26,12 @@ const SignUpForm = () => {
   };
   const dispatch = useDispatch();
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    const data = {
+      email: values.email,
+      password: values.password
+    }
     try {
-      const resultAction = await dispatch(signUp(values));
+      const resultAction = await dispatch(signUp(data));
 
       if (signUp.fulfilled.match(resultAction)) {
         toast.success('You were successfully signed up!');
