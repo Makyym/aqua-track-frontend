@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { logout, refreshUser, signIn, signUp } from "./operations.js";
+import { logout, refreshToken, refreshUser, signIn, signUp } from "./operations.js";
 
 const initialState = {
     user: {
@@ -59,13 +59,16 @@ const slice = createSlice({
                 state.user.dailyNorm = payload.data.dailyNorm;
                 state.user.activeTime = payload.data.dailySportTime;
                 state.user.avatarUrl = payload.data.avatarUrl;
-                state.user.name = payload.data.avatarUrl ?? null;
+                state.user.name = payload.data.name ?? null;
             })
             .addCase(refreshUser.pending, (state, { payload }) => {
                 state.isRefreshing = true;
             })
             .addCase(refreshUser.rejected, (state, { payload }) => {
                 state.isRefreshing = false;
+            })
+            .addCase(refreshToken.fulfilled, (state, { payload }) => {
+                state.token = payload.data.accessToken;
             })
     },
 });

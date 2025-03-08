@@ -12,29 +12,6 @@ export const clearAuthHeader = () => {
     axios.defaults.headers.common.Authorization = ``;
 };
 
-axios.interceptors.response.use(
-    response => response,
-    async error => {
-        const originalRequest = error.config;
-        const maxRetries = 3;
-        originalRequest._retryCount = originalRequest._retryCount || 0;
-        if (error.response.status === 401 && originalRequest._retryCount < maxRetries) {
-            originalRequest._retryCount += 1;
-            try {
-                const { data } = await axios.post('/users/refresh');
-                const token = data.data.accessToken;
-                setAuthHeader(token);
-                originalRequest.headers['Authorization'] = `Bearer ${token}`;
-                return axios(originalRequest);
-            } catch (refreshError) {
-                window.location.href = '/login';
-                return Promise.reject(refreshError);
-            }
-        }
-        return Promise.reject(error);
-    }
-);
-
 export const signUp = createAsyncThunk('auth/signUp', async (credentials, thunkAPI) => {
     try {
         const register = await axios.post('/users/register', credentials);
@@ -74,22 +51,34 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
     try {
         const savedToken = thunkAPI.getState().auth.token;
         if (!savedToken) {
-            return thunkAPI.rejectWithValue('Token is not exist');
+            return thunkAPI.rejectWithValue('Token does not exist');
         }
         setAuthHeader(savedToken);
         const { data } = await axios.get('/users/userinfo');
         return data;
     } catch (error) {
+        if (error.response && error.response.status === 401) {
+            try {
+                const refreshResult = await thunkAPI.dispatch(refreshToken());
+                if (refreshResult.error) {
+                    throw new Error(refreshResult.error.message);
+                }
+                const { data } = await axios.get('/users/userinfo');
+                return data;
+            } catch (refreshError) {
+                return thunkAPI.rejectWithValue(refreshError.message);
+            }}
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
+
+export const refreshToken = createAsyncThunk('auth/refreshToken', async (_, thunkAPI) => {
+    try {
+        const { data } = await axios.post('/users/refresh');
+        setAuthHeader(data.data.accessToken);
+        return data;
+    } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     };
 });
-
-// export const refreshToken = createAsyncThunk('auth/refreshToken', async (_, thunkAPI) => {
-//     try {
-//         const { data } = await axios.post('/users/refresh');
-//         console.log(data);
-//         return data;
-//     } catch (error) {
-//         return thunkAPI.rejectWithValue(error.message);
-//     };
-// });
