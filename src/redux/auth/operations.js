@@ -47,7 +47,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     }
 });
 
-export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+export const refreshUser = createAsyncThunk('auth/refreshUser', async (_, thunkAPI) => {
     try {
         const savedToken = thunkAPI.getState().auth.token;
         if (!savedToken) {
@@ -81,4 +81,14 @@ export const refreshToken = createAsyncThunk('auth/refreshToken', async (_, thun
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     };
+});
+
+export const patchUser = createAsyncThunk('auth/patchUser', async (body, thunkAPI) => {
+    try {
+        const { data } = await axios.patch('/users/userinfo', body);
+        console.log(data);
+        return data;
+    } catch (error) {
+        
+    }
 });
