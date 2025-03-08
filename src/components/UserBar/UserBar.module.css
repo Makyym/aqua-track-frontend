@@ -1,0 +1,52 @@
+.relativeHeader {
+  display: flex;
+
+  flex-direction: column;
+  left: 20px;
+}
+
+.hello {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 32px;
+
+  color: var(--main-text);
+}
+.userName {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1%;
+  color: var(--main-text);
+}
+.btnHeader {
+  display: flex;
+  align-items: center;
+  max-width: 137px;
+  padding: 12px 16px;
+  margin-top: 20px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  border-radius: 30px;
+  color: var(--font-family);
+  gap: 8px;
+  color: var(--main-white);
+  background-color: var(--main);
+}
+.avatar {
+  border-radius: 50%;
+}
+
+.btnIcon {
+  align-content: center;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}

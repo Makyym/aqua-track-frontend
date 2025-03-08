@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { logout, signIn, signUp } from "./operations.js";
+import { logout, patchUser, refreshToken, refreshUser, signIn, signUp } from "./operations.js";
 
 const initialState = {
     user: {
@@ -8,7 +8,7 @@ const initialState = {
         gender: null,
         dailyNorm: null,
         weight: null,
-        activeTime: null,
+        dailySportTime: null,
         avatarUrl: null,
     },
     token: null,
@@ -26,12 +26,10 @@ const slice = createSlice({
             })
             .addCase(signUp.fulfilled, (state, { payload }) => {
                 state.isRefreshing = false;
-                state.user.email = payload.data.email;
-                state.user.gender = payload.data.gender;
-                state.user.weight = payload.data.weight;
-                state.user.dailyNorm = payload.data.dailyNorm;
-                state.user.activeTime = payload.data.dailySportTime;
-                state.user.avatarUrl = payload.data.avatarUrl;
+                state.user = {
+                    ...state.user,
+                    ...payload.data,
+                }
                 state.token = payload.token;
                 state.isLoggedIn = true;
             })
@@ -50,6 +48,29 @@ const slice = createSlice({
                 state.isRefreshing = false;
             })
             .addCase(logout.fulfilled, () => initialState)
+            .addCase(refreshUser.fulfilled, (state, { payload }) => {
+                state.isLoggedIn = true;
+                state.isRefreshing = false;
+                state.user = {
+                    ...state.user,
+                    ...payload.data,
+                }
+            })
+            .addCase(refreshUser.pending, (state, { payload }) => {
+                state.isRefreshing = true;
+            })
+            .addCase(refreshUser.rejected, (state, { payload }) => {
+                state.isRefreshing = false;
+            })
+            .addCase(refreshToken.fulfilled, (state, { payload }) => {
+                state.token = payload.data.accessToken;
+            })
+            .addCase(patchUser.fulfilled, (state, {payload}) => {
+                state.user = {
+                    ...state.user,
+                    ...payload.data,
+                }
+            })
     },
 });
 

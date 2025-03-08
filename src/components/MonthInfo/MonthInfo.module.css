@@ -1,0 +1,6 @@
+/* desktop */
+@media screen and (min-width: 1280px) {
+  .monthInfo {
+    width: 608px;
+  }
+}

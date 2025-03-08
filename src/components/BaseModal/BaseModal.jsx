@@ -16,16 +16,15 @@ const customStyles = {
     },
 };
 
-const Modal = ({ isOpen, onRequestClose, children}) => {
+const BaseModal = ({ isOpen, onRequestClose, children}) => {
     return (
         <Modal
             isOpen={isOpen}
             onRequestClose={onRequestClose}
             style={customStyles}>
             {children}
-            <button type='button' onClick={onRequestClose}></button>
         </Modal>
     )
 }
 
-export default Modal
+export default BaseModal
