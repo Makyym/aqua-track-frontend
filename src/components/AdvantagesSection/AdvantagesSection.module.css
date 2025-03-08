@@ -15,15 +15,15 @@ height: 736px;
 }
 .customers {
     display: flex;
-    gap: 10px;
-    align-items: center;
+    gap: 4px;
     background: white;
     border-radius: 50px;
     box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
     width: 237px;
     height: 67px;
-    margin-bottom: 68px;
+    margin-top: 569px;
+   
   }
 .customers p{
     font-family: "Poppins", sans-serif;
@@ -37,18 +37,24 @@ color: #323f47;
 
 .avatars{
     display: flex;
+    flex-direction: row;
+    
     
     
 }
 .avatars img {
-    width: 47px;
-    height: 47px;
+    width: 36px;
+    height: 36px;
     border-radius: 50px;
     border: 2px solid #fff;
     object-fit: cover;
     position: relative;
-    margin-right: -10px;
+    z-index: 1;
   }
+
+  .avatars img:not(:first-child) {
+    margin-left: -10px;
+}
 
  .span {
     color: #9be1a0;;
@@ -59,7 +65,12 @@ color: #323f47;
     margin-bottom: 64px;
     margin-left: 398px;
     display: flex;
-    gap: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    gap: 10px;
+    width: 242px;
+height: 78px;
     
 }
 button {
@@ -79,14 +90,61 @@ width: 111px;
 height: 34px;
 background: #323f47;
 font-family: "Poppins", sans-serif;
-color: white;
+font-weight: 700;
+font-size: 12px;
+line-height: 1;
+letter-spacing: -0.01em;
+text-align: center;
+color: #fff;
+}
+
+.habit::before{
+    content: "●";
+    color: #9be1a0;
+    padding-right: 2px;
 }
 
 .stats {
-    background: white;
+    background:  #9be1a0;
     color: black;
+    border-radius: 30px;
+padding: 11px 16px;
+width: 121px;
+height: 34px;
+font-family: "Poppins", sans-serif;
+font-weight: 700;
+font-size: 12px;
+line-height: 1;
+letter-spacing: -0.01em;
+text-align: center;
+color: #323f47;
 }
 .personal {
     background: white;
-    border: 1px solid;
+    border: 1px ;
+    border-radius: 30px;
+padding: 11px 12px;
+width: 165px;
+height: 34px;
+font-family: "Poppins", sans-serif;
+    font-weight: 700;
+font-size: 12px;
+line-height: 1;
+letter-spacing: -0.01em;
+text-align: center;
+color: #323f47;
+margin-right: 84px;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 766px){
+    .container {
+width: 343px;
+height: 353px;
+    }
+    
+    
+
+    
+  
 }

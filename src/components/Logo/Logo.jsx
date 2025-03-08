@@ -2,7 +2,7 @@ import css from "./Logo.module.css"
 
 const Logo = () => {
     return (
-        <div className={css.logo}>AquaTrack</div>
+        <a href="/" className={css.logo}> AquaTrack</a>
     )
 }
 

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     gap: 31px;
-    width: 1440px;
+    
 height: 800px;
 background: #fff;
 padding: 32px;
@@ -13,6 +13,8 @@ padding: 32px;
     .homePage{
         display: flex;
         flex-direction: column;
+        width: 375px;
+        height: 812px;
     }
 }
 
@@ -20,6 +22,8 @@ padding: 32px;
     .homePage{
         display: flex;
         flex-direction: column;
+        width: 768px;
+height: 1024px;
     }
 }
 
@@ -27,6 +31,8 @@ padding: 32px;
     .homePage{
         display: flex;
     flex-direction: row;
+    width: 1440px;
+height: 800px;
     }
 }
 

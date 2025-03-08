@@ -6,7 +6,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 32px;
     border:1px solid #f0eff4;
     border-radius: 30px;
     width: 672px;
@@ -122,6 +121,7 @@ height: 46px;
     .name {
 font-size: 14px;
 line-height: 1.29;
+
     }
 
     .signin{
@@ -130,4 +130,14 @@ padding: 14px 19px;
 width: 116px;
 height: 46px;
     }
+}
+
+@media screen and (min-width: 768px) {
+
+.container {
+/*     
+    width: 498px;
+    height: 704px;
+     */
+}
 }
