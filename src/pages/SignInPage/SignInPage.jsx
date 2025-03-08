@@ -7,6 +7,7 @@ import SignInForm from '../../components/SignInForm/SignInForm.jsx';
 
 const SignInPage = () => {
   const dispatch = useDispatch();
+
   const handleSubmit = async values => {
     try {
       await dispatch(signIn(values)).unwrap();
@@ -15,11 +16,12 @@ const SignInPage = () => {
       toast.error(`Login failed: ${error.message || error}`);
     }
   };
+
   return (
-    <>
+    <div>
       <Logo />
-      <SignInForm title="Sign In" type="signIn" onSubmit={handleSubmit} />
-    </>
+      <SignInForm title="Sign In" onSubmit={handleSubmit} />
+    </div>
   );
 };
 

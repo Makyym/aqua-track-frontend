@@ -1,9 +1,8 @@
+import css from './SignInForm.module.css';
 import * as Yup from 'yup';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../ui/Button/Button.jsx';
-import css from './SignInForm.module.css';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 
 const signInValidationSchema = Yup.object({
   email: Yup.string()
@@ -17,8 +16,12 @@ const signInInitialValues = {
   password: '',
 };
 
-const SignInForm = ({ onSubmit, title, type }) => {
+const SignInForm = ({ onSubmit, title }) => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const passwordVisibility = () => {
+    setShowPassword(prev => !prev);
+  };
 
   return (
     <Formik
@@ -63,7 +66,7 @@ const SignInForm = ({ onSubmit, title, type }) => {
               <button
                 type="button"
                 className={css.showPasswordButton}
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={passwordVisibility}
               >
                 {showPassword ? 'Hide' : 'Show'}
               </button>
@@ -75,9 +78,14 @@ const SignInForm = ({ onSubmit, title, type }) => {
             />
           </label>
 
-          <Button type="submit" width="100%" disabled={isSubmitting}>
-            Sign in
-          </Button>
+          <button
+            type="submit"
+            className={css.buttonStyle}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Signing in...' : 'Sign in'}
+          </button>
+
           <div>
             <p>
               Don't have an account?{' '}

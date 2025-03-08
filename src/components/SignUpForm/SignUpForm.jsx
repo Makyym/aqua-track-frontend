@@ -1,7 +1,7 @@
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
-import { ErrorMessage } from "formik";
-import { Link } from "react-router-dom";
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+import { ErrorMessage } from 'formik';
+import { Link } from 'react-router-dom';
 
 const SignUpForm = () => {
   const validationSchema = Yup.object({
