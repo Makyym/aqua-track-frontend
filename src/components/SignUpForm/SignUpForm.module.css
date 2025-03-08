@@ -68,6 +68,14 @@
   letter-spacing: -0.01em;
   color: #2f2f2f;
 }
+.inputError {
+  border: 1px solid red;
+  color: red;
+}
+
+.inputError::placeholder {
+  color: red;
+}
 .errors {
   font-size: 14px;
   line-height: 129%;
@@ -81,6 +89,7 @@
   right: 16px;
   width: 20px;
   height: 20px;
+  cursor: pointer;
 }
 .button {
   border-radius: 30px;
