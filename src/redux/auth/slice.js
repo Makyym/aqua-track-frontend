@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logout, signIn, signUp } from './operations.js';
+import {
+  logout,
+  patchUser,
+  refreshToken,
+  refreshUser,
+  signIn,
+  signUp,
+} from './operations.js';
 
 const initialState = {
   user: {
@@ -8,7 +15,7 @@ const initialState = {
     gender: null,
     dailyNorm: null,
     weight: null,
-    activeTime: null,
+    dailySportTime: null,
     avatarUrl: null,
   },
   token: null,

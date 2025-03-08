@@ -1,25 +1,21 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout.jsx';
 import './App.css';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import RestrictedRoute from './RestrictedRoute.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
-import { useDispatch } from 'react-redux';
-import { signIn, signUp } from './redux/auth/operations.js';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage.jsx'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage.jsx'));
 const TrackerPage = lazy(() => import('./pages/TrackerPage/TrackerPage.jsx'));
-const NotFoundPage = lazy(() =>
-  import('./pages/NotFoundPage/NotFoundPage.jsx'),
-);
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
 
 function App() {
   return (
     <SharedLayout>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />s
         <Route
           path="/signup"
           element={
