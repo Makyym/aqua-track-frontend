@@ -1,59 +1,71 @@
+
+
 .container{
     position: relative;
     width: 100%; 
-    max-width: 100%;}
+    max-width: 812px;
+    margin: 0 auto;
+}
+
 .img {
     border-radius: 30px;
-width: 672px;
-height: 736px;
+width: 100%;
+max-width: 343px;
+height: auto;
 }
 .benefits {
     position: absolute;
-  bottom: 20px;
-  left: 20px;
-  width: calc(100% - 40px);
+  bottom: 0px;
+  width: 100%;
 }
+
 .customers {
     display: flex;
+    align-items: center;
     gap: 4px;
     background: white;
     border-radius: 50px;
     box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
-    width: 237px;
-    height: 67px;
-    margin-top: 569px;
+    width: 160px;
+    height: 48px;
+    margin-left: 16px;
+ 
    
   }
 .customers p{
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-font-size: 15px;
-line-height: 1.49333;
+font-size: 12px;
+line-height: 1.5;
 color: #323f47;
-
-
+text-align: right;
 }
 
 .avatars{
     display: flex;
-    flex-direction: row;
-    
-    
-    
+    position: relative;
 }
+
 .avatars img {
     width: 36px;
     height: 36px;
     border-radius: 50px;
-    border: 2px solid #fff;
-    object-fit: cover;
+    border: 1px solid #fff;
+    overflow: hidden;
     position: relative;
-    z-index: 1;
+    margin-right: -15px;
   }
+  .avatars img:first-child {
+    z-index: 3;
+}
 
-  .avatars img:not(:first-child) {
-    margin-left: -10px;
+.avatars img:nth-child(2) {
+    z-index: 2;
+}
+
+.avatars img:nth-child(3) {
+    z-index: 1;
 }
 
  .span {
@@ -62,40 +74,34 @@ color: #323f47;
   
 
 .buttons {
-    margin-bottom: 64px;
-    margin-left: 398px;
+    margin-bottom: 32px;
+    margin-left: 159px;
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content:flex-start;
-    gap: 10px;
-    width: 242px;
-height: 78px;
+    justify-content:center;
+    gap: 4px;
+    width: 168px;
+height: 56px;
     
 }
 button {
+    font-family: "Poppins", sans-serif;
+font-weight: 700;
     border: none;
-    padding:11px 126x;
-    font-size: 12px;
+    padding:9px 12px;
+    font-size: 8px;
     border-radius: 30px;
     cursor: pointer;
-    width: 111px;
-height: 34px;
+line-height: 1;
+text-align: center;
+letter-spacing: -0.01em;
   }
 
 .habit {
-    border-radius: 30px;
-padding: 11px 16px;
-width: 111px;
-height: 34px;
 background: #323f47;
-font-family: "Poppins", sans-serif;
-font-weight: 700;
-font-size: 12px;
-line-height: 1;
-letter-spacing: -0.01em;
-text-align: center;
 color: #fff;
+width: 81px;
+height: 26px;
 }
 
 .habit::before{
@@ -107,44 +113,93 @@ color: #fff;
 .stats {
     background:  #9be1a0;
     color: black;
-    border-radius: 30px;
-padding: 11px 16px;
-width: 121px;
-height: 34px;
-font-family: "Poppins", sans-serif;
-font-weight: 700;
-font-size: 12px;
-line-height: 1;
-letter-spacing: -0.01em;
-text-align: center;
-color: #323f47;
+    width: 83px;
+    height: 26px;
+
 }
 .personal {
     background: white;
-    border: 1px ;
-    border-radius: 30px;
-padding: 11px 12px;
-width: 165px;
-height: 34px;
-font-family: "Poppins", sans-serif;
-    font-weight: 700;
-font-size: 12px;
-line-height: 1;
-letter-spacing: -0.01em;
-text-align: center;
-color: #323f47;
-margin-right: 84px;
+
+   
+    width: 108px;
+    height: 26px;
+margin-right: 60px;
 }
 
 
-@media screen and (min-width: 320px) and (max-width: 766px){
-    .container {
-width: 343px;
-height: 353px;
+
+@media only screen and (min-width: 768px) {
+    .container{
+        width: 100%; 
+        height: auto;
+    }
+
+    .img {
+        
+    max-width: 704px;
+    height: auto;
+    }
+    .customers{
+        width: 237px; 
+        height: 67px;
+        margin-left: 32px; 
     }
     
-    
+    .customers p{
+        font-size: 15px;
+    }
 
-    
-  
+
+    .avatars img {
+        width: 47px;
+    height: 47px;
+    }
+
+    .buttons{
+        margin-bottom: 27px;
+        width: 242px;
+height: 78px;
+margin-left: 430px;
+    }
+    button{
+        font-size: 12px;
+        padding: 11px 16px;
+    }
+    .habit{
+        width: 111px;
+        height: 34px;
+    }
+    .stats{
+        width: 121px;
+height: 34px;
+    }
+    .personal{
+        width: 158px;
+height: 34px;
+    }
+    .personal {
+   
+        margin-right: 84px;
+        }
 }
+@media only screen and (min-width: 1440px){
+    .container{
+        width: 100%; 
+        height: auto;
+    }
+    .img {
+        
+        max-width: 672px;
+        height: 736px;
+        }
+        .buttons{
+       margin-bottom: 64px;     
+    margin-left: 398px;
+
+}
+.personal {
+   
+margin-right: 84px;
+}
+}
+
