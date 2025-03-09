@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import s from './NotFoundPage.module.css'
-import { Watch } from 'react-loader-spinner';
 import page from "../../images/not-found-page-4x.png";
 
 const watch = {
@@ -40,7 +39,6 @@ const NotFoundPage = () => {
                 </p>
                 <div className={s.counter}>
                     <p>{counter} seconds </p>
-                    <Watch {...watch}/>
                 </div>
             </div>
             <img src={page} alt="page in clouds" />
