@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 import { signIn } from '../../redux/auth/operations.js';
+import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection.jsx';
 
-import Logo from '../../components/Logo/Logo.jsx';
 import SignInForm from '../../components/SignInForm/SignInForm.jsx';
 
 const SignInPage = () => {
@@ -18,10 +18,14 @@ const SignInPage = () => {
   };
 
   return (
-    <div>
-      <Logo />
-      <SignInForm title="Sign In" onSubmit={handleSubmit} />
-    </div>
+    <>
+      <div>
+        <SignInForm title="Sign In" onSubmit={handleSubmit} />
+      </div>
+      <div>
+        <AdvantagesSection />
+      </div>
+    </>
   );
 };
 
