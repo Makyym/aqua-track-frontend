@@ -28,8 +28,8 @@ const SignUpForm = () => {
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     const data = {
       email: values.email,
-      password: values.password
-    }
+      password: values.password,
+    };
     try {
       const resultAction = await dispatch(signUp(data));
 
@@ -124,3 +124,5 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+
+// підключити схему валідації до форміка
