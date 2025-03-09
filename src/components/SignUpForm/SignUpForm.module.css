@@ -1,0 +1,172 @@
+/* Mobile styles */
+
+.wrapper {
+  border-radius: 30px;
+  background: #f0eff4;
+  padding: 16px;
+}
+.container_form {
+  padding: 126px 0 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+  color: var(--main);
+  margin-bottom: 32px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  color: #2f2f2f;
+  margin-bottom: 12px;
+}
+.container_input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative;
+  width: 100%;
+  height: 56px;
+}
+.input {
+  border: 1px solid rgba(47, 47, 47, 0.2);
+  border-radius: 15px;
+  padding: 16px;
+  width: 100%;
+  height: 50px;
+  outline: none;
+  background-color: #f0eff4;
+}
+.input::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  color: rgba(47, 47, 47, 0.6);
+  margin-bottom: 16px;
+}
+.input:focus {
+  border: 1px solid #2f2f2f66;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: #2f2f2f;
+}
+.inputError {
+  border: 1px solid red;
+  color: red;
+}
+
+.inputError::placeholder {
+  color: red;
+}
+.errors {
+  font-size: 14px;
+  line-height: 129%;
+  color: #ef5050;
+}
+
+.icon {
+  fill: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.button {
+  border-radius: 30px;
+  height: 50px;
+  background: #9be1a0;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #323f47;
+  cursor: pointer;
+  width: 100%;
+}
+.button:hover,
+.button:focus {
+  background: #87d28d;
+}
+.description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  color: rgba(47, 47, 47, 0.5);
+  margin: 0 auto;
+}
+.link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--main-text);
+}
+
+/* Tablet styles */
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 32px;
+  }
+  .container_form {
+    padding: 195px 70px;
+  }
+  .title {
+    font-size: 36px;
+    line-height: 106%;
+  }
+  .label {
+    font-size: 16px;
+    line-height: 150%;
+  }
+  .input {
+    width: 436px;
+    height: 56px;
+  }
+  .input::placeholder {
+    font-size: 16px;
+    line-height: 150%;
+  }
+  .button {
+    font-size: 16px;
+    line-height: 150%;
+    width: 436px;
+    height: 60px;
+  }
+  .description {
+    font-size: 16px;
+    line-height: 150%;
+  }
+}
+/* DesKtop styles */
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    max-width: 672px;
+    width: 100%;
+  }
+  .container_form {
+    padding: 72px 86px 66px;
+  }
+}
