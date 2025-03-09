@@ -3,13 +3,6 @@ import css from './UserSettingsModal.module.css';
 import { useState } from 'react';
 
 const UserSettingsModal = ({ close }) => {
-  const [gender, setGender] = useState('woman');
-  const [name, setName] = useState('Nadia');
-  const [email, setEmail] = useState('nadialo@gmail.com');
-  const [weight, setWeight] = useState('');
-  const [activeTime, setActiveTime] = useState('');
-  const [waterIntake, setWaterIntake] = useState(1.8);
-
   const calculateWaterNorm = () => {
     const W = parseFloat(weight) || 0;
     const T = parseFloat(activeTime) || 0;
@@ -18,16 +11,29 @@ const UserSettingsModal = ({ close }) => {
   };
 
   return (
-    <div>
-      <h2>Setting</h2>
-      <button>svg</button>
-      <UserSettingsForm />
+    <div className={css.modalSettings}>
+      <div>
+        <h2 className={css.modalTitle}>Setting</h2>
+        <button className={css.closeButton} onClick={close}>
+          {' '}
+          ✖
+        </button>
+      </div>
+      <div>
+        <img
+          className={css.avatar}
+          src="https://i.pravatar.cc/80"
+          alt="avatar"
+        />
+        <button className={css.uploadPhoto}>Upload a photo</button>
+        <UserSettingsForm />
+      </div>
     </div>
     // <div className={css.modalOverlay} onClick={close}>
     //   <div className={css.modal} onClick={e => e.stopPropagation()}>
     //     <h2>Setting</h2>
     //     <button className={css.closeButton} onClick={close}>
-    //       ✖
+    //
     //     </button>
 
     //     <div className={css.profile}>
