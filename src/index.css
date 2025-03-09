@@ -1,6 +1,6 @@
 :root {
   font-family: var(--font-family);
-  background-color: var(--background);
+  background-color: var(--main-white);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
