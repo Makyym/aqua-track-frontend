@@ -133,3 +133,5 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+
+// підключити схему валідації до форміка
