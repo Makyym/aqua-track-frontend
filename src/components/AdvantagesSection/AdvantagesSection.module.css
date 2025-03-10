@@ -1,5 +1,3 @@
-
-
 .container{
     position: relative;
     
@@ -7,9 +5,15 @@
 
 .img {
     border-radius: 30px;
-
+    width: 100%;
+    max-width: 343px;
+    height: auto;
 }
-
+.benefits {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
 
 .customers {
     position: absolute;
@@ -20,17 +24,18 @@
     border-radius: 50px;
     box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
-    
- 
-   
-  }
+    width: 160px;
+    height: 48px;
+    margin-left: 16px;
+}
+
 .customers p{
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-font-size: 15px;
-line-height: 1.5;
-color: #323f47;
-text-align: right;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #323f47;
+    text-align: right;
 }
 
 .avatars{
@@ -46,8 +51,9 @@ text-align: right;
     overflow: hidden;
     position: relative;
     margin-right: -15px;
-  }
-  .avatars img:first-child {
+}
+
+.avatars img:first-child {
     z-index: 3;
 }
 
@@ -59,10 +65,9 @@ text-align: right;
     z-index: 1;
 }
 
- .span {
+.span {
     color: #9be1a0;;
- }
-  
+}
 
 .buttons {
     
@@ -70,30 +75,27 @@ text-align: right;
     flex-wrap: wrap;
     position: absolute;
     gap: 4px;
-    width: 242px;
-height: 78px;
-left: 430px;
-top:318px;
-    
+    width: 168px;
+    height: 56px;
+    & button {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        border: none;
+        padding:9px 12px;
+        font-size: 8px;
+        border-radius: 30px;
+        cursor: pointer;
+        line-height: 1;
+        text-align: center;
+        letter-spacing: -0.01em;
+    }
 }
-button {
-    font-family: "Poppins", sans-serif;
-font-weight: 700;
-    border: none;
-    padding:9px 12px;
-    font-size: 12px;
-    border-radius: 30px;
-    cursor: pointer;
-line-height: 1;
-text-align: center;
-letter-spacing: -0.01em;
-  }
 
 .habit {
-background: #323f47;
-color: #fff;
-width: 111px;
-height: 34px;
+    background: #323f47;
+    color: #fff;
+    width: 81px;
+    height: 26px;
 }
 
 .habit::before{
@@ -111,9 +113,9 @@ height: 34px;
 }
 .personal {
     background: white;
-    width: 158px;
-    height: 34px;
-
+    width: 108px;
+    height: 26px;
+    margin-right: 60px;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px){
@@ -170,8 +172,8 @@ height: 48px;
     
 
     .img {
-    width: 704px;
-    
+        max-width: 704px;
+        height: auto;
     }
     .customers {
         position: absolute;
@@ -189,20 +191,18 @@ height: 67px;
 
     .avatars img {
         width: 47px;
-    height: 47px;
+        height: 47px;
     }
 
     .buttons{
     left: 398px;
         width: 242px;
-        bottom: 68px;
-height: 78px;
-top:301px;
-
-    }
-    button{
-        font-size: 12px;
-        padding: 11px 16px;
+        height: 78px;
+        margin-left: 430px;
+        & button{
+            font-size: 12px;
+            padding: 11px 16px;
+        }
     }
     .habit{
         width: 111px;
@@ -210,16 +210,15 @@ top:301px;
     }
     .stats{
         width: 121px;
-height: 34px;
+        height: 34px;
     }
     .personal{
         width: 158px;
-height: 34px;
+        height: 34px;
     }
     .personal {
-   
         margin-right: 84px;
-        }
+    }
 }
 @media only screen and (min-width: 1440px){
     .container{
@@ -227,27 +226,15 @@ height: 34px;
         height: auto;
     }
     .img {
+        max-width: 672px;
         height: 736px;
-        object-fit: cover;
-
-        }
-        .customers {
-            width: 237px;
-    height: 67px;
-    top: 537px;
-    bottom: 132px;
-    left: 46px;
-        }
-        .buttons {
-height: 56px;
-top: 594px;
-left: 398px;
-bottom: 64px;
-    
-}
-
-.personal {
-   
-}
+    }
+    .buttons{
+        margin-bottom: 64px;     
+        margin-left: 398px;
+    }
+    .personal {
+        margin-right: 84px;
+    }
 }
 
