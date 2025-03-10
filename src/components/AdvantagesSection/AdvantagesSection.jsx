@@ -3,35 +3,35 @@ import css from "./AdvantagesSection.module.css"
 const AdvantagesSection = () => {
     return (
         <div className={css.container}> 
-       <picture>
+        <picture>
         <source 
         media="(min-width: 1440px)"
-        srcSet="/img/womanDesk.jpg 1x,
-         /img/womanDesk@2x.jpg
+        srcSet="/src/images/img/womanDesk.jpg 1x,
+        /src/images/img/womanDesk@2x.jpg
         2x" 
         type="image/jpeg"/>
 
 <source 
         media="(min-width: 768px)"
-        srcSet="/img/womenTabl.jpg 1x, /img/womenTabl@2x.jpg 2x" 
+        srcSet="/src/images/img/womenTabl.jpg 1x, /src/images/img/womenTabl@2x.jpg 2x" 
         type="image/jpeg"/>
 
 <source 
         media="(max-width: 767px)"
-        srcSet="/img/womanMobl.jpg 1x, 
-        /img/womanMobl@2x.jpg 2x" 
+        srcSet="/src/images/img/womanMobl.jpg 1x, 
+        /src/images/img/womanMobl@2x.jpg 2x" 
         type="image/jpeg"/>
 
-        <img src="/img/womanDesk.jpg" alt="Woman drink"  className={css.img}/>
+        <img src="/src/images/img/womanDesk.jpg" alt="Woman drink"  className={css.img}/>
 
        </picture>
 
     <div className={css.benefits}>
     <div className={css.customers}>
         <div className={css.avatars}>
-            <img src="/img/user-1 tabl.jpg" alt="User1" className={css.avatar1}/>
-            <img src="/img/user-2 tabl.jpg" alt="User2" className={css.avatar2}/>
-            <img src="/img/user-3 tabl.jpg" alt="User3" className={css.avatar3} />
+            <img src="/src/images/img/user-1 tabl.jpg" alt="User1" className={css.avatar1}/>
+            <img src="/src/images/img/user-2 tabl.jpg" alt="User2" className={css.avatar2}/>
+            <img src="/src/images/img/user-3 tabl.jpg" alt="User3" className={css.avatar3} />
         </div>
         <p ><span >Our <b className={css.span}>happy </b></span> customers</p>
     </div>
