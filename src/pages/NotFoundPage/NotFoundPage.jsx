@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import s from './NotFoundPage.module.css'
-import page from "../../images/not-found-page-4x.png";
+import page from "../../../public/img/not-found-page-4x.png";
 
 const watch = {
     visible: true,
@@ -35,7 +35,7 @@ const NotFoundPage = () => {
                 <h3>Page not found</h3>
                 <p className={s.text}>
                     Sorry, but it looks like this page doesn't exist.<br />
-                    You will be redirected to the homepage in
+                    You will be redirected to the homepage in...
                 </p>
                 <div className={s.counter}>
                     <p>{counter} seconds </p>
