@@ -2,24 +2,17 @@
 
 .container{
     position: relative;
-    width: 100%; 
-    max-width: 812px;
-    margin: 0 auto;
+    
 }
 
 .img {
     border-radius: 30px;
-width: 100%;
-max-width: 343px;
-height: auto;
-}
-.benefits {
-    position: absolute;
-  bottom: 0px;
-  width: 100%;
+
 }
 
+
 .customers {
+    position: absolute;
     display: flex;
     align-items: center;
     gap: 4px;
@@ -27,16 +20,14 @@ height: auto;
     border-radius: 50px;
     box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
-    width: 160px;
-    height: 48px;
-    margin-left: 16px;
+    
  
    
   }
 .customers p{
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-font-size: 12px;
+font-size: 15px;
 line-height: 1.5;
 color: #323f47;
 text-align: right;
@@ -48,8 +39,8 @@ text-align: right;
 }
 
 .avatars img {
-    width: 36px;
-    height: 36px;
+    width: 47px;
+    height: 47px;
     border-radius: 50px;
     border: 1px solid #fff;
     overflow: hidden;
@@ -74,14 +65,15 @@ text-align: right;
   
 
 .buttons {
-    margin-bottom: 32px;
-    margin-left: 159px;
+    
     display: flex;
     flex-wrap: wrap;
-    justify-content:center;
+    position: absolute;
     gap: 4px;
-    width: 168px;
-height: 56px;
+    width: 242px;
+height: 78px;
+left: 430px;
+top:318px;
     
 }
 button {
@@ -89,7 +81,7 @@ button {
 font-weight: 700;
     border: none;
     padding:9px 12px;
-    font-size: 8px;
+    font-size: 12px;
     border-radius: 30px;
     cursor: pointer;
 line-height: 1;
@@ -100,8 +92,8 @@ letter-spacing: -0.01em;
 .habit {
 background: #323f47;
 color: #fff;
-width: 81px;
-height: 26px;
+width: 111px;
+height: 34px;
 }
 
 .habit::before{
@@ -113,42 +105,87 @@ height: 26px;
 .stats {
     background:  #9be1a0;
     color: black;
-    width: 83px;
-    height: 26px;
+    width: 121px;
+    height: 34px;
 
 }
 .personal {
     background: white;
+    width: 158px;
+    height: 34px;
 
-   
-    width: 108px;
-    height: 26px;
-margin-right: 60px;
 }
 
-
-
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 320px) and (max-width: 767px){
     .container{
         width: 100%; 
-        height: auto;
+    }
+    img{
+        width: 343px;
+height: 353px;
     }
 
-    .img {
+    .customers {
+        top: 213px;
+        bottom: 80px;
+        left: 8px;
+        padding: 10px 20px;
+width: 160px;
+height: 48px;
+      }
+      .customers p{
+        font-size: 12px;
+    }
+    .avatars img {
+        width: 26.4px;
+    height: 28px;
+    }
+    .buttons{
+        left: 159px;
+            width: 168px;
+            bottom: 32px;
+    height: 56px;
+    top:265px;
+    
+        }
+        button{
+            font-size: 8px; 
+        }
+        .habit{
+            width: 81px;
+            height: 26px; 
+        }
+        .stats{
+            width: 83px;
+    height: 26px;
+        }
+        .personal {
+            width: 108px;
+            height: 26px;
         
-    max-width: 704px;
-    height: auto;
+        }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1439px){
+    
+
+    .img {
+    width: 704px;
+    
     }
-    .customers{
-        width: 237px; 
-        height: 67px;
-        margin-left: 32px; 
-    }
+    .customers {
+        position: absolute;
+        top: 267px;
+        bottom: 96px;
+        left: 8px;
+        padding: 10px 20px;
+width: 237px;
+height: 67px;
+      }
     
     .customers p{
         font-size: 15px;
     }
-
 
     .avatars img {
         width: 47px;
@@ -156,10 +193,12 @@ margin-right: 60px;
     }
 
     .buttons{
-        margin-bottom: 27px;
+    left: 398px;
         width: 242px;
+        bottom: 68px;
 height: 78px;
-margin-left: 430px;
+top:301px;
+
     }
     button{
         font-size: 12px;
@@ -184,22 +223,31 @@ height: 34px;
 }
 @media only screen and (min-width: 1440px){
     .container{
-        width: 100%; 
+        width: 672px; 
         height: auto;
     }
     .img {
-        
-        max-width: 672px;
         height: 736px;
-        }
-        .buttons{
-       margin-bottom: 64px;     
-    margin-left: 398px;
+        object-fit: cover;
 
+        }
+        .customers {
+            width: 237px;
+    height: 67px;
+    top: 537px;
+    bottom: 132px;
+    left: 46px;
+        }
+        .buttons {
+height: 56px;
+top: 594px;
+left: 398px;
+bottom: 64px;
+    
 }
+
 .personal {
    
-margin-right: 84px;
 }
 }
 

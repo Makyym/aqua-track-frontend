@@ -22,11 +22,11 @@ const AdvantagesSection = () => {
         /img/womanMobl@2x.jpg 2x" 
         type="image/jpeg"/>
 
-        <img src="/img/womanDesk.jpg" alt="Woman drink"  className={css.img}/>
+        <img src="/img/womenTabl@2x.jpg" alt="Woman drink"  className={css.img} width="704" height="446"/>
 
        </picture>
 
-    <div className={css.benefits}>
+
     <div className={css.customers}>
         <div className={css.avatars}>
             <img src="/img/user-1 tabl.jpg" alt="User1" className={css.avatar1}/>
@@ -41,7 +41,7 @@ const AdvantagesSection = () => {
         <button className={css.personal}>Personal rate setting</button>
     </div>
     </div>
-    </div>
+   
     )
 }
 
