@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import s from './NotFoundPage.module.css'
-import page from "../../../public/img/not-found-page-4x.png";
+import page from "../../images/img/not-found-page-4x.png";
 
 const watch = {
     visible: true,
