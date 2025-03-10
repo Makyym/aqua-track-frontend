@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useDispatch, useSelector } from 'react-redux';
 
 const AddWaterSchema = Yup.object({
   time: Yup.string()
@@ -15,11 +16,16 @@ const AddWaterSchema = Yup.object({
     .required('Value is required'),
 });
 
+const step = 50;
+
 const WaterForm = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     watch,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(AddWaterSchema),
@@ -43,9 +49,32 @@ const WaterForm = () => {
   const timeValue = watch('time') || currentTime;
   const waterValue = watch('value') || 50;
 
+  const handlePlusClick = () => {
+    const newValue = waterValue + step;
+    setValue('value', newValue);
+  };
+  const handleMinusClick = () => {};
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h2>Add water</h2>
+        <h3>Choose value:</h3>
+
+        <lable>Amount of water:</lable>
+        <div>
+          <button type="button" onClick={handleMinusClick}>
+            {' '}
+            -{' '}
+          </button>
+          <span>{waterValue}</span>
+
+          <button type="button" onClick={handlePlusClick}>
+            {' '}
+            +{' '}
+          </button>
+        </div>
+
         <label htmlFor="time">Recording time:</label>
         <input
           id="time"
@@ -60,7 +89,8 @@ const WaterForm = () => {
           id="value"
           type="number"
           {...register('value')}
-          placeholder={waterValue}
+          value={waterValue}
+          // value={newValue}
         />
         {errors.value && <p>{errors.value.message}</p>}
 
