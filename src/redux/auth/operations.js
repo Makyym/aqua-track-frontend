@@ -113,7 +113,7 @@ export const patchUser = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const { data } = await axios.patch('/users/userinfo', body);
-      console.log(data);
+
       return data;
     } catch (error) {}
   },

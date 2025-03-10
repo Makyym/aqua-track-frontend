@@ -6,8 +6,15 @@ import s from './SignUpForm.module.css';
 import Logo from '../Logo/Logo.jsx';
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../redux/auth/operations.js';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePassword = () => {
+    setShowPassword(prevState => !prevState);
+  };
   const validationSchema = Yup.object({
     email: Yup.string()
       .email('Invalid email address')
@@ -24,23 +31,19 @@ const SignUpForm = () => {
     password: '',
     repeatPassword: '',
   };
-  const dispatch = useDispatch();
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    try {
-      const resultAction = await dispatch(signUp(values));
 
-      if (signUp.fulfilled.match(resultAction)) {
-        toast.success('You were successfully signed up!');
-        resetForm();
-      } else {
-        toast.error('Something went wrong. Please try again.');
-      }
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      await dispatch(
+        signUp({ email: values.email, password: values.password }),
+      ).unwrap();
+      toast.success('You were successfully signed up!');
+      resetForm();
     } catch (error) {
-      toast.error('Unexpected error. Please try again.');
-    } finally {
-      setSubmitting(false);
+      toast.error('Something went wrong. Please try again.');
     }
   };
+
   return (
     <div className={s.wrapper}>
       <Logo />
@@ -51,62 +54,72 @@ const SignUpForm = () => {
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          <Form className={s.form}>
-            <label className={s.label}>Email</label>
-            <div className={s.container_input}>
-              <Field
-                name="email"
-                type="email"
-                placeholder="Enter your email"
-                className={s.input}
-                required
-              />
-              <ErrorMessage
-                name="email"
-                component="span"
-                className={s.errors}
-              />
-            </div>
-            <label className={s.label}>Password</label>
-            <div className={s.container_input}>
-              <Field
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-                className={s.input}
-                required
-              />
-              <ErrorMessage
-                name="password"
-                component="span"
-                className={s.errors}
-              />
-              <svg className={s.icon}>
-                <use></use>
-              </svg>
-            </div>
-            <label className={s.label}>Repeat password</label>
-            <div className={s.container_input}>
-              <Field
-                name="repeatPassword"
-                type="password"
-                placeholder="Repeat password"
-                className={s.input}
-                required
-              />
-              <ErrorMessage
-                name="repeatPassword"
-                component="span"
-                className={s.errors}
-              />
-              <svg className={s.icon}>
-                <use></use>
-              </svg>
-            </div>
-            <button type="submit" className={s.button}>
-              Sign Up
-            </button>
-          </Form>
+          {({ errors, touched }) => (
+            <Form className={s.form}>
+              <label className={s.label}>Email</label>
+              <div className={s.container_input}>
+                <Field
+                  name="email"
+                  type="email"
+                  placeholder="Enter your email"
+                  className={`${s.input} ${
+                    errors.email && touched.email ? s.inputError : ''
+                  }`}
+                  required
+                />
+                <ErrorMessage
+                  name="email"
+                  component="span"
+                  className={s.errors}
+                />
+              </div>
+              <label className={s.label}>Password</label>
+              <div className={s.container_input}>
+                <Field
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Enter your password"
+                  className={`${s.input} ${
+                    errors.password && touched.password ? s.inputError : ''
+                  }`}
+                  required
+                />
+                <ErrorMessage
+                  name="password"
+                  component="span"
+                  className={s.errors}
+                />
+                <svg className={s.icon} onClick={togglePassword}>
+                  <use></use>
+                </svg>
+              </div>
+              <label className={s.label}>Repeat password</label>
+              <div className={s.container_input}>
+                <Field
+                  name="repeatPassword"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Repeat password"
+                  className={`${s.input} ${
+                    errors.repeatPassword && touched.repeatPassword
+                      ? s.inputError
+                      : ''
+                  }`}
+                  required
+                />
+                <ErrorMessage
+                  name="repeatPassword"
+                  component="span"
+                  className={s.errors}
+                />
+                <svg className={s.icon} onClick={togglePassword}>
+                  <use></use>
+                </svg>
+              </div>
+              <button type="submit" className={s.button}>
+                Sign Up
+              </button>
+            </Form>
+          )}
         </Formik>
         <p className={s.description}>
           Already have account?&nbsp;
@@ -120,3 +133,5 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+
+// підключити схему валідації до форміка

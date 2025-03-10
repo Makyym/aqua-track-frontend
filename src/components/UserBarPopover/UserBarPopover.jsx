@@ -10,6 +10,7 @@ const UserBarPopover = () => {
   const handleModalClose = () => {
     setSettingsOpen(false);
   };
+  const handleCloseLogout = () => setLogoutOpen(false);
 
   return (
     <div className={css.vidget}>
@@ -22,8 +23,12 @@ const UserBarPopover = () => {
       </button>
 
       {isLogoutOpen && <LogOutModal close={() => setLogoutOpen(false)} />}
+
       <BaseModal isOpen={isSettingsOpen} onRequestClose={handleModalClose}>
-        <UserSettingsModal />
+        <UserSettingsModal close={handleModalClose} />
+      </BaseModal>
+      <BaseModal isOpen={isLogoutOpen} onRequestClose={handleCloseLogout}>
+        <LogOutModal onClose={handleCloseLogout} />
       </BaseModal>
     </div>
   );

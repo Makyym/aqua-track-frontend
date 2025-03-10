@@ -1,0 +1,37 @@
+.homePage {
+    display: flex;
+    flex-direction: row;
+    gap: 31px;
+    max-width: 1440px;
+    width: 100%;
+height: 800px;
+background: #fff;
+padding: 32px;
+margin: 0 auto;
+}
+
+
+@media only  screen and (min-width: 320px) and (max-width: 768px){
+    .homePage{
+        flex-direction: column;
+       
+    }
+}
+
+@media only  screen and (min-width: 768px) and (max-width: 1439px) {
+    .homePage{
+        flex-direction: column;     
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .homePage{
+       flex-direction: row;
+        
+    }
+}
+
+
+
+

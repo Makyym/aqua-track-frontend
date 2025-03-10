@@ -1,11 +1,68 @@
 .formDiv {
   display: flex;
+  flex-direction: column;
   max-width: 303px;
   margin-top: 40px;
   gap: 24px;
-  overlay: scroll;
 }
 
+.allText {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+.boldText {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+.inputRadio {
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+.radioBtn:hover,
+.radioBtn:focus {
+  color: var(--accent);
+}
+.divNameEmail label {
+  gap: 14px;
+}
+.labelNameEmail {
+  margin-bottom: 14px;
+}
+.divDailyNorma {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.dailyNorma {
+  margin-bottom: 14px;
+}
+.WMFormula {
+  margin-bottom: 4px;
+}
+.formula {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--accent);
+}
+.paragraph {
+  margin-top: 14px;
+  margin-bottom: 14px;
+  padding: 16px;
+  color: var(--main-text);
+}
+.activSign {
+  margin-right: 4px;
+}
+.activeP {
+  margin-bottom: 24px;
+}
+.titleName {
+  margin-bottom: 8px;
+}
 .saveBtn {
   min-width: 141px;
   padding: 10px;
@@ -18,35 +75,6 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-}
-.allText {
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-}
-.radioBtn:hover,
-.radioBtn:focus {
-  color: var(--accent);
-}
-.formula {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--accent);
-}
-.boldText {
-  font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 14px;
-}
-.inputNameEmail {
-  margin-bottom: 8px;
-}
-.titleName {
-  margin-bottom: 8px;
 }
 @media screen and (min-width: 768px) {
   .formDiv {

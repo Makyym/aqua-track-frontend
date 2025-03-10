@@ -7,10 +7,10 @@
   display: flex;
   align-items: center;
   border-radius: 15px;
-
   padding-left: 20px;
   gap: 8px;
 }
+
 .btnSettings {
   display: flex;
 

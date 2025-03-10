@@ -11,6 +11,7 @@ const UserSettingsModal = ({ close }) => {
   };
 
   return (
+<<<<<<< HEAD
     <div className={css.modalSettings}>
       <div>
         <h2 className={css.modalTitle}>Setting</h2>
@@ -28,6 +29,12 @@ const UserSettingsModal = ({ close }) => {
         <button className={css.uploadPhoto}>Upload a photo</button>
         <UserSettingsForm />
       </div>
+=======
+    <div>
+      <h2>Setting</h2>
+      <button type="button" onClick={close}>svg</button>
+      <UserSettingsForm />
+>>>>>>> main
     </div>
     // <div className={css.modalOverlay} onClick={close}>
     //   <div className={css.modal} onClick={e => e.stopPropagation()}>

@@ -4,6 +4,8 @@ import './App.css';
 import { lazy, useEffect } from 'react';
 import RestrictedRoute from './RestrictedRoute.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from './redux/auth/operations.js';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage.jsx'));
@@ -12,16 +14,22 @@ const TrackerPage = lazy(() => import('./pages/TrackerPage/TrackerPage.jsx'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+      dispatch(refreshUser())
+  }, [dispatch]);
   return (
     <SharedLayout>
       <Routes>
-        <Route path="/" element={<HomePage />} />s
+        <Route path="/"
+        element={
+        <RestrictedRoute component={<HomePage />} redirectTo="/tracker" />
+        } />
         <Route
           path="/signup"
           element={
             <RestrictedRoute component={<SignUpPage />} redirectTo="/tracker" />
-          }
-        />
+        }/>
         <Route
           path="/signin"
           element={

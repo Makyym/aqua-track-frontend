@@ -70,34 +70,39 @@ const UserSettingsForm = () => {
             />
           </label>
         </div>
+        <div className={css.divNameEmail}>
+          <label className={css.labelNameEmail}>
+            <span className={clsx(css.boldText, css.titleName)}>Your name</span>
+            <input type="text" {...register('name')} />
+            <span className={css.allText}> {errors.name?.message}</span>
+          </label>
+          <label className={css.labelNameEmail}>
+            <span className={clsx(css.boldText, css.titleName)}>Email</span>
+            <input type="text" {...register('email')} />
+            <span> {errors.email?.message}</span>
+          </label>
+        </div>
 
-        <label htmlFor="">
-          <span className={clsx(css.boldText, css.titleName)}>Your name</span>
-          <input type="text" {...register('name')} />
-          <span className={css.allText}> {errors.name?.message}</span>
-        </label>
-        <label htmlFor="">
-          <span className={clsx(css.boldText, css.titleName)}>Email</span>
-          <input type="text" {...register('email')} />
-          <span> {errors.email?.message}</span>
-        </label>
-        <div>
-          <p className={css.boldText}>My daily norma</p>
-          <p className={css.allText}>For women:</p>
+        <div className={css.divDailyNorma}>
+          <p className={clsx(css.boldText, css.dailyNorma)}>My daily norma</p>
+          <p className={clsx(css.allText, css.WMFormula)}>For women:</p>
           <span className={css.formula}>V=(M*0,03) + (T*0,4)</span>
-          <p className={css.allText}>For men:</p>
-          <span className={css.formula}>V=(M*0,04) + (T*0,6)</span>
-          <p className={css.allText}>
-            <span>*</span> V is the volume of the water norm in liters per day,
-            M is your body weight, T is the time of active sports, or another
-            type of activity commensurate in terms of loads (in the absence of
-            these, you must set 0)
-          </p>
 
-          <p className={css.allText}>
-            <span>!</span>Active time in hours
+          <p className={clsx(css.allText, css.WMFormula)}>For men:</p>
+          <span className={css.formula}>V=(M*0,04) + (T*0,6)</span>
+          <p className={clsx(css.allText, css.paragraph)}>
+            <span className={css.formula}>*</span> V is the volume of the water
+            norm in liters per day, M is your body weight, T is the time of
+            active sports, or another type of activity commensurate in terms of
+            loads (in the absence of these, you must set 0)
           </p>
         </div>
+
+        <p className={clsx(css.allText, css.activeP)}>
+          <span className={clsx(css.formula, css.activSign)}>!</span>Active time
+          in hours
+        </p>
+
         <label htmlFor="">
           <span className={css.allText}>Your weight in kilograms:</span>
           <input type="text" {...register('weight')} />
