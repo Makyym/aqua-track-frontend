@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import css from './UserSettingsForm.module.css';
+import clsx from 'clsx';
 const schema = yup
   .object({
     gender: yup.string().oneOf(['female', 'male']).required(),
@@ -71,12 +72,12 @@ const UserSettingsForm = () => {
         </div>
 
         <label htmlFor="">
-          <span className={css.boldText(css.titleName)}>Your name</span>
+          <span className={clsx(css.boldText, css.titleName)}>Your name</span>
           <input type="text" {...register('name')} />
           <span className={css.allText}> {errors.name?.message}</span>
         </label>
         <label htmlFor="">
-          <span className={css.boldText(css.titleName)}>Email</span>
+          <span className={clsx(css.boldText, css.titleName)}>Email</span>
           <input type="text" {...register('email')} />
           <span> {errors.email?.message}</span>
         </label>
