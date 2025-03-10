@@ -15,26 +15,25 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'))
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
-      dispatch(refreshUser())
+    dispatch(refreshUser());
   }, [dispatch]);
+
   return (
     <SharedLayout>
       <Routes>
-        <Route path="/"
-        element={
-        <RestrictedRoute component={<HomePage />} redirectTo="/tracker" />
-        } />
+        <Route
+          path="/"
+          element={<RestrictedRoute component={<HomePage />} redirectTo="/tracker" />}
+        />
         <Route
           path="/signup"
-          element={
-            <RestrictedRoute component={<SignUpPage />} redirectTo="/tracker" />
-        }/>
+          element={<RestrictedRoute component={<SignUpPage />} redirectTo="/tracker" />}
+        />
         <Route
           path="/signin"
-          element={
-            <RestrictedRoute component={<SignInPage />} redirectTo="/tracker" />
-          }
+          element={<RestrictedRoute component={<SignInPage />} redirectTo="/tracker" />}
         />
         <Route
           path="/tracker"

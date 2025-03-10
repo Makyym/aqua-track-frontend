@@ -1,0 +1,81 @@
+.button {
+    border-radius: 30px;
+    padding: 14px 20px;
+    background: var(--color-darkblue);
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-white);
+    min-width: 140px;
+    transition: color 0.5s ease;
+    margin-top: 313px;
+    margin-left: auto;
+
+    @media (min-width: 768px) {
+        padding: 18px 30px;
+        margin-top: 422px;
+        min-width: 178px;
+    }
+
+    @media (min-width: 1440px) {
+        margin-top: 580px;
+    }
+}
+
+.plus {
+    min-width: 16px;
+    height: 16px;
+    stroke: var(--color-white);
+    transition: stroke 0.5s ease;
+
+    @media (min-width: 768px) {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    background-color: #323F47;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: var(--poppins-bold);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.286;
+    letter-spacing: -0.01em;
+    text-align: center;
+    min-width: 74px;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #255d41;
+    color: var(--hover-green);
+}
+
+.button .plus {
+    fill: white;
+    transition: fill 0.3s ease;
+}
+
+.button:hover .plus,
+.button:focus .plus {
+    fill: var(--hover-green);
+}
+
+@media (min-width: 768px) {
+    .button {
+        font-size: 16px;
+        line-height: 1.5;
+        min-width: 84px;
+    }
+}

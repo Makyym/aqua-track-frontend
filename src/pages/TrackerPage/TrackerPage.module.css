@@ -1,4 +1,12 @@
-.div {
+.wrapperPage {
     display: flex;
-    gap: 50px;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media (min-width: 1440px) {
+    .wrapperPage {
+        flex-direction: row;
+        gap: 32px;
+    }
 }
