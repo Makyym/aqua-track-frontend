@@ -1,5 +1,3 @@
-
-
 .container{
     position: relative;
     width: 100%; 
@@ -9,14 +7,14 @@
 
 .img {
     border-radius: 30px;
-width: 100%;
-max-width: 343px;
-height: auto;
+    width: 100%;
+    max-width: 343px;
+    height: auto;
 }
 .benefits {
     position: absolute;
-  bottom: 0px;
-  width: 100%;
+    bottom: 0px;
+    width: 100%;
 }
 
 .customers {
@@ -30,16 +28,15 @@ height: auto;
     width: 160px;
     height: 48px;
     margin-left: 16px;
- 
-   
-  }
+}
+
 .customers p{
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-font-size: 12px;
-line-height: 1.5;
-color: #323f47;
-text-align: right;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #323f47;
+    text-align: right;
 }
 
 .avatars{
@@ -55,8 +52,9 @@ text-align: right;
     overflow: hidden;
     position: relative;
     margin-right: -15px;
-  }
-  .avatars img:first-child {
+}
+
+.avatars img:first-child {
     z-index: 3;
 }
 
@@ -68,10 +66,9 @@ text-align: right;
     z-index: 1;
 }
 
- .span {
+.span {
     color: #9be1a0;;
- }
-  
+}
 
 .buttons {
     margin-bottom: 32px;
@@ -81,27 +78,26 @@ text-align: right;
     justify-content:center;
     gap: 4px;
     width: 168px;
-height: 56px;
-    
+    height: 56px;
+    & button {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        border: none;
+        padding:9px 12px;
+        font-size: 8px;
+        border-radius: 30px;
+        cursor: pointer;
+        line-height: 1;
+        text-align: center;
+        letter-spacing: -0.01em;
+    }
 }
-button {
-    font-family: "Poppins", sans-serif;
-font-weight: 700;
-    border: none;
-    padding:9px 12px;
-    font-size: 8px;
-    border-radius: 30px;
-    cursor: pointer;
-line-height: 1;
-text-align: center;
-letter-spacing: -0.01em;
-  }
 
 .habit {
-background: #323f47;
-color: #fff;
-width: 81px;
-height: 26px;
+    background: #323f47;
+    color: #fff;
+    width: 81px;
+    height: 26px;
 }
 
 .habit::before{
@@ -119,11 +115,9 @@ height: 26px;
 }
 .personal {
     background: white;
-
-   
     width: 108px;
     height: 26px;
-margin-right: 60px;
+    margin-right: 60px;
 }
 
 
@@ -135,9 +129,8 @@ margin-right: 60px;
     }
 
     .img {
-        
-    max-width: 704px;
-    height: auto;
+        max-width: 704px;
+        height: auto;
     }
     .customers{
         width: 237px; 
@@ -152,18 +145,18 @@ margin-right: 60px;
 
     .avatars img {
         width: 47px;
-    height: 47px;
+        height: 47px;
     }
 
     .buttons{
         margin-bottom: 27px;
         width: 242px;
-height: 78px;
-margin-left: 430px;
-    }
-    button{
-        font-size: 12px;
-        padding: 11px 16px;
+        height: 78px;
+        margin-left: 430px;
+        & button{
+            font-size: 12px;
+            padding: 11px 16px;
+        }
     }
     .habit{
         width: 111px;
@@ -171,16 +164,15 @@ margin-left: 430px;
     }
     .stats{
         width: 121px;
-height: 34px;
+        height: 34px;
     }
     .personal{
         width: 158px;
-height: 34px;
+        height: 34px;
     }
     .personal {
-   
         margin-right: 84px;
-        }
+    }
 }
 @media only screen and (min-width: 1440px){
     .container{
@@ -188,18 +180,15 @@ height: 34px;
         height: auto;
     }
     .img {
-        
         max-width: 672px;
         height: 736px;
-        }
-        .buttons{
-       margin-bottom: 64px;     
-    margin-left: 398px;
-
-}
-.personal {
-   
-margin-right: 84px;
-}
+    }
+    .buttons{
+        margin-bottom: 64px;     
+        margin-left: 398px;
+    }
+    .personal {
+        margin-right: 84px;
+    }
 }
 
