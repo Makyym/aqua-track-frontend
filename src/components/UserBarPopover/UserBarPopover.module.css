@@ -5,20 +5,18 @@
   min-height: 72px;
   margin-top: 4px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   border-radius: 15px;
-  padding-left: 20px;
+  padding: 14px 20px;
   gap: 8px;
 }
 
 .btnSettings {
   display: flex;
-
+  padding: 0;
   border: none;
-
-  padding-bottom: 30px;
   background-color: transparent;
-
   color: var(--grey-hover-focus);
 }
 .btnSettings:hover,
@@ -31,8 +29,7 @@
 
 .btnLogOut {
   display: flex;
-  position: absolute;
-  padding-top: 14px;
+  padding: 0;
   border: none;
   color: var(--grey-hover-focus);
   background-color: transparent;
