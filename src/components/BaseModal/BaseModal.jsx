@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useEffect } from 'react';
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
@@ -22,7 +23,8 @@ const customStyles = {
   },
 };
 
-const BaseModal = ({ isOpen, onRequestClose, children }) => {
+const BaseModal = ({ isOpen, onRequestClose, children, settingsStyle }) => {
+  const modalStyles = settingsStyle ?? customStyles;
   useEffect(() => {
     if (isOpen) {
       document.documentElement.style.overflow = 'hidden';
@@ -34,7 +36,7 @@ const BaseModal = ({ isOpen, onRequestClose, children }) => {
     };
   }, [isOpen]);
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles}>
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={modalStyles}>
       {children}
     </Modal>
   );
