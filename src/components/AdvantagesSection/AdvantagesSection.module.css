@@ -1,9 +1,9 @@
-.container{
- 
+.container {
+  position: relative;
   border-radius: 30px;
   background-color: var(--background);
+  width: 343px;
   height: 353px;
-  padding: 209px 16px 32px;
   background-image: url(../../images/img/womanDesk@2x.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -16,12 +16,15 @@
     max-width: 343px;
     height: auto;
 }
+
 .benefits {
-    position: absolute;
-    
+    /* position: absolute; */
 }
 
 .customers {
+    position: absolute;
+    bottom: 96px;
+    left: 16px;
     display: flex;
     align-items: center;
     gap: 4px;
@@ -31,9 +34,6 @@
     padding: 10px 20px;
     width: 237px;
     height: 67px;
-    
-    
-   
 }
 
 .customers p{
@@ -77,12 +77,14 @@
 }
 
 .buttons {
-    
     display: flex;
     flex-wrap: wrap;
     position: absolute;
     gap: 4px;
-    
+    bottom: 32px;
+    right: 16px;
+    width: 247px;
+    height: 78px;
     & button {
         font-family: "Poppins", sans-serif;
         font-weight: 700;
@@ -126,7 +128,8 @@
 
 @media only screen and (min-width: 320px) and (max-width: 767px){
     .container{
-        width: 100%; 
+        width: 704px;
+        height: 446px;
     }
     img{
         width: 343px;
@@ -135,13 +138,12 @@
 
     .customers {
         top: 213px;
-        bottom: 80px;
-        left: 8px;
+        left: 32px;
         padding: 10px 20px;
-width: 160px;
-height: 48px;
-      }
-      .customers p{
+        width: 160px;
+        height: 48px;
+    }
+    .customers p{
         font-size: 12px;
     }
     .avatars img {
@@ -248,10 +250,10 @@ height: 67px;
        
         top: 537px;
     }
-    .buttons{
+    /* .buttons{
         padding-bottom: 64px;     
         padding-left: 398px;
-    }
+    } */
     .personal {
         margin-right: 84px;
     }

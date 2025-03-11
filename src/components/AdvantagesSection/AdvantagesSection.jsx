@@ -30,7 +30,7 @@ const AdvantagesSection = () => {
             />
             <img src={womanDesk} alt="Woman drink"  className={css.img}/>
         </picture> */}
-    <div className={css.benefits}>
+    {/* <div className={css.benefits}> */}
     <div className={css.customers}>
         <div className={css.avatars}>
             <img className={css.avatar1} src={`${user_1}`} alt="user_1" />
@@ -44,7 +44,7 @@ const AdvantagesSection = () => {
         <button className={css.stats}>View statistics</button>
         <button className={css.personal}>Personal rate setting</button>
     </div>
-    </div>
+    {/* </div> */}
     </div>
     )
 }
