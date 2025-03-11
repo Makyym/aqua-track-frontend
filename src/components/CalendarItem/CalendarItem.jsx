@@ -10,10 +10,13 @@ const CalendarItem = ({ day, month, year, activeDate, handleActiveDay }) => {
     currentDay === day;
 
   const isActiveDayInCurrentMonth = () => {
+    if (!activeDate) return false;
+    const parsedActiveDate = new Date(activeDate); //перетворюємо рядок в Date
+
     return (
-      activeDate?.getDate() === day &&
-      activeDate?.getMonth() === month &&
-      activeDate?.getFullYear() === year
+      parsedActiveDate?.getDate() === day &&
+      parsedActiveDate?.getMonth() === month &&
+      parsedActiveDate?.getFullYear() === year
     );
   };
 

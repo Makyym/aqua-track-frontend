@@ -90,7 +90,7 @@ const SignUpForm = () => {
                   className={s.errors}
                 />
                 <svg className={s.icon} onClick={togglePassword}>
-                  <use></use>
+                  <use href="/sprite.svg#icon-eye-off"> </use>
                 </svg>
               </div>
               <label className={s.label}>Repeat password</label>

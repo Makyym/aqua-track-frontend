@@ -15,6 +15,7 @@
     "axios": "^1.8.1",
     "clsx": "^2.1.1",
     "formik": "^2.4.6",
+    "modern-normalize": "^3.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
