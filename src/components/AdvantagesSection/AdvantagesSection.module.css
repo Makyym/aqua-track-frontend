@@ -130,7 +130,7 @@
     }
     img{
         width: 343px;
-height: 353px;
+        height: 353px;
     }
 
     .customers {
@@ -238,7 +238,7 @@ height: 67px;
 @media only screen and (min-width: 1440px){
     .container{
         width: 672px; 
-        height: auto;
+        height: 736px;
     }
     .img {
         max-width: 672px;
