@@ -1,12 +1,10 @@
 .homePage {
     display: flex;
-    flex-direction: row;
     gap: 31px;
     max-width: 1440px;
     width: 100%;
-height: 800px;
 background: #fff;
-margin: 0 auto;
+
 }
 
 
