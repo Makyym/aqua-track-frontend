@@ -52,7 +52,6 @@
   height: 50px;
   outline: none;
   margin-bottom: 10px;
-
   background-color: #f0eff4;
 }
 .input::placeholder {
@@ -72,6 +71,20 @@
 }
 
 .errors {
+  font-family: var(--font-family);
+  font-size: 14px;
+  line-height: 129%;
+  color: #ef5050;
+  position: absolute;
+  top: 56px;
+}
+
+.inputError {
+  border: 1px solid red;
+  color: red;
+}
+
+.inputError::placeholder {
   color: red;
 }
 
