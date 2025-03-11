@@ -12,6 +12,7 @@
   justify-content: center;
 }
 .title {
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 32px;
   line-height: 100%;
@@ -51,13 +52,16 @@
   height: 50px;
   outline: none;
   background-color: #f0eff4;
+  position: relative;
+  margin-bottom: 10px;
 }
 .input::placeholder {
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.01em;
-  color: rgba(47, 47, 47, 0.6);
+  color: var(--main-text);
   margin-bottom: 16px;
 }
 .input:focus {
@@ -77,9 +81,12 @@
   color: red;
 }
 .errors {
+  font-family: var(--font-family);
   font-size: 14px;
   line-height: 129%;
   color: #ef5050;
+  position: absolute;
+  top: 56px;
 }
 
 .icon {
@@ -104,6 +111,7 @@
   color: #323f47;
   cursor: pointer;
   width: 100%;
+  margin-top: 10px;
 }
 .button:hover,
 .button:focus {
@@ -140,6 +148,9 @@
   .label {
     font-size: 16px;
     line-height: 150%;
+  }
+  .container_input {
+    margin-bottom: 20px;
   }
   .input {
     width: 436px;
