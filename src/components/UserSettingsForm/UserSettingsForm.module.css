@@ -18,6 +18,9 @@
   font-size: 16px;
   line-height: 20px;
 }
+.indentity {
+  margin-bottom: 14px;
+}
 .inputRadio {
   flex-direction: column;
   margin-bottom: 14px;
@@ -32,6 +35,23 @@
 .labelNameEmail {
   margin-bottom: 14px;
 }
+.inputNameEmail {
+  width: 100%;
+  max-width: 303px;
+  height: 46px;
+  border-radius: 15px;
+  padding: 14px 16px;
+  border-width: 1px;
+  margin-bottom: 14px;
+  margin-top: 8px;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+.inputNameEmail:focus {
+  border-color: var(--main-text);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
 .divDailyNorma {
   margin-top: 24px;
   margin-bottom: 24px;
@@ -61,6 +81,13 @@
   margin-bottom: 24px;
 }
 .titleName {
+  margin-bottom: 8px;
+}
+.divWeight {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.labelYourWeight {
   margin-bottom: 8px;
 }
 .saveBtn {

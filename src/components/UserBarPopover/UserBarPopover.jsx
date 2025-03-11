@@ -15,7 +15,9 @@ const UserBarPopover = () => {
   return (
     <div className={css.vidget}>
       <button className={css.btnSettings} onClick={() => setSettingsOpen(true)}>
-        <img src="../../images/sprite.svg#" alt="icon" />
+        {/* <svg class="icon">
+          <use href="../../images/sprite.svg#icon-chevron-down"></use>
+        </svg> */}
         Settings
       </button>
       <button className={css.btnLogOut} onClick={() => setLogoutOpen(true)}>

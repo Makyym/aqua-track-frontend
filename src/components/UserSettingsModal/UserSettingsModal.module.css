@@ -34,7 +34,10 @@
   border: none;
   color: var(--main);
   cursor: pointer;
-
+  position: absolute;
+  left: 130px;
+  margin-top: 10px;
+  margin-bottom: 40px;
   font-size: 14px;
   line-height: 18px;
   font-size: 400;

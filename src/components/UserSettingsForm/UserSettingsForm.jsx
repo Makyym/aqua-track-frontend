@@ -50,7 +50,9 @@ const UserSettingsForm = () => {
     <div className={css.formDiv}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         <div className={css.inputRadio}>
-          <p className={css.boldText}>Your gender identity</p>
+          <p className={clsx(css.boldText, css.indentity)}>
+            Your gender identity
+          </p>
           <label htmlFor="">
             <span className={css.allText}>Female</span>
             <input
@@ -70,15 +72,24 @@ const UserSettingsForm = () => {
             />
           </label>
         </div>
+
         <div className={css.divNameEmail}>
           <label className={css.labelNameEmail}>
             <span className={clsx(css.boldText, css.titleName)}>Your name</span>
-            <input type="text" {...register('name')} />
+            <input
+              type="text"
+              {...register('name')}
+              className={css.inputNameEmail}
+            />
             <span className={css.allText}> {errors.name?.message}</span>
           </label>
           <label className={css.labelNameEmail}>
             <span className={clsx(css.boldText, css.titleName)}>Email</span>
-            <input type="text" {...register('email')} />
+            <input
+              type="text"
+              {...register('email')}
+              className={css.inputNameEmail}
+            />
             <span> {errors.email?.message}</span>
           </label>
         </div>
@@ -103,29 +114,47 @@ const UserSettingsForm = () => {
           in hours
         </p>
 
-        <label htmlFor="">
-          <span className={css.allText}>Your weight in kilograms:</span>
-          <input type="text" {...register('weight')} />
-          <span> {errors.weight?.message}</span>
-        </label>
-        <label htmlFor="">
-          <span className={css.allText}>
-            The time of active participation in sports:
-          </span>
-          <input type="text" {...register('time')} />
-          <span> {errors.time?.message}</span>
-        </label>
+        <div className={css.divWeight}>
+          <label>
+            <span className={clsx(css.allText, css.labelYourWeight)}>
+              Your weight in kilograms:
+            </span>
+            <input
+              type="text"
+              {...register('weight')}
+              className={css.inputNameEmail}
+            />
+            <span> {errors.weight?.message}</span>
+          </label>
+          <label>
+            <span className={css.allText}>
+              The time of active participation in sports:
+            </span>
+
+            <input
+              type="text"
+              {...register('time')}
+              className={css.inputNameEmail}
+            />
+            <span> {errors.time?.message}</span>
+          </label>
+        </div>
+
         <div>
           <p className={css.allText}>
             The required amount of water in liters per day:
           </p>
-          <span>{recommendedWaterNorm}L</span>
+          <span className={css.recomendedWater}>{recommendedWaterNorm}L</span>
         </div>
         <label htmlFor="">
           <span className={css.boldText}>
             Write down how much water you will drink:
           </span>
-          <input type="text" {...register('water')} />
+          <input
+            type="text"
+            {...register('water')}
+            className={css.inputNameEmail}
+          />
           <span> {errors.water?.message}</span>
         </label>
         <button type="submit" className={css.saveBtn}>
