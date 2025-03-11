@@ -1,8 +1,13 @@
 .container{
-    position: relative;
-    width: 100%; 
-    max-width: 812px;
-    margin: 0 auto;
+ 
+  border-radius: 30px;
+  background-color: var(--background);
+  height: 353px;
+  padding: 209px 16px 32px;
+  background-image: url(../../images/img/womanDesk@2x.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .img {
@@ -13,8 +18,7 @@
 }
 .benefits {
     position: absolute;
-    bottom: 0px;
-    width: 100%;
+    
 }
 
 .customers {
@@ -25,15 +29,17 @@
     border-radius: 50px;
     box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
-    width: 160px;
-    height: 48px;
-    margin-left: 16px;
+    width: 237px;
+    height: 67px;
+    
+    
+   
 }
 
 .customers p{
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1.5;
     color: #323f47;
     text-align: right;
@@ -45,8 +51,8 @@
 }
 
 .avatars img {
-    width: 36px;
-    height: 36px;
+    width: 47px;
+    height: 47px;
     border-radius: 50px;
     border: 1px solid #fff;
     overflow: hidden;
@@ -71,20 +77,18 @@
 }
 
 .buttons {
-    margin-bottom: 32px;
-    margin-left: 159px;
+    
     display: flex;
     flex-wrap: wrap;
-    justify-content:center;
+    position: absolute;
     gap: 4px;
-    width: 168px;
-    height: 56px;
+    
     & button {
         font-family: "Poppins", sans-serif;
         font-weight: 700;
         border: none;
         padding:9px 12px;
-        font-size: 8px;
+        font-size: 12px;
         border-radius: 30px;
         cursor: pointer;
         line-height: 1;
@@ -96,8 +100,8 @@
 .habit {
     background: #323f47;
     color: #fff;
-    width: 81px;
-    height: 26px;
+    width: 111px;
+    height: 34px;
 }
 
 .habit::before{
@@ -109,39 +113,96 @@
 .stats {
     background:  #9be1a0;
     color: black;
-    width: 83px;
-    height: 26px;
+    width: 121px;
+    height: 34px;
 
 }
 .personal {
     background: white;
-    width: 108px;
-    height: 26px;
+    width: 158px;
+    height: 34px;
     margin-right: 60px;
 }
 
-
-
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 320px) and (max-width: 767px){
     .container{
         width: 100%; 
-        height: auto;
+    }
+    img{
+        width: 343px;
+        height: 353px;
+    }
+
+    .customers {
+        top: 213px;
+        bottom: 80px;
+        left: 8px;
+        padding: 10px 20px;
+width: 160px;
+height: 48px;
+      }
+      .customers p{
+        font-size: 12px;
+    }
+    .avatars img {
+        width: 26.4px;
+    height: 28px;
+    }
+    .buttons{
+        left: 143px;
+            width: 168px;
+            
+    height: 56px;
+    
+    & button{
+        font-size: 8px; 
+    }
+    
+        }
+    
+        .habit{
+            width: 81px;
+            height: 26px; 
+        }
+        .stats{
+            width: 83px;
+    height: 26px;
+        }
+        .personal {
+            width: 108px;
+            height: 26px;
+        
+        }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1439px){
+    .container{
+        background-image: url(../../images/img/womenTabl@2x.jpg);
+        width: 704px;
+        height: 446px;
     }
 
     .img {
         max-width: 704px;
         height: auto;
     }
-    .customers{
-        width: 237px; 
-        height: 67px;
-        margin-left: 32px; 
+    .benefits {
+        padding-top: 74px;
     }
+    
+    .customers {
+      
+        top: 93px;
+        bottom: 92px;
+        left: 8px;
+        padding: 10px 20px;
+width: 237px;
+height: 67px;
+      }
     
     .customers p{
         font-size: 15px;
     }
-
 
     .avatars img {
         width: 47px;
@@ -149,10 +210,10 @@
     }
 
     .buttons{
-        margin-bottom: 27px;
+    left: 408px;
         width: 242px;
         height: 78px;
-        margin-left: 430px;
+        
         & button{
             font-size: 12px;
             padding: 11px 16px;
@@ -176,16 +237,20 @@
 }
 @media only screen and (min-width: 1440px){
     .container{
-        width: 100%; 
-        height: auto;
+        width: 672px; 
+        height: 736px;
     }
     .img {
         max-width: 672px;
         height: 736px;
     }
+    .benefits {
+       
+        top: 537px;
+    }
     .buttons{
-        margin-bottom: 64px;     
-        margin-left: 398px;
+        padding-bottom: 64px;     
+        padding-left: 398px;
     }
     .personal {
         margin-right: 84px;
