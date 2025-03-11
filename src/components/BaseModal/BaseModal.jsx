@@ -14,8 +14,8 @@ const customStyles = {
     borderRadius: '15px',
     border: 'none',
     outline: 'none',
-    maxHeight: '90vh',
-    overflow: 'scroll'
+    // maxHeight: '90vh',
+    // 'overflow-y': 'scroll',
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
