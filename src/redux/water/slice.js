@@ -58,7 +58,8 @@ const slice = createSlice({
       state.isLoading = false;
       state.isError = null;
       const waterItem = state.waterDay.find(item => item._id === payload._id);
-      waterItem = payload;
+      waterItem.value = payload.value;
+      waterItem.date = payload.date;
     })
   }
 });
