@@ -20,7 +20,9 @@ const UserSettingsModal = ({ close }) => {
   return (
     <div>
       <h2>Setting</h2>
-      <button type="button" onClick={close}>svg</button>
+      <button type="button" onClick={close}>
+        svg
+      </button>
       <UserSettingsForm />
     </div>
     // <div className={css.modalOverlay} onClick={close}>

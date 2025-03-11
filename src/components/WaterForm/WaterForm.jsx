@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
+import css from './WaterForm.module.css';
 
 const AddWaterSchema = Yup.object({
   time: Yup.string()
@@ -59,7 +60,7 @@ const WaterForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <lable>Amount of water:</lable>
+        <lable className="css.label">Amount of water:</lable>
         <div>
           <button type="button" onClick={handleMinusClick}>
             -
