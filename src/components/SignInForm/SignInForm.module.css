@@ -2,12 +2,15 @@
   border-radius: 30px;
   background: #f0eff4;
   padding: 16px;
+  width: 343px;
+  height: 780px;
 }
 .container_form {
-  padding: 126px 0 170px;
+  margin-top: 172px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .title {
   font-weight: 700;
@@ -123,10 +126,12 @@
 /* Tablet styles */
 @media screen and (min-width: 768px) {
   .wrapper {
+    width: 704px;
+    height: 960px;
     padding: 32px;
   }
   .container_form {
-    padding: 195px 102px;
+    margin-top: 225px;
   }
   .title {
     font-size: 36px;
@@ -157,4 +162,11 @@
 }
 /* DesKtop styles */
 @media screen and (min-width: 1440px) {
+  .wrapper {
+    width: 672px;
+    height: 736px;
+  }
+  .container_form {
+    margin-top: 113px;
+  }
 }
