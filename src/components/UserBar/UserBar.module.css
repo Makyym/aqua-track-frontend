@@ -37,6 +37,7 @@
   color: var(--main-white);
   background-color: var(--main);
 }
+
 .avatar {
   border-radius: 50%;
 }

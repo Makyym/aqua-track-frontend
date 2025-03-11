@@ -15,11 +15,17 @@ const UserBarPopover = () => {
   return (
     <div className={css.vidget}>
       <button className={css.btnSettings} onClick={() => setSettingsOpen(true)}>
+        {/* <svg class="icon">
+          <use href="../../images/sprite.svg#icon-chevron-down"></use>
+        </svg> */}
         Settings
       </button>
       <button className={css.btnLogOut} onClick={() => setLogoutOpen(true)}>
         Log out
       </button>
+
+      {isLogoutOpen && <LogOutModal close={() => setLogoutOpen(false)} />}
+
       <BaseModal isOpen={isSettingsOpen} onRequestClose={handleModalClose}>
         <UserSettingsModal close={handleModalClose} />
       </BaseModal>
