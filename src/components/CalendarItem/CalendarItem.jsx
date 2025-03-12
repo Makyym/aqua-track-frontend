@@ -1,7 +1,14 @@
 import clsx from 'clsx';
 import s from './CalendarItem.module.css';
 
-const CalendarItem = ({ day, month, year, activeDate, handleActiveDay }) => {
+const CalendarItem = ({
+  day,
+  month,
+  year,
+  activeDate,
+  handleActiveDay,
+  percentage,
+}) => {
   const currentDate = new Date();
   const currentDay = currentDate.getDate();
   const isCurrentDay =
@@ -26,13 +33,17 @@ const CalendarItem = ({ day, month, year, activeDate, handleActiveDay }) => {
         onClick={() => handleActiveDay(day)}
         className={clsx(
           s.calendarDay,
+          percentage(day) < 100 && s.dayNotEnough,
           isActiveDayInCurrentMonth(day) && s.isActive,
           isCurrentDay && day === currentDay && s.isToday, //чи поточний день належить поточному місяцю
         )}
       >
         {day}
       </button>
-      <p className={s.informQuantity}>100%</p>
+      <p className={s.informQuantity}>
+        {new Date(year, month, day) <= new Date() && `${percentage(day)}%`}
+        {/* % тільки на днях що вже відбулися */}
+      </p>
     </>
   );
 };
