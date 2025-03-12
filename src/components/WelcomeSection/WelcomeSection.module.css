@@ -15,9 +15,10 @@
    justify-content: flex-start;
    
    width: 547px;
-   padding-left: 32px;
-   padding-top: 132px;
-   padding-bottom: 188px;
+   padding-right:77px;
+   padding-left: 48px;
+   padding-top: 82px;
+   padding-bottom: 26px;
    
 }
 
@@ -29,7 +30,7 @@
     line-height: 1;
     letter-spacing: -0.01em;
     color: #323f47;
-    margin-top: 16px;
+    margin-bottom: 32px;
   
     
 }
@@ -41,6 +42,7 @@ line-height: 1.5;
 letter-spacing: 0.06em;
 color: #2f2f2f;
 font-family: "Poppins", sans-serif;
+margin-bottom: 16px;
 
 }
 
@@ -49,7 +51,6 @@ font-family: "Poppins", sans-serif;
     gap: 16px;
     width: 100%;
     max-width: 320px;
-    margin-top: 32px;
     justify-content: center;
 }
 .signup, .signin {
@@ -114,12 +115,13 @@ padding: 16px;
 height: auto;
 padding-top: 74px;
 padding-bottom: 43px;
-padding-left: 0;
+padding-left: 10px;
 
 
     }
     .title{
-        
+      width: 311px; 
+      height: 114px; 
 font-size: 38px;
 
 
@@ -160,22 +162,23 @@ width: 704px;
 height: auto;
 }
 .title {
-    margin-top: 16px;
+   
     font-size: 64px;
 }
 .section {
-   
-   padding-left: 16px;
-   padding-top: 50px;
-   padding-bottom: 24px;
+    width: 547px;
+    padding-right:77px;
+    padding-left: 48px;
+    padding-top: 82px;
+    padding-bottom: 26px;
 }
 }
 
 @media screen and (min-width: 1440px) {
     .section {
-       
-       width: 547px;
-       padding-left: 32px;
+       padding-left: 48px;
+       padding-right: 45px;
        padding-top: 132px;
-       padding-bottom: 188px;}
+       padding-bottom: 164px;
+    }
 }
