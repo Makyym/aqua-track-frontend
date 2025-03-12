@@ -17,7 +17,7 @@ const customStyles = {
     border: 'none',
     outline: 'none',
     maxHeight: '90vh',
-    'overflow-y': 'scroll',
+    overflowY: 'scroll',
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -31,25 +31,6 @@ const UserBarPopover = () => {
     setSettingsOpen(false);
   };
   const handleCloseLogout = () => setLogoutOpen(false);
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      padding: '0',
-      borderRadius: '15px',
-      border: 'none',
-      outline: 'none',
-      maxHeight: '90vh',
-      'overflow-y': 'scroll',
-    },
-    overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    },
-  };
   return (
     <div className={css.vidget}>
       <button className={css.btnSettings} onClick={() => setSettingsOpen(true)}>
@@ -58,17 +39,14 @@ const UserBarPopover = () => {
         </svg> */}
         Settings
       </button>
-
-      <button className={css.btnLogOut} onClick={() => setLogoutOpen(true)}>
+      <button className={css.btnSettings} onClick={() => setLogoutOpen(true)}>
         Log out
       </button>
-      {/* {isLogoutOpen && <LogOutModal close={() => setLogoutOpen(false)} />} */}
       <BaseModal
         isOpen={isSettingsOpen}
         onRequestClose={handleModalClose}
         settingsStyle={customStyles}
       >
-
         <UserSettingsModal close={handleModalClose} />
       </BaseModal>
       <BaseModal isOpen={isLogoutOpen} onRequestClose={handleCloseLogout}>

@@ -27,7 +27,6 @@ const UserBar = () => {
 
   return (
     <div className={css.relativeHeader}>
-      <h1 className={css.hello}>Hello<span className={css.userName}>, UserName</span></h1>
       <button type="button" onClick={toggleMenu} className={css.btnHeader}>
         Nadia
         <img
@@ -37,7 +36,6 @@ const UserBar = () => {
         />
         <span className={css.btnIcon}>▼</span>
       </button>
-
       {isOpen && <UserBarPopover closePopover={() => setIsOpen(false)} />}
     </div>
   );

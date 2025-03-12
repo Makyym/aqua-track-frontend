@@ -1,30 +1,13 @@
 .relativeHeader {
-  display: flex;
+  position: relative;
 }
 
-.hello {
-  font-family: var(--font-family2);
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 32px;
-  width: 185px;
-  height: 32px;
-  color: var(--main-text);
-}
-.userName {
-  font-family: var(--font-family2);
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 32px;
-  letter-spacing: -1%;
-  color: var(--main-text);
-}
 .btnHeader {
   display: flex;
   align-items: center;
-  max-width: 137px;
-  padding: 12px 16px;
-  margin-top: 20px;
+  width: 137px;
+  height: 50px;
+  padding: 6px 12px;
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 14px;
@@ -34,30 +17,35 @@
   gap: 8px;
   color: var(--main-white);
   background-color: var(--main);
+  border: none;
 }
 
 .avatar {
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
 }
 
 .btnIcon {
-  align-content: center;
+  width: 16px;
+  height: 16px;
 }
+
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    margin: 0 auto;
-  }
-  .relativeHeader {
-    align-items: center;
-  }
   .btnHeader {
+    width: 157px;
+    height: 56px;
+    font-size: 16px;
+    line-height: 24px;
+    gap: 10px;
+    box-sizing: border-box;
   }
-  .hello {
-    margin-right: 275px;
-    font-size: 36px;
-    line-height: 38px;
-    width: 208px;
-    height: 38px;
+  .avatar {
+    width: 44px;
+    height: 44px;
+  }
+  .btnIcon {
+    width: 20px;
+    height: 20px;
   }
 }
