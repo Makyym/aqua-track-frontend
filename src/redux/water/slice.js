@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addWaterEntry, deleteWaterEntry, editWaterEntry, fetchWaterDay } from './operations.js';
+import { addWaterEntry, deleteWaterEntry, editWaterEntry, fetchWaterDay, fetchWaterMonth } from './operations.js';
 
 const initialState = {
   waterDay: [],
@@ -37,6 +37,13 @@ const slice = createSlice({
       state.isLoading = false;
       state.isError = null;
       state.waterDay = payload;
+    })
+    .addCase(fetchWaterMonth.pending, handlePending)
+    .addCase(fetchWaterMonth.rejected, handleRejected)
+    .addCase(fetchWaterMonth.fulfilled, (state, {payload}) => {
+      state.isLoading = false;
+      state.isError = null;
+      state.waterMonth = payload;
     })
     .addCase(addWaterEntry.pending, handlePending)
     .addCase(addWaterEntry.rejected, handleRejected)
