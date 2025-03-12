@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import css from './WaterForm.module.css';
 
@@ -41,13 +42,13 @@ const WaterForm = () => {
     },
   });
 
-  const onSubmit = async data => {
-    try {
-      dispatch(addWater(data));
-    } catch (error) {
-      alert('Failed to add water');
-    }
-  };
+  // const onSubmit = async data => {
+  //   try {
+  //     dispatch(addWater(data));
+  //   } catch (error) {
+  //     alert('Failed to add water');
+  //   }
+  // };
 
   const timeValue = watch('time') || currentTime;
   const waterValue = watch('value') || 50;
@@ -58,26 +59,50 @@ const WaterForm = () => {
     setValue('value', Math.max(Number(waterValue) - step, 50));
 
   return (
-    <div>
+    <div className={css.formContainer}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <lable className="css.label">Amount of water:</lable>
-        <div>
-          <button type="button" onClick={handleMinusClick}>
+        <lable className={css.waterAndTimeLable}>Amount of water:</lable>
+        <div className={css.plusMinusContainer}>
+          <button
+            className={css.plusMinusBtn}
+            type="button"
+            onClick={handleMinusClick}
+          >
             -
           </button>
-          <span>{waterValue}</span>
+          <span className={css.waterAmount}>{waterValue}</span>
 
-          <button type="button" onClick={handlePlusClick}>
+          <button
+            className={css.plusMinusBtn}
+            type="button"
+            onClick={handlePlusClick}
+          >
             +
           </button>
         </div>
-        <label htmlFor="time">Recording time:</label>
-        <input id="time" type="text" {...register('time')} />
+        <label className={css.waterAndTimeLable} htmlFor="time">
+          Recording time:
+        </label>
+        <input
+          className={css.input}
+          id="time"
+          type="text"
+          {...register('time')}
+        />
         {errors.time && <p>{errors.time.message}</p>}
-        <label htmlFor="value">Enter the value of the water used:</label>
-        <input id="value" type="number" {...register('value')} />
+        <label className={css.waterValueLable} htmlFor="value">
+          Enter the value of the water used:
+        </label>
+        <input
+          className={css.input}
+          id="value"
+          type="number"
+          {...register('value')}
+        />
         {errors.value && <p>{errors.value.message}</p>}
-        <button type="submit">Save</button>
+        <button className={css.btn} type="submit">
+          Save
+        </button>
       </form>
     </div>
   );
