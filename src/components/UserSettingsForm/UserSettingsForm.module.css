@@ -24,6 +24,8 @@
 .inputRadio {
   flex-direction: column;
   margin-bottom: 14px;
+  width: 166px;
+  height: 54px;
 }
 .radioBtn:hover,
 .radioBtn:focus {

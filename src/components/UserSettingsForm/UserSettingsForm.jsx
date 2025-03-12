@@ -40,7 +40,7 @@ const UserSettingsForm = () => {
   });
 
   const onSubmit = data => console.log(data);
-  console.log(watch('gender'));
+
   const gender = watch('gender');
   const weight = watch('weight');
   const time = watch('time');
@@ -144,7 +144,9 @@ const UserSettingsForm = () => {
           <p className={css.allText}>
             The required amount of water in liters per day:
           </p>
-          <span className={css.recomendedWater}>{recommendedWaterNorm}L</span>
+          <span className={clsx(css.recomendedWater, css.formula)}>
+            {recommendedWaterNorm}L
+          </span>
         </div>
         <label htmlFor="">
           <span className={css.boldText}>

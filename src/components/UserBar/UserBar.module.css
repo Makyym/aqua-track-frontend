@@ -1,20 +1,18 @@
 .relativeHeader {
   display: flex;
-
-  flex-direction: column;
-  left: 20px;
 }
 
 .hello {
-  font-family: var(--font-family);
+  font-family: var(--font-family2);
   font-weight: 400;
   font-size: 32px;
   line-height: 32px;
-
+  width: 185px;
+  height: 32px;
   color: var(--main-text);
 }
 .userName {
-  font-family: var(--font-family);
+  font-family: var(--font-family2);
   font-weight: 700;
   font-size: 32px;
   line-height: 32px;
@@ -49,5 +47,17 @@
   .container {
     max-width: 768px;
     margin: 0 auto;
+  }
+  .relativeHeader {
+    align-items: center;
+  }
+  .btnHeader {
+  }
+  .hello {
+    margin-right: 275px;
+    font-size: 36px;
+    line-height: 38px;
+    width: 208px;
+    height: 38px;
   }
 }

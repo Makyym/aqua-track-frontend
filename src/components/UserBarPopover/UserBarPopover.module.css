@@ -5,18 +5,15 @@
   min-height: 72px;
   margin-top: 4px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   border-radius: 15px;
-  padding-left: 20px;
+  padding: 14px 20px;
   gap: 8px;
 }
 
 .btnSettings {
   display: flex;
-
   border: none;
-
-  padding-bottom: 30px;
   background-color: transparent;
 
   color: var(--grey-hover-focus);
@@ -31,8 +28,7 @@
 
 .btnLogOut {
   display: flex;
-  position: absolute;
-  padding-top: 14px;
+
   border: none;
   color: var(--grey-hover-focus);
   background-color: transparent;
@@ -48,5 +44,13 @@
   .container {
     max-width: 768px;
     margin: 0 auto;
+  }
+  .vidget {
+    max-width: 157px;
+    min-height: 82px;
+    display: flex;
+
+    border-radius: 15px;
+    gap: 8px;
   }
 }
