@@ -92,7 +92,7 @@ const SignUpForm = () => {
             ) : null}
             <svg className={s.icon} onClick={() => togglePassword('password')}>
               <use
-                href={`/sprite.svg#icon-${
+                href={`/public/newSprite/newSprite.svg#icon-${
                   showPassword.password ? 'eye-off' : 'eye-off'
                 }`}
               />
@@ -119,7 +119,7 @@ const SignUpForm = () => {
               className={s.icon}
               onClick={() => togglePassword('repeatPassword')}
             >
-              <use href="/sprite.svg#icon-eye-off"></use>
+              <use href="/public/newSprite/newSprite.svg#icon-eye-off"></use>
             </svg>
           </div>
 
