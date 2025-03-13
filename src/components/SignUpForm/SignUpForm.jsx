@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,10 +8,12 @@ import s from './SignUpForm.module.css';
 import Logo from '../Logo/Logo.jsx';
 import { signUp } from '../../redux/auth/operations.js';
 import toast from 'react-hot-toast';
+import { selectIsError } from '../../redux/auth/selectors.js';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = React.useState(false);
+  const errorMessage = useSelector(selectIsError);
 
   const togglePassword = field => {
     setShowPassword(prevState => ({
@@ -50,7 +52,7 @@ const SignUpForm = () => {
       toast.success('You were successfully signed up!');
       reset();
     } catch (error) {
-      toast.error('Something went wrong. Please try again.');
+      errorMessage && toast.error(errorMessage);
     }
   };
 
@@ -92,8 +94,8 @@ const SignUpForm = () => {
             ) : null}
             <svg className={s.icon} onClick={() => togglePassword('password')}>
               <use
-                href={`/sprite.svg#icon-${
-                  showPassword.password ? 'eye-off' : 'eye-off'
+                href={`/src/images/newSprite.svg#icon-${
+                  showPassword.password ? 'eye-off' : 'eye'
                 }`}
               />
             </svg>
@@ -119,7 +121,7 @@ const SignUpForm = () => {
               className={s.icon}
               onClick={() => togglePassword('repeatPassword')}
             >
-              <use href="/sprite.svg#icon-eye-off"></use>
+              <use href="/src/images/newSprite.svg#icon-eye-off"></use>
             </svg>
           </div>
 
