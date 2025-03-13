@@ -65,11 +65,6 @@ const SignUpForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
           <label htmlFor="email" className={s.label}>
             Email
-            <svg width={24} height={24}>
-              <use
-                href={`${newSprite}#icon-plus-green`}
-              />
-            </svg>
           </label>
           <div className={s.container_input}>
             <input
@@ -100,7 +95,7 @@ const SignUpForm = () => {
             ) : null}
             <svg className={s.icon} onClick={() => togglePassword('password')}>
               <use
-                href={`/src/assets/newSprite.svg#icon-${
+                href={`${newSprite}#icon-${
                   showPassword.password ? 'eye-off' : 'eye'
                 }`}
               />
@@ -127,7 +122,7 @@ const SignUpForm = () => {
               className={s.icon}
               onClick={() => togglePassword('repeatPassword')}
             >
-              <use href="/src/assets/newSprite.svg#icon-eye-off"></use>
+              <use href={`${newSprite}#icon-eye-off`}></use>
             </svg>
           </div>
 
