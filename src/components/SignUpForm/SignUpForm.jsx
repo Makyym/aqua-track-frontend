@@ -9,7 +9,7 @@ import Logo from '../Logo/Logo.jsx';
 import { signUp } from '../../redux/auth/operations.js';
 import toast from 'react-hot-toast';
 import { selectIsError } from '../../redux/auth/selectors.js';
-import newSprite from "../../images/newSprite.svg";
+import newSprite from "/public/newSprite.svg"
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
