@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     font-family: var(--font-family);
-    color: #1a2e35;
+    color: var(--main);
     & h2 {
         font-weight: 700;
         font-size: 48px;
@@ -31,7 +31,7 @@
         font-size: 18px;
         line-height: 200%;
         letter-spacing: 0.02em;
-        color: #000;
+        color: var(--main-text);
         margin-bottom: 74px;
     }
 }
@@ -41,7 +41,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 15px;
-    background: #ff4f5b;
+    background: var(--accent);
     width: 250px;
     height: 60px;
     padding: 12px 16px;
@@ -51,6 +51,6 @@
         font-size: 24px;
         line-height: 150%;
         letter-spacing: 0.02em;
-        color: var(--main-white);
+        color: var(--main);
         }
 }
