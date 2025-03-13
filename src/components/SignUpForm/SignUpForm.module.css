@@ -4,6 +4,7 @@
   border-radius: 30px;
   background: #f0eff4;
   padding: 16px;
+  width: 343px;
 }
 .container_form {
   padding: 126px 0 170px;
@@ -27,12 +28,12 @@
   margin-bottom: 16px;
 }
 .label {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.01em;
-  color: #2f2f2f;
+  color: var(--main-text);
   margin-bottom: 12px;
 }
 .container_input {
@@ -73,12 +74,12 @@
   color: #2f2f2f;
 }
 .inputError {
-  border: 1px solid red;
-  color: red;
+  border: 1px solid #ef5050;
+  color: #ef5050;
 }
 
 .inputError::placeholder {
-  color: red;
+  color: #ef5050;
 }
 .errors {
   font-family: var(--font-family);
@@ -90,7 +91,7 @@
 }
 
 .icon {
-  fill: none;
+  /* fill: none; */
   position: absolute;
   top: 16px;
   right: 16px;
@@ -99,6 +100,7 @@
   cursor: pointer;
 }
 .button {
+  font-family: var(--font-family);
   border-radius: 30px;
   height: 50px;
   background: #9be1a0;
@@ -108,7 +110,7 @@
   line-height: 129%;
   letter-spacing: -0.01em;
   text-align: center;
-  color: #323f47;
+  color: var(--main);
   cursor: pointer;
   width: 100%;
   margin-top: 10px;
@@ -137,6 +139,7 @@
 @media screen and (min-width: 768px) {
   .wrapper {
     padding: 32px;
+    width: 704px;
   }
   .container_form {
     padding: 195px 70px;

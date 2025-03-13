@@ -53,25 +53,27 @@ const UserSettingsForm = () => {
           <p className={clsx(css.boldText, css.indentity)}>
             Your gender identity
           </p>
-          <label className={css.labelRadio}>
-            <input
-              type="radio"
-              className={css.radioBtn}
-              {...register('gender')}
-              value="female"
-            />
-            <span className={clsx(css.allText, css.radioCustom)}>Female</span>
-          </label>
+          <div className={css.inputRadioDivContainer}>
+            <label className={css.labelRadio}>
+              <input
+                type="radio"
+                className={css.radioBtn}
+                {...register('gender')}
+                value="female"
+              />
+              <span className={clsx(css.allText, css.radioCustom)}>Female</span>
+            </label>
 
-          <label className={css.labelRadio}>
-            <input
-              type="radio"
-              className={css.radioBtn}
-              {...register('gender')}
-              value="male"
-            />
-            <span className={css.allText}>Male</span>
-          </label>
+            <label className={css.labelRadio}>
+              <input
+                type="radio"
+                className={css.radioBtn}
+                {...register('gender')}
+                value="male"
+              />
+              <span className={css.allText}>Male</span>
+            </label>
+          </div>
         </div>
 
         <div className={css.divNameEmail}>
