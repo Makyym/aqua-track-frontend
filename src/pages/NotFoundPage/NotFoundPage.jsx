@@ -17,6 +17,7 @@ const NotFoundPage = () => {
       clearInterval(interval);
     };
   }, [navigate, counter]);
+  const seconds = counter > 1 ? "seconds" : "second";
   return (
     <div className={s.wrapper}>
       <div className={s.div}>
@@ -28,7 +29,7 @@ const NotFoundPage = () => {
           You will be redirected to the homepage in...
         </p>
         <div className={s.counter}>
-          <p>{counter} seconds </p>
+          <p>{counter} {seconds}</p>
         </div>
       </div>
       <img src={page} alt="page in clouds" />
