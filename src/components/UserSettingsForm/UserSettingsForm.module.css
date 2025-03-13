@@ -43,11 +43,8 @@
   cursor: pointer;
 }
 
-/* .divNameEmail label {
-  gap: 14px;
-} */
 .labelNameEmail {
-  margin-bottom: 14px;
+  /* margin-bottom: 14px; */
 }
 .inputNameEmail {
   width: 100%;
@@ -62,7 +59,7 @@
 }
 
 .divDailyNorma {
-  margin-top: 24px;
+  margin-top: 10px;
   margin-bottom: 24px;
 }
 .dailyNorma {
@@ -92,9 +89,7 @@
 .activeP {
   margin-bottom: 24px;
 }
-.titleName {
-  margin-bottom: 8px;
-}
+
 .divWeight {
   margin-top: 24px;
   margin-bottom: 24px;
@@ -128,12 +123,25 @@
     font-size: 18px;
     line-height: 24px;
   }
+  .allText {
+    font-size: 16px;
+    line-height: 24px;
+  }
   .identityTitle {
   }
   .labelNameEmail {
-    /* margin-bottom: 14px; */
     display: flex;
     flex-direction: column;
+  }
+  .inputNameEmail {
+    width: 100%;
+    max-width: 568px;
+    height: 56px;
+
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .inputRadioDiv {
   }
   .saveBtn {
     width: 141px;
