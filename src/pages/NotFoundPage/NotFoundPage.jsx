@@ -25,7 +25,7 @@ const NotFoundPage = () => {
         <p className={s.text}>
           Sorry, but it looks like this page doesn't exist.
           <br />
-          You will be redirected to the homepage in
+          You will be redirected to the homepage in...
         </p>
         <div className={s.counter}>
           <p>{counter} seconds </p>
