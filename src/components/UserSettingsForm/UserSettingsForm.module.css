@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   max-width: 303px;
-  margin-top: 40px;
-  gap: 24px;
+  margin-top: 60px;
 }
 
 .allText {
@@ -21,19 +20,32 @@
 .indentity {
   margin-bottom: 14px;
 }
-.inputRadio {
+.labelRadio {
+  display: flex;
+  gap: 10px;
+}
+.inputRadioDiv {
+  display: flex;
   flex-direction: column;
-  margin-bottom: 14px;
-  width: 166px;
-  height: 54px;
+  margin-bottom: 24px;
+
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--main);
+  cursor: pointer;
 }
-.radioBtn:hover,
-.radioBtn:focus {
-  color: var(--accent);
+.radioBtn {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--accent);
+
+  cursor: pointer;
 }
-.divNameEmail label {
+
+/* .divNameEmail label {
   gap: 14px;
-}
+} */
 .labelNameEmail {
   margin-bottom: 14px;
 }
@@ -43,15 +55,10 @@
   height: 46px;
   border-radius: 15px;
   padding: 14px 16px;
-  border-width: 1px;
+  border: 1px solid var(--grey-hover-focus);
   margin-bottom: 14px;
   margin-top: 8px;
   outline: none;
-  transition: border-color 0.2s ease-in-out;
-}
-.inputNameEmail:focus {
-  border-color: var(--main-text);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .divDailyNorma {
@@ -63,6 +70,7 @@
 }
 .WMFormula {
   margin-bottom: 4px;
+  margin-top: 12px;
 }
 .formula {
   font-weight: 700;
@@ -71,6 +79,8 @@
   color: var(--accent);
 }
 .paragraph {
+  border: 1px solid var(--grey-hover-focus);
+  border-radius: 15px;
   margin-top: 14px;
   margin-bottom: 14px;
   padding: 16px;
@@ -92,6 +102,9 @@
 .labelYourWeight {
   margin-bottom: 8px;
 }
+.requiredAmount {
+  margin-bottom: 14px;
+}
 .saveBtn {
   min-width: 141px;
   padding: 10px;
@@ -107,11 +120,20 @@
 }
 @media screen and (min-width: 768px) {
   .formDiv {
-    max-width: 648px;
+    min-width: 568px;
+    min-height: 934px;
+    gap: 24px;
   }
-  .identityTitle {
+  .boldText {
     font-size: 18px;
     line-height: 24px;
+  }
+  .identityTitle {
+  }
+  .labelNameEmail {
+    /* margin-bottom: 14px; */
+    display: flex;
+    flex-direction: column;
   }
   .saveBtn {
     width: 141px;
@@ -125,5 +147,6 @@
 @media screen and (min-width: 1440px) {
   .formDiv {
     min-width: 923px;
+    padding: 40px;
   }
 }
