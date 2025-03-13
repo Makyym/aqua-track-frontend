@@ -6,17 +6,17 @@ import page from '../../images/img/not-found-page-4x.png';
 const NotFoundPage = () => {
   const navigate = useNavigate();
   const [counter, setCounter] = useState(10);
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCounter(prevCount => prevCount - 1);
-  //   }, 1000);
-  //   if (counter === 0) {
-  //     navigate('/');
-  //   }
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, [navigate, counter]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCounter(prevCount => prevCount - 1);
+    }, 1000);
+    if (counter === 0) {
+      navigate('/');
+    }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [navigate, counter]);
   const seconds = counter > 1 ? "seconds" : "second";
   return (
     <div className={s.wrapper}>
