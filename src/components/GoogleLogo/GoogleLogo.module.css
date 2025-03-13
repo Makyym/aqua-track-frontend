@@ -1,0 +1,84 @@
+.div {
+    width: 46px;
+    height: 46px;
+    border-radius: 100%;
+    background-color: var(--accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & svg {
+        width: 18px;
+        height: 18px;
+        color: var(--main);
+    }
+}
+
+.div:hover {
+    background: #87d28d;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    .div {
+        width: 60px;
+        height: 60px;
+        & svg {
+            width: 26px;
+            height: 26px;
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .div {
+        width: 60px;
+        height: 60px;
+        & svg {
+            width: 26px;
+            height: 26px;
+        }
+    }
+}
+
+.wrapper {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid transparent;
+    background-image: 
+        linear-gradient(white, white),
+        linear-gradient(45deg, #4285F4, #34A853, #FBBC05, #EA4335);
+    background-clip: content-box, border-box;
+    background-origin: border-box;
+}
+
+.wrapper svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    .wrapper {
+        width: 60px;
+        height: 60px;
+    }
+
+    .wrapper svg {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .wrapper {
+        width: 60px;
+        height: 60px;
+    }
+
+    .wrapper svg {
+        width: 32px;
+        height: 32px;
+    }
+}
