@@ -9,6 +9,7 @@ import Logo from '../Logo/Logo.jsx';
 import { signUp } from '../../redux/auth/operations.js';
 import toast from 'react-hot-toast';
 import { selectIsError } from '../../redux/auth/selectors.js';
+import newSprite from "../../images/newSprite.svg";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -64,6 +65,11 @@ const SignUpForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
           <label htmlFor="email" className={s.label}>
             Email
+            <svg className={s.icon}>
+              <use
+                href={`${newSprite}f#icon-plus-green`}
+              />
+            </svg>
           </label>
           <div className={s.container_input}>
             <input
