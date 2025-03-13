@@ -2,8 +2,8 @@ import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 import { signIn } from '../../redux/auth/operations.js';
 import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection.jsx';
-
 import SignInForm from '../../components/SignInForm/SignInForm.jsx';
+import s from './SignInPage.module.css';
 
 const SignInPage = () => {
   const dispatch = useDispatch();
@@ -19,11 +19,11 @@ const SignInPage = () => {
 
   return (
     <>
-      <div>
+      <div className={s.wrapper}>
         <SignInForm title="Sign In" onSubmit={handleSubmit} />
-      </div>
-      <div>
-        <AdvantagesSection />
+        <div className={s.AdvantagesSection}>
+          <AdvantagesSection />
+        </div>
       </div>
     </>
   );
