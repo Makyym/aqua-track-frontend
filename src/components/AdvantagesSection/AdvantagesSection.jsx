@@ -12,25 +12,8 @@ import user_3 from "../../images/img/user_3.png"
 const AdvantagesSection = () => {
     return (
         <div className={css.container}>
-            {/* <picture>
-            <source 
-            media="(min-width: 1440px)"
-            srcSet={`${womanDesk} 1x, ${womanDesk2x} 2x`}
-            type="image/jpeg"
-            />
-            <source
-            media="(min-width: 768px)"
-            srcSet={`${womenTabl} 1x, ${womenTabl2x} 2x`}
-            type="image/jpeg"
-            />
-            <source 
-            media="(max-width: 767px)"
-            srcSet={`${womanMobl} 1x, ${womanMobl2x} 2x`}
-            type="image/jpeg"
-            />
-            <img src={womanDesk} alt="Woman drink"  className={css.img}/>
-        </picture> */}
-    {/* <div className={css.benefits}> */}
+            
+  
     <div className={css.customers}>
         <div className={css.avatars}>
             <img className={css.avatar1} src={`${user_1}`} alt="user_1" />
@@ -44,7 +27,7 @@ const AdvantagesSection = () => {
         <button className={css.stats}>View statistics</button>
         <button className={css.personal}>Personal rate setting</button>
     </div>
-    {/* </div> */}
+   
     </div>
     )
 }

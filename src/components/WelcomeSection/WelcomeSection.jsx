@@ -1,6 +1,7 @@
 import Logo from "../Logo/Logo.jsx"
 import { Link } from "react-router-dom"
 import css from "./WelcomeSection.module.css"
+import GoogleLogo from "../GoogleLogo/GoogleLogo.jsx"
 
 const WelcomeSection = () => {
     return (
@@ -13,6 +14,7 @@ const WelcomeSection = () => {
             <div className={css.link}>
                 <Link className={css.signup} to='/signup'>Try tracker</Link>
                 <Link className={css.signin} to='/signin'>Sign In</Link>
+                <GoogleLogo />
             </div>
             </section>
         </div>
