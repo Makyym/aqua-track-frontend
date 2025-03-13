@@ -65,9 +65,9 @@ const SignUpForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
           <label htmlFor="email" className={s.label}>
             Email
-            <svg className={s.icon}>
+            <svg width={24} height={24}>
               <use
-                href={`${newSprite}f#icon-plus-green`}
+                href={`${newSprite}#icon-plus-green`}
               />
             </svg>
           </label>
