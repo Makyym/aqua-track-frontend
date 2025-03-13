@@ -26,7 +26,7 @@ const CalendarItem = ({
       parsedActiveDate?.getFullYear() === year
     );
   };
-
+  const isPastDay = new Date(year, month, day) < new Date();
   return (
     <>
       <button
