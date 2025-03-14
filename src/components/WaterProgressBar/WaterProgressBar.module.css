@@ -2,12 +2,10 @@
     border-radius: 15px;
     padding: 12px;
     width: 198px;
-    /* height: 70px; */
     background-color: var(--main-white);
     margin-top: 49px;
     margin-left: auto;
     margin-right: auto;
-    position: relative;
     font-family: var(--font-family);
     display: flex;
     flex-direction: column;
@@ -24,14 +22,15 @@
 
 .waterScale {
     position: relative;
-    background-color: #f1f1f1;
-    border-radius: 10px;
-    height: 20px;
-    overflow: hidden;
+    background-color: var(--background);
+    border-radius: 9px;
+    width: 174px;
+    height: 6px;
 }
 
 .waterScaleFill {
-    background-color: #4caf50;
+    background-color: var(--accent);;
+    border-radius: 9px;
     height: 100%;
     transition: width 0.3s ease;
 }
@@ -39,14 +38,14 @@
   /* маркер відсоток */
 .currentMarker {
     position: absolute;
-    top: 32px;
+    top: -300%;
     width: 24px;
-    height: 10px;
+    text-align: center;
     transform: translateX(-50%);
-    background-color: #fff;
-    border-radius: 50%;
-    font-size: 12px;
-    color: #4caf50;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 10px;
+    color: var(--accent);
     white-space: nowrap;
 }
 
@@ -55,26 +54,42 @@
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 16px;
-    height: 16px;
-    background-color: #fff;
-    border: 2px solid #4caf50;
-    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: var(--main-white);
+    border: 1px solid var(--accent);;
+    border-radius: 100%;
 }
 
 .waterScaleMarkers {
     position: relative;
-    margin-top: 10px;
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
-    color: #555;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 10px;
+    color: rgba(47, 47, 47, 0.6);
 }
 
-.marker {}
-
-.waterScaleText {
-    margin-top: 10px;
-    text-align: center;
-    font-weight: bold;
+@media screen and (min-width: 768px) {
+    .waterScaleContainer {
+        width: 295px;
+        padding: 20px;
+        & h3 {
+            font-size: 15px;
+            line-height: 22px; 
+        }
+    }
+    .waterScale {
+        width: 255px;
+        height: 8px;
+    }
+    .currentMarker {
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .waterScaleMarkers {
+        font-size: 12px;
+        line-height: 22px;
+    }
 }
