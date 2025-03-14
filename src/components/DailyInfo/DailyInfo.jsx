@@ -6,7 +6,7 @@ import s from "./DailyInfo.module.css"
 const DailyInfo = () => {
     const daily = true;
     return (
-        <div>
+        <div className={s.wrapper}>
             <div className={s.div}>
                 <ChooseDate />
                 <AddWaterBtn daily={daily}/>
