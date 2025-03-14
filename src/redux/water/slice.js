@@ -1,11 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addWaterEntry, deleteWaterEntry, editWaterEntry, fetchWaterDay, fetchWaterMonth } from './operations.js';
 
+const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const formattedDate = `${year}-${month}-${day}`;
+
 const initialState = {
   waterDay: [],
   waterMonth: [],
   isLoading: false,
   isError: null,
+  currentDate: formattedDate,
   activeDate: null, // Початково день не вибраний
 };
 
