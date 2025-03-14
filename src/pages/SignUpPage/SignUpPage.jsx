@@ -4,9 +4,9 @@ import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSect
 import s from './SingUpPage.module.css';
 const SignUpPage = () => {
   return (
-    <div className={s.signUpPage_Container}>
+    <div className={s.signUpForm}>
       <SignUpForm />
-      <div>
+      <div className={s.AdvantagesSection}>
         <AdvantagesSection />
       </div>
     </div>

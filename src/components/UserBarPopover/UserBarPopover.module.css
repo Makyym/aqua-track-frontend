@@ -5,35 +5,41 @@
   min-height: 72px;
   margin-top: 4px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   border-radius: 15px;
-
-  padding-left: 20px;
+  padding: 14px 20px;
   gap: 8px;
 }
+
 .btnSettings {
   display: flex;
-
+  padding: 0;
   border: none;
-
-  padding-bottom: 30px;
   background-color: transparent;
-  color: var(--main);
-}
-.btnSettings:hover {
   color: var(--grey-hover-focus);
+}
+.btnSettings:hover,
+.btnSettings:focus {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 22.4px;
+  color: var(--main);
 }
 
 .btnLogOut {
   display: flex;
-  position: absolute;
-  padding-top: 14px;
+  padding: 0;
   border: none;
-  color: var(--main);
+  color: var(--grey-hover-focus);
   background-color: transparent;
 }
-.btnLogOut:hover {
-  color: var(--grey-hover-focus);
+.btnLogOut:hover,
+.btnLogOut:focus {
+  color: var(--main);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 22.4px;
 }
 @media screen and (min-width: 768px) {
   .container {

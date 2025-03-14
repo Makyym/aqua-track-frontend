@@ -1,4 +1,5 @@
 import s from './CalendarPagination.module.css';
+import sprite from "../../assets/newSprite.svg";
 
 const CalendarPagination = ({
   month,
@@ -29,7 +30,7 @@ const CalendarPagination = ({
         <div className={s.calendarPagination}>
           <button onClick={handlePrevMonth} className={s.btnCalendarPagination}>
             <svg className={s.icon}>
-              <use href="/sprite.svg#icon-chevron-left" />
+              <use href={`${sprite}#icon-chevron-left`} />
             </svg>
           </button>
           <p className={s.calendarPaginationText}>
@@ -37,12 +38,12 @@ const CalendarPagination = ({
           </p>
           <button onClick={handleNextMonth} className={s.btnCalendarPagination}>
             <svg className={s.icon}>
-              <use href="/sprite.svg#icon-chevron-right" />
+              <use href={`${sprite}#icon-chevron-rigth`} />
             </svg>
           </button>
         </div>
         <svg className={s.iconStatistic}>
-          <use href="/sprite.svg#icon-statistics" />
+          <use href={`${sprite}#icon-statistics`} />
         </svg>
       </div>
     </div>

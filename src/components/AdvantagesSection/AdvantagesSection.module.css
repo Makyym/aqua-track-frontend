@@ -1,0 +1,235 @@
+.container {
+    position: relative;
+    border-radius: 30px;
+    background-color: var(--background);
+    height: 353px;
+    background-image: url(../../images/img/womanMobl.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media screen and (min-width: 320px) and (min-device-pixel-ratio: 2),
+screen and (min-resolution: 192dpi),
+screen and (min-resolution: 2dppx) {
+    .container{
+    background-image: url(../../images/img/womanMobl@2x.jpg);
+    } 
+}
+
+.customers {
+    position: absolute;
+    bottom: 96px;
+    left:  16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    width: 160px;
+    height: 48px;
+}
+
+.customers p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #323f47;
+    text-align: right;
+}
+
+.avatars{
+    display: flex;
+    position: relative;
+    
+}
+
+.avatars img {
+    width: 26.4px;
+    height: 28px;
+    border-radius: 50px;
+    border: 1px solid #fff;
+    overflow: hidden;
+    position: relative;
+    margin-right: -15px;
+}
+
+.avatars img:first-child {
+    z-index: 3;
+}
+
+.avatars img:nth-child(2) {
+    z-index: 2;
+}
+
+.avatars img:nth-child(3) {
+    z-index: 1;
+}
+
+.span {
+    color: #9be1a0;;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    gap: 4px;
+    bottom: 32px;
+    left: 159px;
+    & button {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        border: none;
+        padding:9px 12px;
+        font-size: 8px;
+        border-radius: 30px;
+        cursor: pointer;
+        line-height: 1;
+        text-align: center;
+        letter-spacing: -0.01em;
+    }
+}
+
+.habit {
+    background: #323f47;
+    color: #fff;
+    width: 81px;
+    height: 26px;
+}
+
+.habit::before{
+    content: "●";
+    color: #9be1a0;
+    padding-right: 2px;
+}
+
+.stats {
+    background:  #9be1a0;
+    color: black;
+    width: 83px;
+    height: 26px;
+
+}
+.personal {
+    background: white;
+    width: 108px;
+    height: 26px;
+    padding-right: 60px;
+}
+
+
+@media only screen and (min-width: 768px){
+    .container{
+        position: relative;
+        background-image: url(../../images/img/womenTabl.jpg);
+        height: 446px;
+    }
+
+    @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx){
+        .container{
+            background-image: url(../../images/img/womenTabl@2x.jpg);
+        }
+    }
+
+    .customers {
+        bottom: 96px;
+        left: 32px;
+        padding: 10px 20px;
+        width: 237px;
+        height: 67px;
+    }
+    
+    .customers p {
+        font-size: 15px;
+    }
+
+    .avatars img {
+        width: 47px;
+        height: 47px;
+    }
+
+    .buttons{
+        left: 408px;
+        width: 242px;
+        height: 78px;
+        bottom: 32px;
+        & button{
+            font-size: 12px;
+            padding: 11px 16px;
+        }
+    }
+    .habit{
+        width: 111px;
+        height: 34px;
+    }
+    .stats{
+        width: 121px;
+        height: 34px;
+    }
+    .personal{
+        width: 158px;
+        height: 34px;
+    }
+    .personal {
+        margin-right: 84px;
+    }
+}
+@media only screen and (min-width: 1440px){
+    .container{
+        background-image: url(../../images/img/womanDesk.jpg);
+        width: 672px; 
+        height: 736px;
+    }
+    @media screen and (min-width: 1440px) and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+        .container{
+            background-image: url(../../images/img/womanDesk@2x.jpg);
+        }
+    }
+    .customers {
+        bottom: 132px;
+        left: 32px;
+        padding: 10px 20px;
+        width: 237px;
+        height: 67px;
+    }
+    .customers p {
+        font-size: 15px;
+    }
+    .avatars img {
+        width: 47px;
+        height: 47px;
+    }
+    .buttons {
+        left: 398px;
+        width: 242px;
+        height: 78px;
+        bottom: 64px;
+        & button{
+            font-size: 12px;
+            padding: 11px 16px;
+        }
+    }
+    .habit{
+        width: 111px;
+        height: 34px;
+    }
+    .stats{
+        width: 121px;
+        height: 34px;
+    }
+    .personal{
+        width: 158px;
+        height: 34px;
+    }
+    .personal {
+        margin-right: 84px;
+    }
+}

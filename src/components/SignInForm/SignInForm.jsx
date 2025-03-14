@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import css from './SignInForm.module.css';
 import Logo from '../Logo/Logo.jsx';
-import Icon from '../Icon/Icon.jsx';
+import newSprite from '../../assets/newSprite.svg';
 
 const SignInForm = ({ onSubmit, title }) => {
-  const [showPassword, setShowPassword] = useState(false);
-  const passwordVisibility = () => setShowPassword(prev => !prev);
+  const [showPassword, setShowPassword] = React.useState({});
+
+  const togglePassword = field => {
+    setShowPassword(prevState => ({
+      ...prevState,
+      [field]: !prevState[field],
+    }));
+  };
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -40,7 +46,6 @@ const SignInForm = ({ onSubmit, title }) => {
           <div className={css.container_input}>
             <input
               type="email"
-              name="email"
               autoFocus
               required
               className={`${css.input} ${errors.email ? css.inputError : ''}`}
@@ -55,8 +60,7 @@ const SignInForm = ({ onSubmit, title }) => {
           <label className={css.label}>Password</label>
           <div className={css.container_input}>
             <input
-              type={showPassword ? 'text' : 'password'}
-              name="password"
+              type={showPassword.password ? 'text' : 'password'}
               autoComplete="current-password"
               required
               className={`${css.input} ${
@@ -65,17 +69,16 @@ const SignInForm = ({ onSubmit, title }) => {
               placeholder="Enter your password"
               {...register('password')}
             />
-            <button
-              type="button"
-              className={css.eyeButton}
-              onClick={passwordVisibility}
+            <svg
+              className={css.icon}
+              onClick={() => togglePassword('password')}
             >
-              <Icon
-                name={showPassword ? 'icon-eye' : 'icon-eye-slash'}
-                width={16}
-                height={16}
+              <use
+                href={`${newSprite}#icon-${
+                  showPassword.password ? 'eye' : 'eye-off'
+                }`}
               />
-            </button>
+            </svg>
             {errors.password && (
               <span className={css.errors}>{errors.password.message}</span>
             )}
@@ -84,16 +87,15 @@ const SignInForm = ({ onSubmit, title }) => {
           <button type="submit" className={css.button} disabled={isSubmitting}>
             {isSubmitting ? 'Signing in...' : 'Sign in'}
           </button>
-
-          <div>
-            <p className={css.description}>
-              Don't have an account?&nbsp;
-              <Link to="/signup" className={css.link}>
-                Sign up
-              </Link>
-            </p>
-          </div>
         </form>
+        <div>
+          <p className={css.description}>
+            Don't have an account?&nbsp;
+            <Link to="/signup" className={css.link}>
+              Sign up
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
