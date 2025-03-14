@@ -1,6 +1,11 @@
+import s from "./WaterDailyNorma.module.css"
+
 const WaterDailyNorma = () => {
     return (
-        <div>WaterDailyNorma</div>
+        <div className={s.div}>
+            <span>1.5 L</span>
+            <p>My daily norma</p>
+        </div>
     )
 }
 
