@@ -6,5 +6,6 @@ export const formatDate = (year, month, day) => {
 };
 
 export const formatCurrentMonth = (year, month) => {
-  return `${year}-${month + 1}`; // "YYYY-MM"
+  const formattedMonth = (month + 1).toString().padStart(2, '0');
+  return `${year}-${formattedMonth}`; // "YYYY-MM"
 };
