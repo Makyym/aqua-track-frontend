@@ -1,0 +1,41 @@
+.ul {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+}
+
+.div {
+    width: 100%;
+    max-width: 303px;
+    overflow-x: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .div {
+        width: 100%;
+        max-width: 640px;
+        overflow-x: auto;
+    }
+}
+@media screen and (min-width: 1440px) {
+    .div {
+        width: 100%;
+        max-width: 608px;
+        overflow-x: auto;
+    }
+}
+
+.div::-webkit-scrollbar-button {
+    display: none;
+}
+.div::-webkit-scrollbar {
+    height: 8px;
+}
+.div::-webkit-scrollbar-track {
+    background: var(--main-white);
+    border-radius: 9px;
+}
+.div::-webkit-scrollbar-thumb {
+    background: var(--main);
+    border-radius: 9px;
+}
