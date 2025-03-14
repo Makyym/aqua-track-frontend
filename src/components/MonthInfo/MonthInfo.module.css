@@ -1,3 +1,15 @@
+/* ? */
+.monthInfo {
+  min-height: 413px;
+}
+
+/* tablet ?*/
+@media screen and (min-width: 768px) {
+  .monthInfo {
+    min-height: 441px;
+  }
+}
+
 /* desktop */
 @media screen and (min-width: 1280px) {
   .monthInfo {
