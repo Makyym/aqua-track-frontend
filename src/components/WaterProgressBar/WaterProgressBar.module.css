@@ -1,0 +1,69 @@
+.waterScaleContainer {
+    border-radius: 15px;
+    padding: 12px;
+    width: 198px;
+    /* height: 70px; */
+    background-color: var(--main-white);
+    margin-top: 49px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    & h3 {
+        margin-bottom: 20px;
+    }
+}
+
+.waterScale {
+    position: relative;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.waterScaleFill {
+    background-color: #4caf50;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+  /* маркер відсоток */
+.currentMarker {
+    transform: translateX(-50%);
+    background-color: #fff;
+    border: 1px solid #4caf50;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    color: #4caf50;
+    white-space: nowrap;
+}
+
+  /* Шарик в шкали */
+.currentBall {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border: 2px solid #4caf50;
+    border-radius: 50%;
+}
+
+.waterScaleMarkers {
+    position: relative;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #555;
+}
+
+.marker {}
+
+.waterScaleText {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}
