@@ -56,8 +56,12 @@ const slice = createSlice({
       .addCase(signIn.fulfilled, (state, { payload }) => {
         state.isError = null;
         state.isRefreshing = false;
-        state.token = payload.data.accessToken;
+        state.token = payload.data.token;
         state.isLoggedIn = true;
+        state.user = {
+          ...state.user,
+          ...payload.data,
+        };
       })
       .addCase(signIn.rejected, handleRejected)
       .addCase(logout.fulfilled, () => initialState)
