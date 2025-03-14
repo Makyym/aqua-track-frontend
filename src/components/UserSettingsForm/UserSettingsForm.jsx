@@ -40,7 +40,7 @@ const UserSettingsForm = () => {
   });
 
   const onSubmit = data => console.log(data);
-  console.log(watch('gender'));
+
   const gender = watch('gender');
   const weight = watch('weight');
   const time = watch('time');
@@ -49,28 +49,32 @@ const UserSettingsForm = () => {
   return (
     <div className={css.formDiv}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-        <div className={css.inputRadio}>
+        <div className={css.inputRadioDiv}>
           <p className={clsx(css.boldText, css.indentity)}>
             Your gender identity
           </p>
-          <label htmlFor="">
-            <span className={css.allText}>Female</span>
-            <input
-              type="radio"
-              className={css.radioBtn}
-              {...register('gender')}
-              value="female"
-            />
-          </label>
-          <label htmlFor="">
-            <span className={css.allText}>Male</span>
-            <input
-              type="radio"
-              className={css.radioBtn}
-              {...register('gender')}
-              value="male"
-            />
-          </label>
+
+          <div className={css.inputRadioDivContainer}>
+            <label className={css.labelRadio}>
+              <input
+                type="radio"
+                className={css.radioBtn}
+                {...register('gender')}
+                value="female"
+              />
+              <span className={clsx(css.allText, css.radioCustom)}>Female</span>
+            </label>
+
+            <label className={css.labelRadio}>
+              <input
+                type="radio"
+                className={css.radioBtn}
+                {...register('gender')}
+                value="male"
+              />
+              <span className={css.allText}>Male</span>
+            </label>
+          </div>
         </div>
 
         <div className={css.divNameEmail}>
@@ -140,12 +144,15 @@ const UserSettingsForm = () => {
           </label>
         </div>
 
-        <div>
+        <div className={css.requiredAmount}>
           <p className={css.allText}>
             The required amount of water in liters per day:
           </p>
-          <span className={css.recomendedWater}>{recommendedWaterNorm}L</span>
+          <span className={clsx(css.recomendedWater, css.formula)}>
+            {recommendedWaterNorm}L
+          </span>
         </div>
+
         <label htmlFor="">
           <span className={css.boldText}>
             Write down how much water you will drink:

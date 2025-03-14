@@ -124,7 +124,7 @@ const SignUpForm = () => {
             >
               <use
                 href={`${newSprite}#icon-${
-                  showPassword.repeatPassword ? 'eye' : 'eye-off'
+
                 }`}
               ></use>
             </svg>

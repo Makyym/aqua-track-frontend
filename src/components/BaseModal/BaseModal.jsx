@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { useEffect } from 'react';
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
@@ -12,12 +11,9 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     padding: '0',
-
     borderRadius: '15px',
     border: 'none',
     outline: 'none',
-    // maxHeight: '90vh',
-    // 'overflow-y': 'scroll',
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
