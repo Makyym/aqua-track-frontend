@@ -3,6 +3,7 @@ import css from './UserBarPopover.module.css';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
 import LogOutModal from '../LogOutModal/LogOutModal.jsx';
 import BaseModal from '../BaseModal/BaseModal.jsx';
+import newSprite from '../../assets/newSprite.svg';
 
 const customStyles = {
   content: {
@@ -34,9 +35,9 @@ const UserBarPopover = () => {
   return (
     <div className={css.vidget}>
       <button className={css.btnSettings} onClick={() => setSettingsOpen(true)}>
-        {/* <svg class="icon">
-          <use href="../../images/sprite.svg#icon-chevron-down"></use>
-        </svg> */}
+        <svg className={css.iconSettings}>
+          <use href={`${newSprite}#icon-settings`} />
+        </svg>
         Settings
       </button>
       <button className={css.btnSettings} onClick={() => setLogoutOpen(true)}>

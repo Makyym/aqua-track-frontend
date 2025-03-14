@@ -29,6 +29,7 @@
 .btnIcon {
   width: 16px;
   height: 16px;
+  color: var(--main-white);
 }
 
 @media screen and (min-width: 768px) {

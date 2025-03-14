@@ -27,7 +27,16 @@
 .btnSettings:focus {
   color: var(--main);
 }
-
+.iconSettings {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  color: var(--grey-hover-focus);
+}
+.iconSettings:hover,
+.iconSettings:focus {
+  color: var(--main);
+}
 @media screen and (min-width: 768px) {
   .vidget {
     width: 157px;

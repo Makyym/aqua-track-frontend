@@ -9,7 +9,7 @@ import Logo from '../Logo/Logo.jsx';
 import { signUp } from '../../redux/auth/operations.js';
 import toast from 'react-hot-toast';
 import { selectIsError } from '../../redux/auth/selectors.js';
-import newSprite from "../../assets/newSprite.svg"
+import newSprite from '../../assets/newSprite.svg';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -122,9 +122,11 @@ const SignUpForm = () => {
               className={s.icon}
               onClick={() => togglePassword('repeatPassword')}
             >
-              <use href={`${newSprite}#icon-${
+              <use
+                href={`${newSprite}#icon-${
                   showPassword.password ? 'eye' : 'eye-off'
-                }`}></use>
+                }`}
+              ></use>
             </svg>
           </div>
 
