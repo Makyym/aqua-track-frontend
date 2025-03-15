@@ -19,6 +19,7 @@ const customStyles = {
     outline: 'none',
     maxHeight: '90vh',
     overflowY: 'scroll',
+    overflowX: 'hidden'
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',

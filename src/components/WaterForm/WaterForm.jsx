@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-
+import { addWaterEntry } from '../../redux/water/operations.js';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import css from './WaterForm.module.css';
@@ -49,6 +49,15 @@ const WaterForm = () => {
   //     alert('Failed to add water');
   //   }
   // };
+
+  const onSubmit = async data => {
+    try {
+      console.log('Submitting data:', data);
+      dispatch(addWaterEntry(data));
+    } catch (error) {
+      alert('Failed to add water');
+    }
+  };
 
   const timeValue = watch('time') || currentTime;
   const waterValue = watch('value') || 50;
