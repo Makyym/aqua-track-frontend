@@ -71,7 +71,7 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
       const file = values.avatarUrl && values.avatarUrl[0];
       if (!file) return;
       const formData = new FormData();
-      formData.append('photo', file);+
+      formData.append('photo', file);
       formData.append('name', values.name);
       formData.append('email', values.email);
       formData.append('gender', values.gender);
