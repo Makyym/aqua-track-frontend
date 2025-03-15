@@ -1,13 +1,30 @@
 .formContainer {
-}
-
-.waterAndTimeLable {
+  /* display: flex;
+  flex-direction: column; */
 }
 .plusMinusContainer {
+  display: flex;
+  gap: 8px;
+}
+.waterAndTimeLable {
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 16px;
 }
 .plusMinusBtn {
+  border-radius: 30px;
+  border: 1.5px solid;
+  width: 43px;
+  background-color: transparent;
 }
 .waterAmount {
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: var(--main);
+
+  font-family: var(--font-family);
+  weight: 700px;
+  color: var(--main-white);
 }
 
 .waterValueLable {

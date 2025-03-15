@@ -1,0 +1,43 @@
+.modal {
+  position: relative;
+  padding: 40px 20px;
+  border: 1px solid red;
+  width: 343px;
+  height: 490px;
+  border-radius: 15px;
+  background-color: pink;
+}
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  fill: var(--main);
+  stroke: var(--main);
+}
+/* .closeBtn:hover {
+  stroke: var(--accent); // не працює чомусь
+} */
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  color: var(--main);
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: var(--main);
+  margin-bottom: 20px;
+}
