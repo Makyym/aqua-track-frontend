@@ -16,27 +16,48 @@
   border: none;
   background-color: transparent;
   color: var(--grey-hover-focus);
-  font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 18px;
-  padding: 0;
 }
-
 .btnSettings:hover,
 .btnSettings:focus {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 22.4px;
   color: var(--main);
+}
+
+.btnLogOut {
+  display: flex;
+  padding: 0;
+  border: none;
+  color: var(--grey-hover-focus);
+  background-color: transparent;
 }
 .iconSettings {
   width: 16px;
   height: 16px;
-  margin-right: 8px;
-  color: var(--grey-hover-focus);
+  margin-right: 10px;
+  fill: var(--grey-hover-focus);
+}
+.iconUpload {
+  transform: rotate(90deg);
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  fill: var(--grey-hover-focus);
 }
 .iconSettings:hover,
 .iconSettings:focus {
-  color: var(--main);
+  fill: var(--main);
 }
+.btnLogOut:hover,
+.btnLogOut:focus {
+  fill: var(--main);
+}
+.iconUpload:hover,
+.iconUpload:focus {
+  fill: var(--main);
+}
+
 @media screen and (min-width: 768px) {
   .vidget {
     width: 157px;

@@ -3,14 +3,33 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import css from './UserSettingsForm.module.css';
 import clsx from 'clsx';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import newSprite from '../../assets/newSprite.svg';
+import { selectUser } from '../../redux/auth/selectors';
+import { patchUser } from '../../redux/auth/operations.js';
+
+// const FILE_SIZE = 1024 * 1024 * 5;
+
+// const SUPPORTED_FORMATS = ['image/jpeg', 'image/png'];
+
 const schema = yup
   .object({
-    gender: yup.string().oneOf(['female', 'male']).required(),
+    gender: yup.string().oneOf(['woman', 'man']).required(),
     name: yup.string().min(2).max(20).required(),
     email: yup.string().email().required(),
+    // avatarUrl: yup
+    //   .mixed()
+    //   // .test('required', 'File is required', value => value?.length > 0 || )
+    //   .test('fileSize', 'File size too large', value =>
+    //     value && value[0] ? value[0].size <= FILE_SIZE : true,
+    //   )
+    //   .test('fileFormat', 'Unsupported format', value =>
+    //     value && value[0] ? SUPPORTED_FORMATS.includes(value[0].type) : true,
+    //   ),
     weight: yup.number().positive().required(),
-    time: yup.number().positive().required(),
-    water: yup.number().positive().required(),
+    dailySportTime: yup.number().positive().required(),
+    dailyNorm: yup.number().positive().required(),
   })
   .required();
 
@@ -21,34 +40,77 @@ const calculateWaterNorm = ({ weight, time, gender }) => {
   return V.toFixed(1);
 };
 
-const UserSettingsForm = () => {
+const UserSettingsForm = ({ onSuccessSubmit }) => {
+  // const [photo, setPhoto] = useState('https://i.pravatar.cc/80');
+  const user = useSelector(selectUser);
+  const { name, email, gender, dailySportTime, weight, dailyNorm, avatarUrl } =
+    user;
+  const dispatch = useDispatch();
   const {
     register,
+    reset,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+
     defaultValues: {
-      name: '',
-      email: '',
-      gender: 'female',
-      time: 0,
-      weight: 0,
-      water: 0,
+      name,
+      email,
+      gender,
+      dailySportTime,
+      weight,
+      dailyNorm,
+      avatarUrl,
     },
   });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = async (values) => {
+    try {
+      const file = values.avatarUrl && values.avatarUrl[0];
+      if (!file) return;
+      const formData = new FormData();
+      formData.append('photo', file);
+      formData.append('name', values.name);
+      formData.append('email', values.email);
+      formData.append('gender', values.gender);
+      formData.append('dailySportTime', values.dailySportTime);
+      formData.append('weight', values.weight);
+      formData.append('dailyNorm', values.dailyNorm);
+      await dispatch(patchUser(formData));
+      reset();
+      onSuccessSubmit();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  const nameUpdate = watch('name');
+  const genderUpdate = watch('gender');
+  const weightUpdate = watch('weight');
+  const dailySportTimeUpdate = watch('dailySportTime');
+  const emailUpdate = watch('email');
+  const uploadedFiles = watch('avatarUrl');
 
-  const gender = watch('gender');
-  const weight = watch('weight');
-  const time = watch('time');
-  const recommendedWaterNorm = calculateWaterNorm({ weight, time, gender });
-
+  const recommendedWaterNorm = calculateWaterNorm({
+    weight,
+    time: dailySportTime,
+    gender,
+  });
+  const watchedFiles = watch('avatarUrl');
   return (
     <div className={css.formDiv}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+        <div className={css.avatarUploadDiv}>
+          <img className={css.avatar} src={avatarUrl} alt="avatar" />
+          <label className={css.labelUpload}>
+            <svg className={css.upload}>
+              <use href={`${newSprite}#icon-upload`} />
+            </svg>
+            <input type="file" className={clsx(css.uploadPhoto, 'srOnly')} accept="image/*" {...register('avatarUrl')}/>
+            Upload a photo
+          </label>
+        </div>
         <div className={css.inputRadioDiv}>
           <p className={clsx(css.boldText, css.indentity)}>
             Your gender identity
@@ -60,7 +122,7 @@ const UserSettingsForm = () => {
                 type="radio"
                 className={css.radioBtn}
                 {...register('gender')}
-                value="female"
+                value="woman"
               />
               <span className={clsx(css.allText, css.radioCustom)}>Female</span>
             </label>
@@ -70,7 +132,7 @@ const UserSettingsForm = () => {
                 type="radio"
                 className={css.radioBtn}
                 {...register('gender')}
-                value="male"
+                value="man"
               />
               <span className={css.allText}>Male</span>
             </label>
@@ -137,10 +199,10 @@ const UserSettingsForm = () => {
 
             <input
               type="text"
-              {...register('time')}
+              {...register('dailySportTime')}
               className={css.inputNameEmail}
             />
-            <span> {errors.time?.message}</span>
+            <span> {errors.dailySportTime?.message}</span>
           </label>
         </div>
 
@@ -159,10 +221,10 @@ const UserSettingsForm = () => {
           </span>
           <input
             type="text"
-            {...register('water')}
+            {...register('dailyNorm')}
             className={css.inputNameEmail}
           />
-          <span> {errors.water?.message}</span>
+          <span> {errors.dailyNorm?.message}</span>
         </label>
         <button type="submit" className={css.saveBtn}>
           Save
