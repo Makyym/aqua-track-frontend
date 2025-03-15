@@ -75,6 +75,7 @@
     .waterScaleContainer {
         width: 295px;
         padding: 20px;
+        margin-top: 87px;
         & h3 {
             font-size: 15px;
             line-height: 22px; 
@@ -91,5 +92,11 @@
     .waterScaleMarkers {
         font-size: 12px;
         line-height: 22px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .waterScaleContainer {
+        margin-top: 215px;
     }
 }

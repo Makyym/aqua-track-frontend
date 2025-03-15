@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoute.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from './redux/auth/operations.js';
 import { selectIsRefreshing } from './redux/auth/selectors.js';
+import LoaderComponent from './components/LoaderComponent/LoaderComponent.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage.jsx'));
@@ -22,7 +23,7 @@ function App() {
       dispatch(refreshUser())
   }, [dispatch]);
   const loading = "Loading";
-  return isRefreshing ? loading : (
+  return isRefreshing ? <LoaderComponent /> : (
     <SharedLayout>
       <Routes>
         <Route path="/"
