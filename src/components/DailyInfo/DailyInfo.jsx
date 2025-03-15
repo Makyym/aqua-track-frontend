@@ -7,23 +7,16 @@ import WaterModal from '../WaterModal/WaterModal.jsx';
 import { useState } from 'react';
 
 const DailyInfo = () => {
-  const daily = true;
-  const [isWaterModalOpen, setWaterModalOpen] = useState(false);
-  return (
-    <div>
-      <div className={s.div}>
-        <ChooseDate />
-        <AddWaterBtn daily={daily} onOpen={() => setWaterModalOpen(true)} />
-      </div>
-      <WaterList />
-      <BaseModal
-        isOpen={isWaterModalOpen}
-        onRequestClose={() => setWaterModalOpen(false)}
-      >
-        <WaterModal onClose={() => setWaterModalOpen(false)} />
-      </BaseModal>
-    </div>
-  );
-};
+    const daily = true;
+    return (
+        <div className={s.wrapper}>
+            <div className={s.div}>
+                <ChooseDate />
+                <AddWaterBtn daily={daily}/>
+            </div>
+            <WaterList />
+        </div>
+    )
+}
 
 export default DailyInfo;

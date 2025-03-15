@@ -8,7 +8,10 @@ export const fetchWaterDay = createAsyncThunk(
       const {
         data: { data },
       } = await axios.get(`water/day?date=${date}`);
-      return data;
+      return {
+        array: data,
+        date,
+      };
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
