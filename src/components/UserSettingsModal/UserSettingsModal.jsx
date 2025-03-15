@@ -12,23 +12,24 @@ const UserSettingsModal = ({ close }) => {
 
   return (
     <div className={css.modalSettings}>
-      <div>
+      <div className={css.upload}>
         <h2 className={css.modalTitle}>Setting</h2>
         <button className={css.closeButton} onClick={close}>
           {' '}
           ✖
         </button>
       </div>
-      <div>
+
+      <div className={css.avatarUploadDiv}>
         <img
           className={css.avatar}
           src="https://i.pravatar.cc/80"
           alt="avatar"
         />
         <button className={css.uploadPhoto}>Upload a photo</button>
-        <UserSettingsForm />
       </div>
-      </div>
+      <UserSettingsForm />
+    </div>
   );
 };
 

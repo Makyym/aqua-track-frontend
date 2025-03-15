@@ -1,0 +1,37 @@
+.hello {
+    font-family: var(--font-family2);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    width: 185px;
+    height: 32px;
+    color: var(--main);
+}
+
+.userName {
+    font-weight: 700;
+}
+
+.div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .div {
+        flex-direction: row;
+        align-items: center;
+        & div {
+            margin-left: auto;
+        }
+    }
+    .hello {
+        width: 208px;
+        height: 38px;
+        font-size: 36px;
+        line-height: 38px; 
+    }
+}
+
+@media screen and (min-width: 1440px) {}

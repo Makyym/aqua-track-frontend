@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import UserBarPopover from '../UserBarPopover/UserBarPopover.jsx';
+import newSprite from '../../assets/newSprite.svg';
 import css from './UserBar.module.css';
+
 const UserBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,7 +29,6 @@ const UserBar = () => {
 
   return (
     <div className={css.relativeHeader}>
-      <h1 className={css.hello}>Hello<span className={css.userName}>, UserName</span></h1>
       <button type="button" onClick={toggleMenu} className={css.btnHeader}>
         Nadia
         <img
@@ -35,9 +36,10 @@ const UserBar = () => {
           alt="User Avatar"
           className={css.avatar}
         />
-        <span className={css.btnIcon}>▼</span>
+        <svg className={css.btnIcon}>
+          <use href={`${newSprite}#icon-chevron-down`} />
+        </svg>
       </button>
-
       {isOpen && <UserBarPopover closePopover={() => setIsOpen(false)} />}
     </div>
   );

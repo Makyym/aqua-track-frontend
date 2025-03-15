@@ -1,20 +1,18 @@
 .vidget {
-  position: relative;
+  position: absolute;
   background-color: var(--main-white);
-  max-width: 137px;
-  min-height: 72px;
-  margin-top: 4px;
+  width: 137px;
+  height: 72px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   border-radius: 15px;
   padding: 14px 20px;
   gap: 8px;
+  bottom: -76px;
 }
 
 .btnSettings {
   display: flex;
-  padding: 0;
   border: none;
   background-color: transparent;
   color: var(--grey-hover-focus);
@@ -41,13 +39,14 @@
 .btnLogOut:hover,
 .btnLogOut:focus {
   color: var(--main);
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 22.4px;
 }
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    margin: 0 auto;
+  .vidget {
+    width: 157px;
+    height: 82px;
+    bottom: -90px;
+  }
+  .btnSettings {
+    line-height: 22px;
   }
 }
