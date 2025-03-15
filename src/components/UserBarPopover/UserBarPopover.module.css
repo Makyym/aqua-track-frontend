@@ -34,6 +34,9 @@
   color: var(--grey-hover-focus);
   background-color: transparent;
 }
+.iconSettings:hover,
+.iconSettings:focus {
+  fill: var(--main);
 .btnLogOut:hover,
 .btnLogOut:focus {
   color: var(--main);
