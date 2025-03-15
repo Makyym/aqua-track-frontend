@@ -1,4 +1,13 @@
 .formContainer {
+  margin: 0 auto;
+  width: 303px;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--white);
 }
 
 .waterAndTimeLable {
