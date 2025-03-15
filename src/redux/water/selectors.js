@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-export const selectWaterDayArray = state => state.water.waterDay;
+export const selectCurrentWaterDayArray = state => state.water.waterDay;
+export const selectWaterDayArray = state => state.water.waterCurrentDay;
 export const selectIsError = state => state.water?.isError || null;
 export const selectIsLoading = state => state.water?.isLoading || false;
 export const selectWaterMonth = state => state.water.waterMonth;

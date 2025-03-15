@@ -13,6 +13,7 @@ const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage.jsx'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage.jsx'));
 const TrackerPage = lazy(() => import('./pages/TrackerPage/TrackerPage.jsx'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
+const GoogleAuthPage = lazy(() => import('./pages/GoogleAuthPage/GoogleAuthPage.jsx'));
 
 function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -39,6 +40,10 @@ function App() {
             <RestrictedRoute component={<SignInPage />} redirectTo="/tracker" />
           }
         />
+        <Route path="/auth/success"
+        element={
+        <RestrictedRoute component={<GoogleAuthPage />} redirectTo="/tracker" />
+        } />
         <Route
           path="/tracker"
           element={

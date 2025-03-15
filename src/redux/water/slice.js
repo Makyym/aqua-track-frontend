@@ -9,6 +9,7 @@ const formattedDate = `${year}-${month}-${day}`;
 
 const initialState = {
   waterDay: [],
+  waterCurrentDay: [],
   waterMonth: [],
   isLoading: false,
   isError: null,
@@ -43,7 +44,10 @@ const slice = createSlice({
     .addCase(fetchWaterDay.fulfilled, (state, {payload}) => {
       state.isLoading = false;
       state.isError = null;
-      state.waterDay = payload;
+      if (state.currentDate === payload.date) {
+        state.waterCurrentDay = payload.array;
+      }
+      state.waterDay = payload.array;
     })
     .addCase(fetchWaterMonth.pending, handlePending)
     .addCase(fetchWaterMonth.rejected, handleRejected)

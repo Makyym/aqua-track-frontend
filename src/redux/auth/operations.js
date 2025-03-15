@@ -116,3 +116,16 @@ export const patchUser = createAsyncThunk(
     }
   },
 );
+
+export const googleAuthUser = createAsyncThunk(
+  'auth/googleAuth',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get('/auth/get-oauth-url');
+      window.location.href = data.data.url;
+    } catch (error) {
+      const errorMessage = error.response.data.data.message;
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  },
+);
