@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "Poppins-Bold";
+    src: url("../../fonts/Poppins-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+
+.modalContainer {
+    padding: 20px 0;
+}
+
+.modalTitle {
+    font-family: "Poppins-Bold", sans-serif;
+    font-size: 20px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+@media (min-width: 375px) {
+    .modalContainer {
+        width: 303px;
+    }
+}
+
+@media (min-width: 768px) {
+    .modalContainer {
+        width: 478px;
+        padding: 20px;
+    }
+
+    .modalTitle {
+        font-size: 28px;
+    }
+}

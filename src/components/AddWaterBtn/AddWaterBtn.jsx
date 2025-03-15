@@ -1,34 +1,33 @@
-import { useState } from "react";
-import WaterModal from "../WaterModal/WaterModal";
-import s from "./AddWaterBtn.module.css";
-import sprite from "../../assets/newSprite.svg";
+import React, { useState } from "react";
+import WaterForm from "../WaterForm/WaterForm";
+import sprite from '../../assets/newSprite.svg';
+import s from './AddWaterBtn.module.css';
 
-const AddWaterBtn = ({ daily }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const AddWaterBtn = ({ daily, onOpen }) => {
+  const [showForm, setShowForm] = useState(false);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleClick = () => {
+    setShowForm(!showForm);  // Открываем/закрываем форму
+    onOpen && onOpen();  // Вызываем onOpen если он передан
   };
 
   return (
-    <>
-      <button
-        type="button"
-        className={daily ? s.button : s.buttonDaily}
-        onClick={handleOpenModal}
-      >
-        <svg className={daily ? s.icon : s.iconDaily} width="16" height="16">
-          <use href={`${sprite}#icon-plus`} />
-        </svg>
-        <p className={s.add_water}>Add water</p>
+    <div className={s.container}> {/* Контейнер для выравнивания */}
+      <button className={daily ? s.button : s.buttonDaily} onClick={handleClick}>
+        {daily ? (
+          <svg className={s.icon}>
+            <use href={`${sprite}#icon-plus-green`} />
+          </svg>
+        ) : (
+          <svg className={s.iconDaily}>
+            <use href={`${sprite}#icon-plus-white`} />
+          </svg>
+        )}
+        Add water
       </button>
-
-      {isModalOpen && <WaterModal onClose={handleCloseModal} />}
-    </>
+      
+      {showForm && <WaterForm />}  {/* Показываем форму, если showForm true */}
+    </div>
   );
 };
 

@@ -1,27 +1,29 @@
 .container {
-    background-color: var(--color-white);
-    position: absolute;
+    background-color: #FFFFFF;
+    position: relative;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    top: 225px;
-    left: 73px;
+    align-items: center;
     gap: 8px;
     width: 100%;
+    max-width: 300px;
     border-radius: 15px;
     padding: 12px;
-    max-width: 295px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    top: 225px;
+    transform: translateY(-135%);
+}
 
-    @media (min-width: 768px) {
-        left: 204px;
+@media (min-width: 768px) {
+    .container {
         top: 322px;
-        gap: 6px;
-        width: 295px;
         padding: 20px;
     }
+}
 
-    @media (min-width: 1440px) {
-        left: 188px;
+@media (min-width: 1440px) {
+    .container {
         top: 450px;
     }
 }
@@ -31,59 +33,60 @@
     color: var(--color-darkblue);
     font-weight: 700;
     font-size: 14px;
-    line-height: 1;
+    text-align: center;
 
     @media (min-width: 768px) {
         font-size: 15px;
-        line-height: 1.49333;
     }
 }
 
-.slider {
+.progressBar {
+    width: 100%;
     max-width: 255px;
     height: 6px;
+    background-color: #EDEDED;
     border-radius: 9px;
-    border-color: var(--color-lightgrey);
-    border-style: none;
-    border: solid;
-    color: var(--color-lightgrey);
-    background-color: var(--color-lightgrey);
+    position: relative;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background-color: #7FC97F;
+    border-radius: 9px;
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
 }
 
 .rail {
-    transform: translate(-1px, -5px);
     width: 12px;
     height: 12px;
-    border-radius: 100%;
-    background-color: var(--color-white);
-    border: 1px solid var(--color-lightgreen);
+    background-color: #FFFFFF;
+    border: 1px solid #7FC97F;
+    border-radius: 50%;
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.percent_bar {
+.percentBar {
     display: flex;
-    font-weight: 400;
-    pointer-events: none;
-    width: 174px;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 255px;
     font-size: 10px;
-    line-height: 1.86667;
+    color: var(--color-darkblue);
 
     @media (min-width: 768px) {
-        width: 255px;
         font-size: 12px;
-        line-height: 1.86667;
     }
 }
 
 .fifty {
-    margin-left: 66px;
-    margin-right: 49px;
-    line-height: 1;
-    font-weight: 400;
-    font-size: 10px;
-
-    @media (min-width: 768px) {
-        margin-left: 100px;
-        margin-right: 84px;
-        line-height: 1.86667;
-    }
+    text-align: center;
+    flex: 1;
 }
