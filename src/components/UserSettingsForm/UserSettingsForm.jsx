@@ -69,7 +69,7 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     console.log(data);
 
     try {
-      await dispatch(updateUserSettings(data)).unwrap();
+      await dispatch(updateUserSettings(data));
       const formData = { ...data, avatarUrl: photo };
 
       console.log(formData);
@@ -91,18 +91,18 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     time: dailySportTime,
     gender,
   });
-  const readerFile = file => {
-    if (!file) return;
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = event => {
-      setPhoto(event.target.result);
-    };
-  };
-  readerFile(uploadedFiles && uploadedFiles[0]);
+  // const readerFile = file => {
+  //   if (!file) return;
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onload = event => {
+  //     setPhoto(event.target.result);
+  //   };
+  // };
+  // readerFile(uploadedFiles && uploadedFiles[0]);
   return (
     <div className={css.formDiv}>
-      <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+      <form onSubmit={handleSubmit(onSubmit())} className={css.form}>
         <div className={css.avatarUploadDiv}>
           <img className={css.avatar} src={photo} alt="avatar" />
           <label className={css.labelUpload}>
