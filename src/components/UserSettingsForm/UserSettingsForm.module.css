@@ -11,6 +11,7 @@
   display: block;
   margin: 0 auto;
   background-color: transparent;
+  object-fit: cover;
 }
 .avatarUploadDiv {
   margin-bottom: 40px;

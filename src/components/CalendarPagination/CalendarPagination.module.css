@@ -1,7 +1,7 @@
 .calendarPaginationContainer {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 .calendarTitle {
   font-family: Poppins;
