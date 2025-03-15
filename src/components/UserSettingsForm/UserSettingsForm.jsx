@@ -9,24 +9,24 @@ import newSprite from '../../assets/newSprite.svg';
 import { selectUser } from '../../redux/auth/selectors';
 import { patchUser } from '../../redux/auth/operations.js';
 
-const FILE_SIZE = 1024 * 1024 * 5;
+// const FILE_SIZE = 1024 * 1024 * 5;
 
-const SUPPORTED_FORMATS = ['image/jpeg', 'image/png'];
+// const SUPPORTED_FORMATS = ['image/jpeg', 'image/png'];
 
 const schema = yup
   .object({
     gender: yup.string().oneOf(['woman', 'man']).required(),
     name: yup.string().min(2).max(20).required(),
     email: yup.string().email().required(),
-    avatarUrl: yup
-      .mixed()
-      // .test('required', 'File is required', value => value?.length > 0 || )
-      .test('fileSize', 'File size too large', value =>
-        value && value[0] ? value[0].size <= FILE_SIZE : true,
-      )
-      .test('fileFormat', 'Unsupported format', value =>
-        value && value[0] ? SUPPORTED_FORMATS.includes(value[0].type) : true,
-      ),
+    // avatarUrl: yup
+    //   .mixed()
+    //   // .test('required', 'File is required', value => value?.length > 0 || )
+    //   .test('fileSize', 'File size too large', value =>
+    //     value && value[0] ? value[0].size <= FILE_SIZE : true,
+    //   )
+    //   .test('fileFormat', 'Unsupported format', value =>
+    //     value && value[0] ? SUPPORTED_FORMATS.includes(value[0].type) : true,
+    //   ),
     weight: yup.number().positive().required(),
     dailySportTime: yup.number().positive().required(),
     dailyNorm: yup.number().positive().required(),
@@ -41,7 +41,7 @@ const calculateWaterNorm = ({ weight, time, gender }) => {
 };
 
 const UserSettingsForm = ({ onSuccessSubmit }) => {
-  const [photo, setPhoto] = useState('https://i.pravatar.cc/80');
+  // const [photo, setPhoto] = useState('https://i.pravatar.cc/80');
   const user = useSelector(selectUser);
   const { name, email, gender, dailySportTime, weight, dailyNorm, avatarUrl } =
     user;
@@ -68,10 +68,17 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
 
   const onSubmit = async (values) => {
     try {
-      console.log(values);
-      await dispatch(patchUser(values));
-      // const formData = { ...data, avatarUrl: photo };
-      // console.log(formData);
+      const file = values.avatarUrl && values.avatarUrl[0];
+      if (!file) return;
+      const formData = new FormData();
+      formData.append('photo', file);+
+      formData.append('name', values.name);
+      formData.append('email', values.email);
+      formData.append('gender', values.gender);
+      formData.append('dailySportTime', values.dailySportTime);
+      formData.append('weight', values.weight);
+      formData.append('dailyNorm', values.dailyNorm);
+      await dispatch(patchUser(formData));
       reset();
       onSuccessSubmit();
     } catch (error) {
@@ -90,29 +97,17 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     time: dailySportTime,
     gender,
   });
-  // const readerFile = file => {
-  //   if (!file) return;
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onload = event => {
-  //     setPhoto(event.target.result);
-  //   };
-  // };
-  // readerFile(uploadedFiles && uploadedFiles[0]);
+  const watchedFiles = watch('avatarUrl');
   return (
     <div className={css.formDiv}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         <div className={css.avatarUploadDiv}>
-          <img className={css.avatar} src={photo} alt="avatar" />
+          <img className={css.avatar} src={avatarUrl} alt="avatar" />
           <label className={css.labelUpload}>
             <svg className={css.upload}>
               <use href={`${newSprite}#icon-upload`} />
             </svg>
-            <input
-              type="file"
-              className={clsx(css.uploadPhoto, 'srOnly')}
-              {...register('avatarUrl')}
-            />
+            <input type="file" className={clsx(css.uploadPhoto, 'srOnly')} accept="image/*" {...register('avatarUrl')}/>
             Upload a photo
           </label>
         </div>
