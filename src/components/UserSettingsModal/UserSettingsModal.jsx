@@ -20,15 +20,7 @@ const UserSettingsModal = ({ close }) => {
         </button>
       </div>
 
-      <div className={css.avatarUploadDiv}>
-        <img
-          className={css.avatar}
-          src="https://i.pravatar.cc/80"
-          alt="avatar"
-        />
-        <button className={css.uploadPhoto}>Upload a photo</button>
-      </div>
-      <UserSettingsForm />
+      <UserSettingsForm onSuccessSubmit={close} />
     </div>
   );
 };

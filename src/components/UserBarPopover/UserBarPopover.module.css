@@ -32,14 +32,32 @@
   color: var(--grey-hover-focus);
   background-color: transparent;
 }
+.iconSettings {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  fill: var(--grey-hover-focus);
+}
+.iconUpload {
+  transform: rotate(90deg);
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  fill: var(--grey-hover-focus);
+}
 .iconSettings:hover,
 .iconSettings:focus {
   fill: var(--main);
 }
 .btnLogOut:hover,
 .btnLogOut:focus {
-  color: var(--main);
+  fill: var(--main);
 }
+.iconUpload:hover,
+.iconUpload:focus {
+  fill: var(--main);
+}
+
 @media screen and (min-width: 768px) {
   .vidget {
     width: 157px;

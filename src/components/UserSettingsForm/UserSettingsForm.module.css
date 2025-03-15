@@ -4,6 +4,39 @@
   max-width: 303px;
   margin-top: 60px;
 }
+.avatar {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  background-color: transparent;
+}
+.avatarUploadDiv {
+  margin-bottom: 40px;
+}
+.upload {
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+}
+.uploadPhoto {
+  background: none;
+  border: none;
+  color: var(--main);
+  cursor: pointer;
+
+  margin-top: 10px;
+  display: block;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 18px;
+}
+.labelUpload {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
 
 .allText {
   font-family: var(--font-family);
@@ -24,8 +57,7 @@
 }
 
 .labelRadio {
-  display: flex;
-  gap: 10px;
+  display: block;
 }
 
 .inputRadioDiv {
@@ -52,13 +84,13 @@
 .radioBtn {
   width: 20px;
   height: 20px;
-  border: 1.5px solid var(--accent);
 
+  margin-right: 10px;
   cursor: pointer;
 }
 
 .labelNameEmail {
-  /* margin-bottom: 14px; */
+  display: block;
 }
 
 .inputNameEmail {
@@ -126,16 +158,17 @@
 
 .saveBtn {
   min-width: 141px;
-  padding: 10px;
+  padding: 14px 40px;
   background: var(--accent);
   color: var(--main);
   border: none;
-  border-radius: 25px;
+  border-radius: 30px;
   cursor: pointer;
   margin-top: 20px;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 18px;
+  transition: 0.3s;
 }
 
 @media screen and (min-width: 768px) {
@@ -144,7 +177,19 @@
     min-height: 934px;
     gap: 24px;
   }
-
+  .uploadPhoto {
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 10px;
+  }
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+  .avatarUploadDiv {
+  }
   .boldText {
     font-size: 18px;
     line-height: 24px;
@@ -171,8 +216,8 @@
   }
   .saveBtn {
     width: 141px;
-    height: 56px;
-    border-radius: 30px;
+    font-size: 16px;
+    line-height: 24px;
     gap: 10px;
     padding: 16px 50px;
   }
@@ -180,7 +225,98 @@
 
 @media screen and (min-width: 1440px) {
   .formDiv {
-    min-width: 923px;
+    max-width: 923px;
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    background-color: var(--main-white);
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  .avatarUploadDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .uploadPhoto {
+    font-size: 16px;
+    color: var(--main);
+    cursor: pointer;
+  }
+  .inputRadioDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .inputRadioDivContainer {
+    display: flex;
+    gap: 20px;
+  }
+
+  .labelRadio {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+  }
+  .radioBtn {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent);
+    appearance: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .radioBtn:checked {
+    background-color: var(--accent);
+    border-color: var(--accent);
+  }
+  .divNameEmail {
+    width: 100%;
+    display: flex;
+    gap: 32px;
+  }
+
+  .labelNameEmail {
+    width: 100%;
+  }
+
+  .inputNameEmail {
+    width: 100%;
+    max-width: 400px;
+    height: 56px;
+    border-radius: 15px;
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .divDailyNorma {
+    width: 100%;
+  }
+  .paragraph {
+    width: 100%;
+    font-size: 14px;
+    padding: 16px;
+    border-radius: 15px;
+  }
+
+  .divWeight {
+    width: 100%;
+    display: flex;
+    gap: 32px;
   }
 }

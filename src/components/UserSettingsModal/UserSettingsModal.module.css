@@ -19,27 +19,6 @@
   cursor: pointer;
 }
 
-.avatar {
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  display: block;
-  margin: 0 auto;
-  background-color: transparent;
-}
-
-.uploadPhoto {
-  background: none;
-  border: none;
-  color: var(--main);
-  cursor: pointer;
-
-  margin-top: 10px;
-  display: block;
-  margin: 0 auto;
-  font-size: 14px;
-  line-height: 18px;
-}
 @media screen and (min-width: 768px) {
   .modalSettings {
     width: 568;
@@ -57,19 +36,6 @@
   .modalTitle {
     font-size: 28px;
     line-height: 32px;
-  }
-  .uploadPhoto {
-    display: block;
-    margin: 0 auto;
-    font-size: 16px;
-    line-height: 24px;
-    margin-top: 10px;
-  }
-  .avatar {
-    width: 100px;
-    height: 100px;
-  }
-  .avatarUploadDiv {
   }
 }
 
