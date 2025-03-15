@@ -1,24 +1,25 @@
-import { useState } from 'react';
 import css from './DeleteWaterModal.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteWaterEntry } from '../../redux/water/operations.js';
 import sprite from '../../assets/newSprite.svg';
 import BtnDelete from '../BtnDelete/BtnDelete.jsx';
 import LoaderComponent from '../LoaderComponent/LoaderComponent.jsx';
+import { selectIsLoading } from '../../redux/water/selectors.js';
 
 const DeleteWaterModal = ({ waterId, onClose }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    setIsLoading(() => true);
-    dispatch(deleteWaterEntry(waterId)).then(({ error }) => {
-      if (!error) {
+    dispatch(deleteWaterEntry(waterId))
+      .unwrap()
+      .then(() => {
         onClose();
-      }
-      setIsLoading(false);
-    });
-  };
+      })
+      .catch((error) => {
+        console.error("Delete failed", error);
+      });
+  };  
 
   return (
     <div className={css.modal}>

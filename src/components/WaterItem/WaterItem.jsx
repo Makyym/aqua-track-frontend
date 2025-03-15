@@ -5,7 +5,7 @@ import BaseModal from '../BaseModal/BaseModal.jsx';
 import DeleteWaterModal from '../DeleteWaterModal/DeleteWaterModal.jsx';
 
 const WaterItem = ({ data }) => {
-  const { value, date } = data;
+  const { value, date, _id } = data;
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
   function extractTime(dateTimeString) {
@@ -41,7 +41,7 @@ const WaterItem = ({ data }) => {
         isOpen={isDeleteModalOpen}
         onRequestClose={() => setDeleteModalOpen(false)}
       >
-        <DeleteWaterModal onClose={() => setDeleteModalOpen(false)} />
+        <DeleteWaterModal waterId={_id} onClose={() => setDeleteModalOpen(false)} />
       </BaseModal>
     </div>
   );

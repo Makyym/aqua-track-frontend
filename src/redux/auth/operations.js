@@ -18,7 +18,8 @@ axios.interceptors.response.use(
   async (error) => {
     console.log("Interceptor caught an error", error);
     const { config, response, status } = error;
-    if (status === 401 && response.status === 401) {
+    if (status === 401 && response.status === 401 && config._retry) {
+      config._retry = true;
       try {
         const { store } = await import('../store');
         const refreshResult = await store.dispatch(refreshToken());

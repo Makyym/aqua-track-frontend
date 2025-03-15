@@ -68,6 +68,12 @@ const slice = createSlice({
     .addCase(deleteWaterEntry.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.isError = null;
+      const date = payload.data.date;
+      const dateOnly = date.split("T")[0];
+      if (dateOnly === state.currentDate) {
+        state.waterCurrentDay = state.waterCurrentDay.filter(item => item._id !== payload.data._id);
+        return;
+      }
       state.waterDay = state.waterDay.filter(item => item._id !== payload);
     })
     .addCase(editWaterEntry.pending, handlePending)
