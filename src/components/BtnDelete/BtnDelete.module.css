@@ -1,0 +1,33 @@
+/* mobile */
+
+.btnDelete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: none;
+  padding: 14px 129px;
+  width: 304px;
+  height: 46px;
+  background: #9be1a0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  color: #323f47;
+}
+
+.btnDelete:hover {
+  background: #87d28d;
+}
+
+/*==============768px================*/
+
+@media screen and (min-width: 768px) {
+  .btnDelete {
+    padding: 18px 59px;
+    width: 173px;
+    height: 60px;
+  }
+}
