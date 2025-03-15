@@ -4,8 +4,9 @@ import * as yup from 'yup';
 import css from './UserSettingsForm.module.css';
 import clsx from 'clsx';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import newSprite from '../../assets/newSprite.svg';
+import { selectUser } from '../../redux/auth/selectors';
 
 const FILE_SIZE = 1024 * 1024 * 5;
 
@@ -40,6 +41,9 @@ const calculateWaterNorm = ({ weight, time, gender }) => {
 
 const UserSettingsForm = ({ onSuccessSubmit }) => {
   const [photo, setPhoto] = useState('https://i.pravatar.cc/80');
+  const user = useSelector(selectUser);
+  const { name, email, gender, dailySportTime, weight, dailyNorm, avatarUrl } =
+    user;
   const dispatch = useDispatch();
   const {
     register,
@@ -49,13 +53,15 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+
     defaultValues: {
-      name: '',
-      email: '',
-      gender: 'female',
-      dailySportTime: 0,
-      weight: 0,
-      dailyNorm: 0,
+      name,
+      email,
+      gender,
+      dailySportTime,
+      weight,
+      dailyNorm,
+      avatarUrl,
     },
   });
 
@@ -63,10 +69,9 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     console.log(data);
 
     try {
-      //await dispatch(updateUserSettings(data)).unwrap() - avatar is a File List
+      await dispatch(updateUserSettings(data)).unwrap();
       const formData = { ...data, avatarUrl: photo };
 
-      // await dispatch(updateUserSettings(formData)).unwrap() - avatar is a base64 string
       console.log(formData);
       reset();
       onSuccessSubmit();
@@ -74,10 +79,11 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
       console.log(error.message);
     }
   };
-
-  const gender = watch('gender');
-  const weight = watch('weight');
-  const dailySportTime = watch('dailySportTime');
+  const nameUpdate = watch('name');
+  const genderUpdate = watch('gender');
+  const weightUpdate = watch('weight');
+  const dailySportTimeUpdate = watch('dailySportTime');
+  const emailUpdate = watch('email');
   const uploadedFiles = watch('avatarUrl');
 
   const recommendedWaterNorm = calculateWaterNorm({
