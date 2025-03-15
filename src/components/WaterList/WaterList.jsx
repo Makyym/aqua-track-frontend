@@ -18,12 +18,8 @@ const WaterList = () => {
         }
         dispatch(fetchWaterDay(currentDate));
     }, [activeDate]);
-    const refresh = () => {
-        dispatch(refreshToken())
-    };
     return (
         <div className={s.div}>
-            <button type="button" onClick={refresh}>Click</button>
             {array.length ?
             (<ul className={s.ul}>
                 {array.map(item => {
