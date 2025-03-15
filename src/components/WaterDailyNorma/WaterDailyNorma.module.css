@@ -1,0 +1,43 @@
+.div {
+    border-radius: 15px;
+    padding: 12px;
+    width: 102px;
+    height: 54px;
+    padding: 12px;
+    background-color: var(--main-white);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--font-family);
+    margin-top: 78px;
+    & span {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 14px;
+        color: var(--main);
+    }
+    & p {
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 10px;
+        color: rgba(47, 47, 47, 0.6);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .div {
+        padding: 14px 18px;
+        width: 129px;
+        height: 78px;
+        gap: 4px;
+        margin-top: 101px;
+        & span {
+            font-size: 15px;
+            line-height: 22px; 
+        }
+        & p {
+            font-size: 12px;
+            line-height: 22px; 
+        }
+    }
+}

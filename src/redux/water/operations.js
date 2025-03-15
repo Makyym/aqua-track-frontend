@@ -8,7 +8,10 @@ export const fetchWaterDay = createAsyncThunk(
       const {
         data: { data },
       } = await axios.get(`water/day?date=${date}`);
-      return data;
+      return {
+        array: data,
+        date,
+      };
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -47,8 +50,8 @@ export const deleteWaterEntry = createAsyncThunk(
   'water/deleteWaterEntry',
   async (waterId, thunkAPI) => {
     try {
-      const response = await axios.delete(`water/${waterId}`);
-      return waterId;
+      const {data} = await axios.delete(`water/${waterId}`);
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
