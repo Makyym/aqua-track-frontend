@@ -1,24 +1,19 @@
 import css from './DeleteWaterModal.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteWaterEntry } from '../../redux/water/operations.js';
+import { deleteWaterEntry, fetchWaterMonth } from '../../redux/water/operations.js';
 import sprite from '../../assets/newSprite.svg';
 import BtnDelete from '../BtnDelete/BtnDelete.jsx';
 import LoaderComponent from '../LoaderComponent/LoaderComponent.jsx';
 import { selectIsLoading } from '../../redux/water/selectors.js';
 
-const DeleteWaterModal = ({ waterId, onClose }) => {
+const DeleteWaterModal = ({ waterId, onClose, date }) => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(deleteWaterEntry(waterId))
-      .unwrap()
-      .then(() => {
-        onClose();
-      })
-      .catch((error) => {
-        console.error("Delete failed", error);
-      });
+    dispatch(deleteWaterEntry(waterId));
+    dispatch(fetchWaterMonth(date));
+    onClose();
   };  
 
   return (

@@ -8,7 +8,7 @@ const day = String(today.getDate()).padStart(2, '0');
 const formattedDate = `${year}-${month}-${day}`;
 
 const initialState = {
-  waterDay: [],
+  waterActiveDay: [],
   waterCurrentDay: [],
   waterMonth: [],
   isLoading: false,
@@ -31,10 +31,10 @@ const slice = createSlice({
   initialState,
   reducers: {
     updateActiveDate: (state, action) => {
-      state.activeDate = action.payload; // Оновлюємо вибрану дату
+      state.activeDate = action.payload;
     },
     resetActiveDate: state => {
-      state.activeDate = null; // Скидаємо вибір
+      state.activeDate = null;
     },
   },
   extraReducers: builder => {
@@ -47,7 +47,7 @@ const slice = createSlice({
       if (state.currentDate === payload.date) {
         state.waterCurrentDay = payload.array;
       }
-      state.waterDay = payload.array;
+      state.waterActiveDay = payload.array;
     })
     .addCase(fetchWaterMonth.pending, handlePending)
     .addCase(fetchWaterMonth.rejected, handleRejected)
@@ -61,7 +61,7 @@ const slice = createSlice({
     .addCase(addWaterEntry.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.isError = null;
-      state.waterDay.push(payload);
+      state.waterActiveDay.push(payload);
     })
     .addCase(deleteWaterEntry.pending, handlePending)
     .addCase(deleteWaterEntry.rejected, handleRejected)
@@ -74,7 +74,7 @@ const slice = createSlice({
         state.waterCurrentDay = state.waterCurrentDay.filter(item => item._id !== payload.data._id);
         return;
       }
-      state.waterDay = state.waterDay.filter(item => item._id !== payload);
+      state.waterActiveDay = state.waterActiveDay.filter(item => item._id !== payload);
     })
     .addCase(editWaterEntry.pending, handlePending)
     .addCase(editWaterEntry.rejected, handleRejected)

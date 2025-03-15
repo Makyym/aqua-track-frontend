@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from "react-redux"
 import WaterItem from "../WaterItem/WaterItem.jsx"
-import { selectActiveDate, selectCurrentDate, selectCurrentWaterDayArray } from "../../redux/water/selectors.js"
+import { selectActiveDate, selectCurrentDate, selectCurrentWaterDayArray, selectWaterDayArray } from "../../redux/water/selectors.js"
 import s from "./WaterList.module.css"
 import { useEffect } from "react"
 import { fetchWaterDay } from "../../redux/water/operations.js"
-import { refreshToken } from "../../redux/auth/operations.js"
 
 const WaterList = () => {
-    const array = useSelector(selectCurrentWaterDayArray);
+    const arrayCurrent = useSelector(selectCurrentWaterDayArray);
+    const arrayActive = useSelector(selectWaterDayArray);
     const activeDate = useSelector(selectActiveDate);
     const currentDate = useSelector(selectCurrentDate);
     const dispatch = useDispatch();
+    const array = arrayActive.length ? arrayActive : arrayCurrent;
     useEffect(() => {
         if (activeDate) {
             dispatch(fetchWaterDay(activeDate));

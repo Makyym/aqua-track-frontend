@@ -65,8 +65,7 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     },
   });
 
-  const onSubmit = async (values) => {
-    try {
+  const onSubmit = (values) => {
       const file = values.avatarUrl && values.avatarUrl[0];
       if (!file) return;
       const formData = new FormData();
@@ -77,13 +76,11 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
       formData.append('dailySportTime', values.dailySportTime);
       formData.append('weight', values.weight);
       formData.append('dailyNorm', values.dailyNorm);
-      await dispatch(patchUser(formData));
+      dispatch(patchUser(formData));
       reset();
       onSuccessSubmit();
-    } catch (error) {
-      console.log(error.message);
-    }
   };
+  
   const nameUpdate = watch('name');
   const genderUpdate = watch('gender');
   const weightUpdate = watch('weight');

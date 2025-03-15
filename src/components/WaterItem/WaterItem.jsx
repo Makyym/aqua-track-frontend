@@ -7,7 +7,10 @@ import DeleteWaterModal from '../DeleteWaterModal/DeleteWaterModal.jsx';
 const WaterItem = ({ data }) => {
   const { value, date, _id } = data;
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-
+  const fullDate = new Date(date);
+  const year = fullDate.getFullYear();
+  const month = (fullDate.getMonth() + 1).toString().padStart(2, '0');
+  const formattedDate = `${year}-${month}`;
   function extractTime(dateTimeString) {
     const dateTime = new Date(dateTimeString);
     let hours = dateTime.getUTCHours();
@@ -41,7 +44,7 @@ const WaterItem = ({ data }) => {
         isOpen={isDeleteModalOpen}
         onRequestClose={() => setDeleteModalOpen(false)}
       >
-        <DeleteWaterModal waterId={_id} onClose={() => setDeleteModalOpen(false)} />
+        <DeleteWaterModal date={formattedDate} waterId={_id} onClose={() => setDeleteModalOpen(false)} />
       </BaseModal>
     </div>
   );
