@@ -1,38 +1,43 @@
 import CalendarPagination from '../CalendarPagination/CalendarPagination';
 import Calendar from '../Calendar/Calendar';
 import s from './MonthInfo.module.css';
-import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectActiveDate,
+  selectWaterMonth,
+} from '../../redux/water/selectors';
+import { resetActiveDate, updateActiveDate } from '../../redux/water/slice';
+import { selectUser } from '../../redux/auth/selectors';
+import { fetchWaterMonth } from '../../redux/water/operations';
+//utils
+import { formatCurrentMonth } from './utils/dateUtils'; // "YYYY-MM-DD"
+import { calculateWaterPercentage } from './utils/calculateWater';
+import {
+  handleActiveDay,
+  handleNextMonth,
+  handlePrevMonth,
+} from './utils/calendarUtils';
 
 const MonthInfo = () => {
+  //dailyNorm
+  const user = useSelector(selectUser);
+  const dailyNorm = user?.dailyNorm || 1500;
+
+  const dispatch = useDispatch();
+  const activeDate = useSelector(selectActiveDate);
+  const waterMonth = useSelector(selectWaterMonth);
+
   const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth();
+  const [month, setMonth] = useState(currentDate.getMonth());
+  const [year, setYear] = useState(currentDate.getFullYear());
 
-  const [month, setMonth] = useState(currentMonth);
-  const [year, setYear] = useState(currentYear);
-  const [activeDate, setActiveDate] = useState(null); //зберігаємо обраний день (повна дата)
+  const formatedMonth = formatCurrentMonth(year, month);
 
-  const handlePrevMonth = () => {
-    if (month === 0) {
-      setMonth(11);
-      setYear(year - 1);
-    } else {
-      setMonth(month - 1);
-    }
-  };
-  const handleNextMonth = () => {
-    if (month === 11) {
-      setMonth(0);
-      setYear(year + 1);
-    } else {
-      setMonth(month + 1);
-    }
-  };
-  //обирає день
-  const handleActiveDay = day => {
-    const selectedDate = new Date(year, month, day);
-    setActiveDate(selectedDate);
-  };
+  useEffect(() => {
+    dispatch(fetchWaterMonth(formatedMonth));
+  }, [dispatch, formatedMonth]);
 
   return (
     //   прибрати className={s.monthInfo} ?? при desktop задає width: 608px;
@@ -40,14 +45,27 @@ const MonthInfo = () => {
       <CalendarPagination
         month={month}
         year={year}
-        handlePrevMonth={handlePrevMonth}
-        handleNextMonth={handleNextMonth}
+        handlePrevMonth={() => handlePrevMonth(month, year, setMonth, setYear)}
+        handleNextMonth={() => handleNextMonth(month, year, setMonth, setYear)}
       />
       <Calendar
         month={month}
         year={year}
         activeDate={activeDate}
-        handleActiveDay={handleActiveDay}
+        handleActiveDay={day =>
+          handleActiveDay(
+            day,
+            month,
+            year,
+            activeDate,
+            dispatch,
+            resetActiveDate,
+            updateActiveDate,
+          )
+        }
+        percentage={day =>
+          calculateWaterPercentage(day, year, month, waterMonth, dailyNorm)
+        }
       />
     </div>
   );

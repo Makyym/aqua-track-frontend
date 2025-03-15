@@ -1,59 +1,24 @@
 .button {
-    border-radius: 30px;
-    padding: 14px 20px;
-    background: var(--color-darkblue);
-    border: none;
     display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: center;
-    align-items: center;
     gap: 10px;
-    color: var(--color-white);
-    min-width: 140px;
-    transition: color 0.5s ease;
-    margin-top: 313px;
-    margin-left: auto;
-
-    @media (min-width: 768px) {
-        padding: 18px 30px;
-        margin-top: 422px;
-        min-width: 178px;
-    }
-
-    @media (min-width: 1440px) {
-        margin-top: 580px;
-    }
-}
-
-.plus {
-    min-width: 16px;
-    height: 16px;
-    stroke: var(--color-white);
-    transition: stroke 0.5s ease;
-
-    @media (min-width: 768px) {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-.button {
-    display: flex;
-    align-items: center;
-    background-color: #323F47;
-    color: white;
-    padding: 10px 20px;
+    padding: 14px 20px;
     border: none;
     border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-family: var(--poppins-bold);
+    min-width: 140px;
+    height: 46px;
+    font-family: var(--font-family);
     font-weight: 700;
     font-size: 14px;
-    line-height: 1.286;
+    line-height: 18px;
     letter-spacing: -0.01em;
     text-align: center;
-    min-width: 74px;
+    background-color: var(--color-darkblue);
+    color: var(--color-white);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-left: auto;
 }
 
 .button:hover,
@@ -62,20 +27,84 @@
     color: var(--hover-green);
 }
 
-.button .plus {
-    fill: white;
-    transition: fill 0.3s ease;
+.buttonDaily {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 30px;
+    width: 140px;
+    height: 46px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    background-color: var(--main);
+    color: var(--main-white);
 }
 
-.button:hover .plus,
-.button:focus .plus {
-    fill: var(--hover-green);
+.icon {
+    width: 30px;
+    height: 30px;
 }
 
-@media (min-width: 768px) {
+.iconDaily {
+    width: 16px;
+    height: 16px;
+    stroke: var(--main-white);
+}
+
+.plus {
+    min-width: 16px;
+    height: 16px;
+    stroke: var(--color-white);
+    transition: stroke 0.5s ease;
+}
+
+@media screen and (min-width: 768px) {
     .button {
+        padding: 18px 30px;
+        min-width: 178px;
+    }
+
+    .buttonDaily {
+        padding: 18px 30px;
+        width: 178px;
+        height: 60px;
         font-size: 16px;
-        line-height: 1.5;
-        min-width: 84px;
+        line-height: 24px;
+    }
+
+    .iconDaily {
+        width: 24px;
+        height: 24px;
+    }
+
+    .plus {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .button {
+        margin-top: 580px;
+    }
+
+    .buttonDaily {
+        padding: 18px 30px;
+        width: 178px;
+        height: 60px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .iconDaily {
+        width: 24px;
+        height: 24px;
     }
 }

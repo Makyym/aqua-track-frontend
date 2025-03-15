@@ -9,11 +9,16 @@
   --background: #f0eff4;
   --main-white: #fff;
   --grey-hover-focus: #bcbcbc;
+  --font-family: "Poppins", sans-serif;
+  --font-family2: "Gilroy", sans-serif;
 }
 
 html,
 body {
   overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 html {

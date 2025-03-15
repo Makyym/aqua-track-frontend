@@ -1,0 +1,186 @@
+.formDiv {
+  display: flex;
+  flex-direction: column;
+  max-width: 303px;
+  margin-top: 60px;
+}
+
+.allText {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.boldText {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.indentity {
+  margin-bottom: 14px;
+}
+
+.labelRadio {
+  display: flex;
+  gap: 10px;
+}
+
+.inputRadioDiv {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--main);
+  cursor: pointer;
+}
+
+.inputRadioDivContainer {
+  display: flex;
+}
+
+.inputRadioDiv label {
+  margin-right: 10px;
+  /* Відстань між кнопками */
+}
+
+.radioBtn {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--accent);
+
+  cursor: pointer;
+}
+
+.labelNameEmail {
+  /* margin-bottom: 14px; */
+}
+
+.inputNameEmail {
+  width: 100%;
+  max-width: 303px;
+  height: 46px;
+  border-radius: 15px;
+  padding: 14px 16px;
+  border: 1px solid var(--grey-hover-focus);
+  margin-bottom: 14px;
+  margin-top: 8px;
+  outline: none;
+}
+
+.divDailyNorma {
+  margin-top: 10px;
+  margin-bottom: 24px;
+}
+
+.dailyNorma {
+  margin-bottom: 14px;
+}
+
+.WMFormula {
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+
+.formula {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--accent);
+}
+
+.paragraph {
+  border: 1px solid var(--grey-hover-focus);
+  border-radius: 15px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  padding: 16px;
+  color: var(--main-text);
+}
+
+.activSign {
+  margin-right: 4px;
+}
+
+.activeP {
+  margin-bottom: 24px;
+}
+
+.divWeight {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.labelYourWeight {
+  margin-bottom: 8px;
+}
+
+.requiredAmount {
+  margin-bottom: 14px;
+}
+
+.saveBtn {
+  min-width: 141px;
+  padding: 10px;
+  background: var(--accent);
+  color: var(--main);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .formDiv {
+    min-width: 568px;
+    min-height: 934px;
+    gap: 24px;
+  }
+
+  .boldText {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .allText {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .identityTitle {
+  }
+  .labelNameEmail {
+    display: flex;
+    flex-direction: column;
+  }
+  .inputNameEmail {
+    width: 100%;
+    max-width: 568px;
+    height: 56px;
+
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .inputRadioDiv {
+  }
+  .saveBtn {
+    width: 141px;
+    height: 56px;
+    border-radius: 30px;
+    gap: 10px;
+    padding: 16px 50px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .formDiv {
+    min-width: 923px;
+    padding: 40px;
+  }
+}

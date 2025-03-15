@@ -26,7 +26,8 @@ export const signUp = createAsyncThunk(
         };
       }
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const errorMessage = error.response.data.data.message;
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   },
 );
@@ -37,9 +38,13 @@ export const signIn = createAsyncThunk(
     try {
       const response = await axios.post('/users/login', credentials);
       setAuthHeader(response.data.data.accessToken);
-      return response.data;
+      const { data } = await axios.get('/users/userinfo');
+      data.data.token = response.data.data.accessToken;
+      console.log(data);
+      return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const errorMessage = error.response.data.data.message;
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   },
 );
@@ -49,7 +54,8 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     clearAuthHeader();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+      const errorMessage = error.response.data.data.message;
+      return thunkAPI.rejectWithValue(errorMessage);
   }
 });
 
@@ -74,10 +80,12 @@ export const refreshUser = createAsyncThunk(
           const { data } = await axios.get('/users/userinfo');
           return data;
         } catch (refreshError) {
-          return thunkAPI.rejectWithValue(refreshError.message);
+          const errorMessage = refreshError.response.data.data.message;
+          return thunkAPI.rejectWithValue(errorMessage);
         }
       }
-      return thunkAPI.rejectWithValue(error.message);
+      const errorMessage = error.response.data.data.message;
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   },
 );
@@ -90,7 +98,8 @@ export const refreshToken = createAsyncThunk(
       setAuthHeader(data.data.accessToken);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const errorMessage = error.response.data.data.message;
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   },
 );
@@ -101,6 +110,9 @@ export const patchUser = createAsyncThunk(
     try {
       const { data } = await axios.patch('/users/userinfo', body);
       return data;
-    } catch (error) {}
+    } catch (error) {
+      const errorMessage = error.response.data.data.message;
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
   },
 );

@@ -1,0 +1,23 @@
+.container {
+    width: 343px;
+    height: 770px;
+    border-radius: 30px;
+    padding: 40px 20px;
+    background: var(--background);
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 704px;
+        height: 738px;
+        padding: 32px
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .container {
+        width: 672px;
+        height: 736px;
+        padding: 32px
+    }
+}

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import WaterModal from "../WaterModal/WaterModal";
 import s from "./AddWaterBtn.module.css";
-import icons from "../../images/sprite.svg";
+import sprite from "../../assets/newSprite.svg";
 
-const AddWaterBtn = () => {
+const AddWaterBtn = ({ daily }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -16,9 +16,13 @@ const AddWaterBtn = () => {
 
   return (
     <>
-      <button type="button" className={s.button} onClick={handleOpenModal}>
-        <svg className={s.plus} width="16" height="16">
-          <use href={icons + "#icon-plus"} />
+      <button
+        type="button"
+        className={daily ? s.button : s.buttonDaily}
+        onClick={handleOpenModal}
+      >
+        <svg className={daily ? s.icon : s.iconDaily} width="16" height="16">
+          <use href={`${sprite}#icon-plus`} />
         </svg>
         <p className={s.add_water}>Add water</p>
       </button>

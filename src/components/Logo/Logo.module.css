@@ -1,12 +1,16 @@
 .logo {
+    font-family: "Poppins", sans-serif;
     font-weight:700;
     font-size: 24px;
-    line-height: 1;
-    letter-spacing: -0.18px;
+    letter-spacing: -0.24px;
     text-transform: uppercase;
     color: #323f47;
-    position: absolute;
-    top: 64px;
-    left: 64px;
-    font-family: "Poppins", sans-serif;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .logo {
+        font-size:  18px;
+        letter-spacing: -0.18;
+    }
 }
