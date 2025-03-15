@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import newSprite from '../../assets/newSprite.svg';
 import { selectUser } from '../../redux/auth/selectors';
+import { patchUser } from '../../redux/auth/operations.js';
 
 const FILE_SIZE = 1024 * 1024 * 5;
 
@@ -14,7 +15,7 @@ const SUPPORTED_FORMATS = ['image/jpeg', 'image/png'];
 
 const schema = yup
   .object({
-    gender: yup.string().oneOf(['female', 'male']).required(),
+    gender: yup.string().oneOf(['woman', 'man']).required(),
     name: yup.string().min(2).max(20).required(),
     email: yup.string().email().required(),
     avatarUrl: yup
@@ -65,14 +66,12 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     },
   });
 
-  const onSubmit = async data => {
-    console.log(data);
-
+  const onSubmit = async (values) => {
     try {
-      await dispatch(updateUserSettings(data));
-      const formData = { ...data, avatarUrl: photo };
-
-      console.log(formData);
+      console.log(values);
+      await dispatch(patchUser(values));
+      // const formData = { ...data, avatarUrl: photo };
+      // console.log(formData);
       reset();
       onSuccessSubmit();
     } catch (error) {
@@ -91,18 +90,18 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     time: dailySportTime,
     gender,
   });
-  // const readerFile = file => {
-  //   if (!file) return;
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onload = event => {
-  //     setPhoto(event.target.result);
-  //   };
-  // };
-  // readerFile(uploadedFiles && uploadedFiles[0]);
+  const readerFile = file => {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = event => {
+      setPhoto(event.target.result);
+    };
+  };
+  readerFile(uploadedFiles && uploadedFiles[0]);
   return (
     <div className={css.formDiv}>
-      <form onSubmit={handleSubmit(onSubmit())} className={css.form}>
+      <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         <div className={css.avatarUploadDiv}>
           <img className={css.avatar} src={photo} alt="avatar" />
           <label className={css.labelUpload}>
@@ -128,7 +127,7 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
                 type="radio"
                 className={css.radioBtn}
                 {...register('gender')}
-                value="female"
+                value="woman"
               />
               <span className={clsx(css.allText, css.radioCustom)}>Female</span>
             </label>
@@ -138,7 +137,7 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
                 type="radio"
                 className={css.radioBtn}
                 {...register('gender')}
-                value="male"
+                value="man"
               />
               <span className={css.allText}>Male</span>
             </label>
