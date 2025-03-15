@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { deleteWaterEntry } from '../../redux/water/operations.js';
 import sprite from '../../assets/newSprite.svg';
 import BtnDelete from '../BtnDelete/BtnDelete.jsx';
+import LoaderComponent from '../LoaderComponent/LoaderComponent.jsx';
 
 const DeleteWaterModal = ({ waterId, onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,10 +34,16 @@ const DeleteWaterModal = ({ waterId, onClose }) => {
         </p>
       </div>
       <div className={css.modalBtnBox}>
-        <BtnDelete handleDelete={handleDelete} waterId={waterId} />
-        <button type="button" onClick={onClose} className={css.btnCancel}>
-          Cancel
-        </button>
+        {isLoading ? (
+          <LoaderComponent height={80} width={80} />
+        ) : (
+          <>
+            <BtnDelete handleDelete={handleDelete} waterId={waterId} />
+            <button type="button" onClick={onClose} className={css.btnCancel}>
+              Cancel
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
