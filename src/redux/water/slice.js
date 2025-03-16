@@ -67,10 +67,10 @@ const slice = createSlice({
       const fullDate = payload.data.date;
       const dateOnly = fullDate.split("T")[0];
       if (state.activeDate && dateOnly === state.activeDate) {
-        state.waterActiveDay.push(payload);
+        state.waterActiveDay.push(payload.data);
       }
       if (dateOnly === state.currentDate) {
-        state.waterCurrentDay.push(payload);
+        state.waterCurrentDay.push(payload.data);
       }
     })
     .addCase(deleteWaterEntry.pending, handlePending)
@@ -91,7 +91,12 @@ const slice = createSlice({
     .addCase(editWaterEntry.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.isError = null;
-      const waterItem = state.waterDay.find(item => item._id === payload._id);
+      const waterItem = state.waterActiveDay.find(item => item._id === payload._id);
+      if (!waterItem) {
+        const waterCard = state.waterCurrentDay.find(item => item._id === payload._id);
+        waterCard.value = payload.value;
+        waterCard.date = payload.date;
+      }
       waterItem.value = payload.value;
       waterItem.date = payload.date;
     })
