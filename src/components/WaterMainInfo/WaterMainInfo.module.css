@@ -1,7 +1,7 @@
 .div {
     border-radius: 30px;
     width: 343px;
-    height: 415px;
+    height: 415px; 
     display: flex;
     flex-direction: column;
     padding: 24px 16px 32px;
