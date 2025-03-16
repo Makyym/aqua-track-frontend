@@ -37,8 +37,9 @@ export const addWaterEntry = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const {
-        data: { data },
+        data
       } = await axios.post('water', body);
+      console.log(data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
