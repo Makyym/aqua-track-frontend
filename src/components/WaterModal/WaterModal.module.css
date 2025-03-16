@@ -1,7 +1,6 @@
 .modal {
   position: relative;
   padding: 40px 20px;
-  border: 1px solid red;
   width: 343px;
   border-radius: 15px;
 }

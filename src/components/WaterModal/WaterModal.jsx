@@ -27,7 +27,7 @@ const WaterModal = ({ addWaterEntry, onClose }) => {
       ) : (
         <h3 className={css.subtitle}>Correct entered data:</h3>
       )}
-      <WaterForm />
+      <WaterForm onClose={onClose} />
     </div>
   );
 };

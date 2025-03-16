@@ -27,12 +27,13 @@ const currentTime = new Date().toLocaleTimeString([], {
   minute: '2-digit',
 });
 
-const WaterForm = ({ value, date }) => {
+const WaterForm = ({ value, date, onClose }) => {
   const dispatch = useDispatch();
 
   const {
     register,
     watch,
+    reset,
     handleSubmit,
     setValue,
     formState: { errors },
@@ -45,12 +46,11 @@ const WaterForm = ({ value, date }) => {
     },
   });
 
-  const onSubmit = async data => {
-    try {
-      dispatch(addWater(data));
-    } catch (error) {
-      alert('Failed to add water');
-    }
+  const onSubmit = values => {
+    console.log(values);
+    dispatch(addWaterEntry(values));
+    reset();
+    onClose();
   };
 
   const waterValue = watch('value') ?? 50;

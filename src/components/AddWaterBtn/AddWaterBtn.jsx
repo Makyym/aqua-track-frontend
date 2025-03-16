@@ -11,7 +11,10 @@ const AddWaterBtn = ({ daily }) => {
   };
   return (
     <>
-      <button className={daily ? s.button : s.buttonDaily} onClick={() => SetWaterOpen(true)}>
+      <button
+        className={daily ? s.button : s.buttonDaily}
+        onClick={() => SetWaterOpen(true)}
+      >
         {daily ? (
           <svg className={s.icon}>
             <use href={`${sprite}#icon-plus-green`} />
@@ -24,7 +27,7 @@ const AddWaterBtn = ({ daily }) => {
         Add water
       </button>
       <BaseModal isOpen={waterOpen} onRequestClose={handleModalClose}>
-      <WaterModal />
+        <WaterModal onClose={handleModalClose} />
       </BaseModal>
     </>
   );
