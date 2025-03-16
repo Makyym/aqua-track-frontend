@@ -7,12 +7,12 @@ const AddWaterBtn = ({ daily, onOpen }) => {
   const [showForm, setShowForm] = useState(false);
 
   const handleClick = () => {
-    setShowForm(!showForm);  // Открываем/закрываем форму
-    onOpen && onOpen();  // Вызываем onOpen если он передан
+    setShowForm(!showForm);  
+    onOpen && onOpen(); 
   };
 
   return (
-    <div className={s.container}> {/* Контейнер для выравнивания */}
+    <div className={s.container}>
       <button className={daily ? s.button : s.buttonDaily} onClick={handleClick}>
         {daily ? (
           <svg className={s.icon}>
@@ -26,7 +26,7 @@ const AddWaterBtn = ({ daily, onOpen }) => {
         Add water
       </button>
       
-      {showForm && <WaterForm />}  {/* Показываем форму, если showForm true */}
+      {showForm && <WaterForm />} 
     </div>
   );
 };
