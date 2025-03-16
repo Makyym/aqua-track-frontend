@@ -53,7 +53,7 @@ const WaterForm = ({ value, date }) => {
     }
   };
 
-  const timeValue = watch('time') || currentTime;
+  // const timeValue = watch('time') || currentTime;
   const waterValue = watch('value') ?? 50;
 
   const handlePlusClick = () => {
