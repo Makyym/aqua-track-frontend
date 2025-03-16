@@ -10,9 +10,11 @@ const DeleteWaterModal = ({ waterId, onClose, date }) => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
-    dispatch(deleteWaterEntry(waterId));
-    dispatch(fetchWaterMonth(date));
+  const handleDelete = async () => {
+    const response = await dispatch(deleteWaterEntry(waterId));
+    if (response) {
+      dispatch(fetchWaterMonth(date))
+    }
     onClose();
   };  
 

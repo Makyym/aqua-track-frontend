@@ -47,6 +47,9 @@ const slice = createSlice({
       if (state.currentDate === payload.date) {
         state.waterCurrentDay = payload.array;
       }
+      if (state.currentDate === state.activeDate) {
+        state.waterActiveDay = [...state.waterCurrentDay];
+      }
       state.waterActiveDay = payload.array;
     })
     .addCase(fetchWaterMonth.pending, handlePending)
@@ -72,9 +75,9 @@ const slice = createSlice({
       const dateOnly = date.split("T")[0];
       if (dateOnly === state.currentDate) {
         state.waterCurrentDay = state.waterCurrentDay.filter(item => item._id !== payload.data._id);
-        return;
       }
-      state.waterActiveDay = state.waterActiveDay.filter(item => item._id !== payload);
+      state.waterActiveDay = state.waterActiveDay.filter(item => item._id !== payload.data._id);
+      
     })
     .addCase(editWaterEntry.pending, handlePending)
     .addCase(editWaterEntry.rejected, handleRejected)

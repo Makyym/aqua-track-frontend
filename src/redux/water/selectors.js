@@ -6,7 +6,7 @@ export const selectIsError = state => state.water?.isError || null;
 export const selectIsLoading = state => state.water.isLoading;
 export const selectWaterMonth = state => state.water.waterMonth;
 export const selectCurrentDate = state => state.water.currentDate;
-export const selectActiveDate = state => state.water?.activeDate || null;
+export const selectActiveDate = state => state.water.activeDate;
 
 export const selectAllWaterForDay = createSelector([selectCurrentWaterDayArray], (entrys) => {
     const sum = entrys.reduce((accumulator, entry) => {
