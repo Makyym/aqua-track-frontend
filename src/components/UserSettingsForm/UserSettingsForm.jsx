@@ -19,7 +19,7 @@ const schema = yup
     email: yup.string().email().required(),
     avatarUrl: yup
       .mixed()
-      // .test('required', 'File is required', value => value?.length > 0 || )
+
       .test('fileSize', 'File size too large', value =>
         value && value[0] ? value[0].size <= FILE_SIZE : true,
       )
@@ -144,94 +144,102 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
             </label>
           </div>
         </div>
+        <div className={css.container}>
+          <div className={css.divDesktop1}>
+            <div className={css.divNameEmail}>
+              <label className={css.labelNameEmail}>
+                <span className={clsx(css.boldText, css.titleName)}>
+                  Your name
+                </span>
+                <input
+                  type="text"
+                  {...register('name')}
+                  className={css.inputNameEmail}
+                />
+                <span className={css.allText}> {errors.name?.message}</span>
+              </label>
+              <label className={css.labelNameEmail}>
+                <span className={clsx(css.boldText, css.titleName)}>Email</span>
+                <input
+                  type="text"
+                  {...register('email')}
+                  className={css.inputNameEmail}
+                />
+                <span> {errors.email?.message}</span>
+              </label>
+            </div>
 
-        <div className={css.divNameEmail}>
-          <label className={css.labelNameEmail}>
-            <span className={clsx(css.boldText, css.titleName)}>Your name</span>
-            <input
-              type="text"
-              {...register('name')}
-              className={css.inputNameEmail}
-            />
-            <span className={css.allText}> {errors.name?.message}</span>
-          </label>
-          <label className={css.labelNameEmail}>
-            <span className={clsx(css.boldText, css.titleName)}>Email</span>
-            <input
-              type="text"
-              {...register('email')}
-              className={css.inputNameEmail}
-            />
-            <span> {errors.email?.message}</span>
-          </label>
+            <div className={css.divDailyNorma}>
+              <p className={clsx(css.boldText, css.dailyNorma)}>
+                My daily norma
+              </p>
+              <p className={clsx(css.allText, css.WMFormula)}>For women:</p>
+              <span className={css.formula}>V=(M*0,03) + (T*0,4)</span>
+
+              <p className={clsx(css.allText, css.WMFormula)}>For men:</p>
+              <span className={css.formula}>V=(M*0,04) + (T*0,6)</span>
+              <p className={clsx(css.allText, css.paragraph)}>
+                <span className={css.formula}>*</span> V is the volume of the
+                water norm in liters per day, M is your body weight, T is the
+                time of active sports, or another type of activity commensurate
+                in terms of loads (in the absence of these, you must set 0)
+              </p>
+            </div>
+
+            <p className={clsx(css.allText, css.activeP)}>
+              <span className={clsx(css.formula, css.activSign)}>!</span>Active
+              time in hours
+            </p>
+          </div>
+          <div className={css.divDesktop2}>
+            <div className={css.divWeight}>
+              <label>
+                <span className={clsx(css.allText, css.labelYourWeight)}>
+                  Your weight in kilograms:
+                </span>
+                <input
+                  type="text"
+                  {...register('weight')}
+                  className={css.inputNameEmail}
+                />
+                <span> {errors.weight?.message}</span>
+              </label>
+              <label>
+                <span className={css.allText}>
+                  The time of active participation in sports:
+                </span>
+
+                <input
+                  type="text"
+                  {...register('dailySportTime')}
+                  className={css.inputNameEmail}
+                />
+                <span> {errors.dailySportTime?.message}</span>
+              </label>
+            </div>
+
+            <div className={css.requiredAmount}>
+              <p className={css.allText}>
+                The required amount of water in liters per day:
+              </p>
+              <span className={clsx(css.recomendedWater, css.formula)}>
+                {recommendedWaterNorm}L
+              </span>
+            </div>
+
+            <label>
+              <span className={css.boldText}>
+                Write down how much water you will drink:
+              </span>
+              <input
+                type="text"
+                {...register('dailyNorm')}
+                className={css.inputNameEmail}
+              />
+              <span> {errors.dailyNorm?.message}</span>
+            </label>
+          </div>
         </div>
-
-        <div className={css.divDailyNorma}>
-          <p className={clsx(css.boldText, css.dailyNorma)}>My daily norma</p>
-          <p className={clsx(css.allText, css.WMFormula)}>For women:</p>
-          <span className={css.formula}>V=(M*0,03) + (T*0,4)</span>
-
-          <p className={clsx(css.allText, css.WMFormula)}>For men:</p>
-          <span className={css.formula}>V=(M*0,04) + (T*0,6)</span>
-          <p className={clsx(css.allText, css.paragraph)}>
-            <span className={css.formula}>*</span> V is the volume of the water
-            norm in liters per day, M is your body weight, T is the time of
-            active sports, or another type of activity commensurate in terms of
-            loads (in the absence of these, you must set 0)
-          </p>
-        </div>
-
-        <p className={clsx(css.allText, css.activeP)}>
-          <span className={clsx(css.formula, css.activSign)}>!</span>Active time
-          in hours
-        </p>
-
-        <div className={css.divWeight}>
-          <label>
-            <span className={clsx(css.allText, css.labelYourWeight)}>
-              Your weight in kilograms:
-            </span>
-            <input
-              type="text"
-              {...register('weight')}
-              className={css.inputNameEmail}
-            />
-            <span> {errors.weight?.message}</span>
-          </label>
-          <label>
-            <span className={css.allText}>
-              The time of active participation in sports:
-            </span>
-
-            <input
-              type="text"
-              {...register('dailySportTime')}
-              className={css.inputNameEmail}
-            />
-            <span> {errors.dailySportTime?.message}</span>
-          </label>
-        </div>
-
-        <div className={css.requiredAmount}>
-          <p className={css.allText}>
-            The required amount of water in liters per day:
-          </p>
-          <span className={clsx(css.recomendedWater, css.formula)}>
-            {recommendedWaterNorm}L
-          </span>
-        </div>
-
-        <label htmlFor="">
-          <span className={css.boldText}>
-            Write down how much water you will drink:
-          </span>
-          <input
-            type="text"
-            {...register('dailyNorm')}
-            className={css.inputNameEmail}
-          />
-          <span> {errors.dailyNorm?.message}</span>
-        </label>
         <button type="submit" className={css.saveBtn}>
           Save
         </button>
