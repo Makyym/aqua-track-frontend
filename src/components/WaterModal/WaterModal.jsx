@@ -1,18 +1,21 @@
-import WaterForm from '../WaterForm/WaterForm.jsx';
+import React, { memo } from "react";
+import BaseModal from "../BaseModal/BaseModal.jsx";
+import WaterForm from "../WaterForm/WaterForm.jsx";
+import css from "./WaterModal.module.css";
 
-const WaterModal = ({ addWaterEntry, editWaterEntry }) => {
+const WaterModal = memo(({ isOpen, onClose, operationType }) => {
   return (
-    <div>
-      <h2 className="title">Add water</h2>
-      <button type="button" onClick={close}>
-        svg
-      </button>
-      <h2 className="title">Edit the entered amount of water</h2>
-      <h3>Choose value:</h3>
-      <h3>Correct entered data:</h3>
-      <WaterForm />
-    </div>
+    <BaseModal isOpen={isOpen} onClose={onClose}>
+      <div className={css.modalContainer}>
+
+        <h2 className={css.modalTitle}>
+          {operationType === "add" ? "Add water" : "Edit the entered amount of water"}
+        </h2>
+
+        <WaterForm operationType={operationType} onClose={onClose} />
+      </div>
+    </BaseModal>
   );
-};
+});
 
 export default WaterModal;

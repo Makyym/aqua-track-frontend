@@ -1,0 +1,51 @@
+.day_norma {
+    border-radius: 15px;
+    padding: 12px;
+    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.1);
+    background-color: #FFFFFF;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 120px;
+    height: 75px;
+    gap: 10px;
+    position: relative;
+    left: 10px;
+
+    @media (min-width: 768px) {
+        padding: 14px 18px;
+        gap: 4px;
+        width: 140px;
+    }
+
+    @media (min-width: 1440px) {
+        width: 160px;
+    }
+}
+
+.liters {
+    font-family: var(--poppins-bold);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--color-darkblue);
+
+    @media (min-width: 768px) {
+        font-size: 16px;
+    }
+}
+
+.text {
+    font-family: var(--poppins-reg);
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1;
+    min-width: 78px;
+    color: rgba(47, 47, 47, 0.6);
+
+    @media (min-width: 768px) {
+        font-size: 12px;
+    }
+}

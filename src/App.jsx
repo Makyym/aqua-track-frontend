@@ -19,26 +19,24 @@ const GoogleAuthPage = lazy(() => import('./pages/GoogleAuthPage/GoogleAuthPage.
 function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
+
   useEffect(() => {
-      dispatch(refreshUser())
+    dispatch(refreshUser());
   }, [dispatch]);
   return isRefreshing ? <LoaderComponent /> : (
     <SharedLayout>
       <Routes>
-        <Route path="/"
-        element={
-        <RestrictedRoute component={<HomePage />} redirectTo="/tracker" />
-        } />
+        <Route
+          path="/"
+          element={<RestrictedRoute component={<HomePage />} redirectTo="/tracker" />}
+        />
         <Route
           path="/signup"
-          element={
-            <RestrictedRoute component={<SignUpPage />} redirectTo="/tracker" />
-        }/>
+          element={<RestrictedRoute component={<SignUpPage />} redirectTo="/tracker" />}
+        />
         <Route
           path="/signin"
-          element={
-            <RestrictedRoute component={<SignInPage />} redirectTo="/tracker" />
-          }
+          element={<RestrictedRoute component={<SignInPage />} redirectTo="/tracker" />}
         />
         <Route path="/auth/success"
         element={

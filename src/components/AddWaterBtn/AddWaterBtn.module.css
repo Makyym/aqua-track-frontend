@@ -20,12 +20,13 @@
     font-family: var(--font-family);
     font-weight: 700;
     font-size: 16px;
-    line-height: 24px; 
+    line-height: 24px;
     letter-spacing: -0.01em;
     text-align: center;
     color: var(--main);
     background-color: transparent;
     margin-left: auto;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
 }
 
 .buttonDaily {
@@ -40,7 +41,7 @@
     font-family: var(--font-family);
     font-weight: 700;
     font-size: 14px;
-    line-height: 18px; 
+    line-height: 18px;
     letter-spacing: -0.01em;
     text-align: center;
     color: var(--main-white);
@@ -57,6 +58,7 @@
         font-size: 16px;
         line-height: 24px;
     }
+
     .iconDaily {
         width: 24px;
         height: 24px;
@@ -71,6 +73,7 @@
         font-size: 16px;
         line-height: 24px;
     }
+
     .iconDaily {
         width: 24px;
         height: 24px;
