@@ -14,7 +14,7 @@ const WelcomeSection = () => {
             <div className={css.link}>
                 <Link className={css.signup} to='/signup'>Try tracker</Link>
                 <Link className={css.signin} to='/signin'>Sign In</Link>
-                <GoogleLogo />
+                {/* <GoogleLogo /> */}
             </div>
             </section>
         </div>
