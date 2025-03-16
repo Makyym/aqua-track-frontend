@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { addWaterEntry } from '../../redux/water/operations.js';
+import { addWaterEntry, editWaterEntry } from '../../redux/water/operations.js';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import css from './WaterForm.module.css';
@@ -27,7 +27,7 @@ const currentTime = new Date().toLocaleTimeString([], {
   minute: '2-digit',
 });
 
-const WaterForm = ({ value, date, onClose }) => {
+const WaterForm = ({ value, dateString, onClose, waterId }) => {
   const dispatch = useDispatch();
 
   const {
@@ -41,14 +41,29 @@ const WaterForm = ({ value, date, onClose }) => {
     mode: 'onBlur',
     resolver: yupResolver(AddWaterSchema),
     defaultValues: {
-      time: date ?? currentTime,
+      time: currentTime,
       value: value ?? 50,
     },
   });
 
   const onSubmit = values => {
-    console.log(values);
-    dispatch(addWaterEntry(values));
+    if (waterId) {
+      const onlyDate = dateString.split('T')[0];
+      const data = {
+        id: waterId,
+        value: values.value,
+        date: `${onlyDate}T${values.time}`,
+      };
+      dispatch(editWaterEntry(data));
+      reset();
+      onClose();
+      return;
+    }
+    const data = {
+      value: values.value,
+      date: `${dateString}T${values.time}`,
+    };
+    dispatch(addWaterEntry(data));
     reset();
     onClose();
   };

@@ -3,10 +3,12 @@ import sprite from '../../assets/newSprite.svg';
 import { useState } from 'react';
 import BaseModal from '../BaseModal/BaseModal.jsx';
 import DeleteWaterModal from '../DeleteWaterModal/DeleteWaterModal.jsx';
+import WaterModal from '../WaterModal/WaterModal.jsx';
 
 const WaterItem = ({ data }) => {
   const { value, date, _id } = data;
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [isEditFormOpen, setIsEditFormOpen] = useState(false);
   const fullDate = new Date(date);
   const year = fullDate.getFullYear();
   const month = (fullDate.getMonth() + 1).toString().padStart(2, '0');
@@ -31,7 +33,7 @@ const WaterItem = ({ data }) => {
       </div>
 
       <div className={s.iconsDiv}>
-        <svg className={s.iconsEntry}>
+        <svg className={s.iconsEntry} onClick={() => setIsEditFormOpen(true)}>
           <use href={`${sprite}#icon-edit`} />
         </svg>
 
@@ -39,12 +41,25 @@ const WaterItem = ({ data }) => {
           <use href={`${sprite}#icon-trash`} />
         </svg>
       </div>
-
+      <BaseModal
+        isOpen={isEditFormOpen}
+        onRequestClose={() => setIsEditFormOpen(false)}
+      >
+        <WaterModal
+          date={formattedDate}
+          cardId={_id}
+          onClose={() => setIsEditFormOpen(false)}
+        />
+      </BaseModal>
       <BaseModal
         isOpen={isDeleteModalOpen}
         onRequestClose={() => setDeleteModalOpen(false)}
       >
-        <DeleteWaterModal date={formattedDate} waterId={_id} onClose={() => setDeleteModalOpen(false)} />
+        <DeleteWaterModal
+          date={date}
+          waterId={_id}
+          onClose={() => setDeleteModalOpen(false)}
+        />
       </BaseModal>
     </div>
   );

@@ -3,7 +3,7 @@ import WaterForm from '../WaterForm/WaterForm.jsx';
 import { selectIsLoading } from '../../redux/auth/selectors.js';
 import newSprite from '../../assets/newSprite.svg';
 import css from './WaterModal.module.css';
-const WaterModal = ({ addWaterEntry, onClose }) => {
+const WaterModal = ({ addWaterEntry, onClose, date, cardId }) => {
   const isLoading = useSelector(selectIsLoading);
   const handleClose = () => {
     onClose();
@@ -27,7 +27,7 @@ const WaterModal = ({ addWaterEntry, onClose }) => {
       ) : (
         <h3 className={css.subtitle}>Correct entered data:</h3>
       )}
-      <WaterForm onClose={onClose} />
+      <WaterForm onClose={handleClose} dateString={date} waterId={cardId} />
     </div>
   );
 };
