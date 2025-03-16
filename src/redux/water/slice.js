@@ -1,11 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addWaterEntry, deleteWaterEntry, editWaterEntry, fetchWaterDay, fetchWaterMonth } from './operations.js';
 
+const today = new Date();
+const year = today.getFullYear();
+const month = String(today.getMonth() + 1).padStart(2, '0');
+const day = String(today.getDate()).padStart(2, '0');
+const formattedDate = `${year}-${month}-${day}`;
+
 const initialState = {
-  waterDay: [],
+  waterActiveDay: [],
+  waterCurrentDay: [],
   waterMonth: [],
   isLoading: false,
   isError: null,
+  currentDate: formattedDate,
   activeDate: null, // Початково день не вибраний
 };
 
@@ -23,10 +31,10 @@ const slice = createSlice({
   initialState,
   reducers: {
     updateActiveDate: (state, action) => {
-      state.activeDate = action.payload; // Оновлюємо вибрану дату
+      state.activeDate = action.payload;
     },
     resetActiveDate: state => {
-      state.activeDate = null; // Скидаємо вибір
+      state.activeDate = null;
     },
   },
   extraReducers: builder => {
@@ -36,7 +44,13 @@ const slice = createSlice({
     .addCase(fetchWaterDay.fulfilled, (state, {payload}) => {
       state.isLoading = false;
       state.isError = null;
-      state.waterDay = payload;
+      if (state.currentDate === payload.date) {
+        state.waterCurrentDay = payload.array;
+      }
+      if (state.currentDate === state.activeDate) {
+        state.waterActiveDay = [...state.waterCurrentDay];
+      }
+      state.waterActiveDay = payload.array;
     })
     .addCase(fetchWaterMonth.pending, handlePending)
     .addCase(fetchWaterMonth.rejected, handleRejected)
@@ -50,14 +64,20 @@ const slice = createSlice({
     .addCase(addWaterEntry.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.isError = null;
-      state.waterDay.push(payload);
+      state.waterActiveDay.push(payload);
     })
     .addCase(deleteWaterEntry.pending, handlePending)
     .addCase(deleteWaterEntry.rejected, handleRejected)
     .addCase(deleteWaterEntry.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.isError = null;
-      state.waterDay = state.waterDay.filter(item => item._id !== payload);
+      const date = payload.data.date;
+      const dateOnly = date.split("T")[0];
+      if (dateOnly === state.currentDate) {
+        state.waterCurrentDay = state.waterCurrentDay.filter(item => item._id !== payload.data._id);
+      }
+      state.waterActiveDay = state.waterActiveDay.filter(item => item._id !== payload.data._id);
+      
     })
     .addCase(editWaterEntry.pending, handlePending)
     .addCase(editWaterEntry.rejected, handleRejected)

@@ -1,7 +1,7 @@
 import UserSettingsForm from '../UserSettingsForm/UserSettingsForm.jsx';
 import css from './UserSettingsModal.module.css';
-import { useState } from 'react';
 
+import newSprite from '../../assets/newSprite.svg';
 const UserSettingsModal = ({ close }) => {
   const calculateWaterNorm = () => {
     const W = parseFloat(weight) || 0;
@@ -12,23 +12,19 @@ const UserSettingsModal = ({ close }) => {
 
   return (
     <div className={css.modalSettings}>
-      <div>
+      <div className={css.upload}>
         <h2 className={css.modalTitle}>Setting</h2>
-        <button className={css.closeButton} onClick={close}>
-          {' '}
-          ✖
+        <button onClick={close} className={css.closeButton}>
+          <svg>
+            <use
+              href={`${newSprite}#icon-close-cross`}
+            />
+          </svg>
         </button>
       </div>
-      <div>
-        <img
-          className={css.avatar}
-          src="https://i.pravatar.cc/80"
-          alt="avatar"
-        />
-        <button className={css.uploadPhoto}>Upload a photo</button>
-        <UserSettingsForm />
-      </div>
-      </div>
+
+      <UserSettingsForm onSuccessSubmit={close} />
+    </div>
   );
 };
 

@@ -7,12 +7,14 @@ import PrivateRoute from './PrivateRoute.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from './redux/auth/operations.js';
 import { selectIsRefreshing } from './redux/auth/selectors.js';
+import LoaderComponent from './components/LoaderComponent/LoaderComponent.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage.jsx'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage.jsx'));
 const TrackerPage = lazy(() => import('./pages/TrackerPage/TrackerPage.jsx'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
+const GoogleAuthPage = lazy(() => import('./pages/GoogleAuthPage/GoogleAuthPage.jsx'));
 
 function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -20,8 +22,7 @@ function App() {
   useEffect(() => {
       dispatch(refreshUser())
   }, [dispatch]);
-  const loading = "Loading";
-  return isRefreshing ? loading : (
+  return isRefreshing ? <LoaderComponent /> : (
     <SharedLayout>
       <Routes>
         <Route path="/"
@@ -39,6 +40,10 @@ function App() {
             <RestrictedRoute component={<SignInPage />} redirectTo="/tracker" />
           }
         />
+        <Route path="/auth/success"
+        element={
+        <RestrictedRoute component={<GoogleAuthPage />} redirectTo="/tracker" />
+        } />
         <Route
           path="/tracker"
           element={

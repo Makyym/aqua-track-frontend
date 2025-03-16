@@ -1,4 +1,12 @@
 .div {
     display: flex;
-    gap: 50px;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media screen and (min-width: 1440px) {
+    .div {
+        flex-direction: row;
+        gap: 32px;
+    }
 }

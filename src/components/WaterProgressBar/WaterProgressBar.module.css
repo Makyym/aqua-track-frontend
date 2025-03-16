@@ -1,0 +1,102 @@
+.waterScaleContainer {
+    border-radius: 15px;
+    padding: 12px;
+    width: 198px;
+    background-color: var(--main-white);
+    margin-top: 49px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--font-family);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    & h3 {
+        margin-bottom: 18px;
+        font-family: var(--font-family);
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 14px;
+        color: var(--main);
+    }
+}
+
+.waterScale {
+    position: relative;
+    background-color: var(--background);
+    border-radius: 9px;
+    width: 174px;
+    height: 6px;
+}
+
+.waterScaleFill {
+    background-color: var(--accent);;
+    border-radius: 9px;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+  /* маркер відсоток */
+.currentMarker {
+    position: absolute;
+    top: -300%;
+    width: 24px;
+    text-align: center;
+    transform: translateX(-50%);
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 10px;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+  /* Шарик в шкали */
+.currentBall {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: var(--main-white);
+    border: 1px solid var(--accent);;
+    border-radius: 100%;
+}
+
+.waterScaleMarkers {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 10px;
+    color: rgba(47, 47, 47, 0.6);
+}
+
+@media screen and (min-width: 768px) {
+    .waterScaleContainer {
+        width: 295px;
+        padding: 20px;
+        margin-top: 87px;
+        & h3 {
+            font-size: 15px;
+            line-height: 22px; 
+        }
+    }
+    .waterScale {
+        width: 255px;
+        height: 8px;
+    }
+    .currentMarker {
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .waterScaleMarkers {
+        font-size: 12px;
+        line-height: 22px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .waterScaleContainer {
+        margin-top: 215px;
+    }
+}

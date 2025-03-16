@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { lazy } from 'react';
 
 axios.defaults.baseURL = 'https://project-aqt-api.onrender.com';
 axios.defaults.withCredentials = true;
@@ -11,6 +12,34 @@ export const setAuthHeader = token => {
 export const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = ``;
 };
+
+axios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const { config, response, status } = error;
+    if (config && config.url && config.url.includes('/users/refresh')) {
+      return Promise.reject(error);
+    }
+    if (status === 401 && response.status === 401 && !config._retry) {
+      config._retry = true;
+      try {
+        const { store } = await import('../store');
+        const refreshResult = await store.dispatch(refreshToken());
+        if (refreshResult.error) {
+          return Promise.reject(refreshResult.error.message);
+        }
+        const newToken = refreshResult.payload.data.accessToken;
+        setAuthHeader(newToken) 
+        config.headers.Authorization = `Bearer ${newToken}`;
+        setAuthHeader(newToken);
+        return axios(config);
+      } catch (refreshError) {
+        return Promise.reject(refreshError);
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 export const signUp = createAsyncThunk(
   'auth/signUp',
@@ -40,7 +69,6 @@ export const signIn = createAsyncThunk(
       setAuthHeader(response.data.data.accessToken);
       const { data } = await axios.get('/users/userinfo');
       data.data.token = response.data.data.accessToken;
-      console.log(data);
       return data;
     } catch (error) {
       const errorMessage = error.response.data.data.message;
@@ -62,32 +90,20 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const refreshUser = createAsyncThunk(
   'auth/refreshUser',
   async (_, thunkAPI) => {
+    const savedToken = thunkAPI.getState().auth.token;
+    if (!savedToken) {
+      return thunkAPI.rejectWithValue('Token does not exist');
+    }
+    setAuthHeader(savedToken);
     try {
-      const savedToken = thunkAPI.getState().auth.token;
-      if (!savedToken) {
-        return thunkAPI.rejectWithValue('Token does not exist');
-      }
-      setAuthHeader(savedToken);
       const { data } = await axios.get('/users/userinfo');
       return data;
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        try {
-          const refreshResult = await thunkAPI.dispatch(refreshToken());
-          if (refreshResult.error) {
-            throw new Error(refreshResult.error.message);
-          }
-          const { data } = await axios.get('/users/userinfo');
-          return data;
-        } catch (refreshError) {
-          const errorMessage = refreshError.response.data.data.message;
-          return thunkAPI.rejectWithValue(errorMessage);
-        }
-      }
-      const errorMessage = error.response.data.data.message;
+      const errorMessage =
+        error.response?.data?.data?.message || 'Unexpected error';
       return thunkAPI.rejectWithValue(errorMessage);
     }
-  },
+  }
 );
 
 export const refreshToken = createAsyncThunk(
@@ -108,8 +124,24 @@ export const patchUser = createAsyncThunk(
   'auth/patchUser',
   async (body, thunkAPI) => {
     try {
-      const { data } = await axios.patch('/users/userinfo', body);
+      const { data } = await axios.patch('/users/userinfo', body, {headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+      });
       return data;
+    } catch (error) {
+      const errorMessage = error.response.data.data.message;
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  },
+);
+
+export const googleAuthUser = createAsyncThunk(
+  'auth/googleAuth',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get('/auth/get-oauth-url');
+      window.location.href = data.data.url;
     } catch (error) {
       const errorMessage = error.response.data.data.message;
       return thunkAPI.rejectWithValue(errorMessage);
