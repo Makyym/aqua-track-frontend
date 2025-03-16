@@ -17,13 +17,6 @@
   background-color: transparent;
   color: var(--grey-hover-focus);
 }
-.btnSettings:hover,
-.btnSettings:focus {
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 22.4px;
-  color: var(--main);
-}
 
 .btnLogOut {
   display: flex;
@@ -51,13 +44,19 @@
 }
 .btnLogOut:hover,
 .btnLogOut:focus {
-  fill: var(--main);
+  color: var(--main);
 }
 .iconUpload:hover,
 .iconUpload:focus {
   fill: var(--main);
 }
-
+.btnSettings:hover,
+.btnSettings:focus {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 22.4px;
+  color: var(--main);
+}
 @media screen and (min-width: 768px) {
   .vidget {
     width: 157px;
