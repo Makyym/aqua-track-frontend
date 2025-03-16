@@ -1,27 +1,157 @@
-.formContainer {
-  margin: 0 auto;
-  width: 303px;
-  height: auto;
-  padding: 0;
+/* For Chrome, Safari, Edge и Opera */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--white);
+}
+/* For Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
-.waterAndTimeLable {
+/* Amount of water */
+
+.waterAmountContainer {
+  margin-bottom: 16px;
 }
 .plusMinusContainer {
-}
-.plusMinusBtn {
-}
-.waterAmount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.waterValueLable {
+.waterAmountLabel {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+  font-family: var(--font-family);
+  color: var(--main);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
+
+.waterAmount {
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.3;
+  width: 100px;
+  background-color: var(--main);
+  font-family: var(--font-family);
+  color: var(--main-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plusMinusBtn {
+  background-color: transparent;
+  color: var(--main);
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.plusMinusSvg {
+  fill: var(--main);
+  transition: fill 0.3s ease-in-out;
+}
+
+.plusMinusBtn:focus .plusMinusSvg,
+.plusMinusBtn:hover .plusMinusSvg {
+  fill: #9be1a0;
+}
+
+/* Recording Time  */
+
+.timeContainer {
+  margin-bottom: 10px;
+}
+
+.timeLabel {
+  margin-bottom: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+  font-family: var(--font-family);
+  color: var(--main);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Enter the value of the water used */
+
+.waterValueContainer {
+  margin-bottom: 4px;
+}
+
+.waterValueLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-family);
+  color: var(--main);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* Common */
+
 .input {
+  font-weight: 400;
+  font-size: 14px;
+  font-family: var(--font-family);
+  color: var(--main-text);
+  line-height: 1.3;
+  height: 46px;
+  padding-left: 16px;
+  border-radius: 15px;
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  transition: border-color 0.1s ease-in-out;
 }
+
+.input:focus,
+.input:hover {
+  border-color: #9be1a0;
+  outline: none;
+}
+
+.errorMessage {
+  min-height: 20px;
+  font-size: 14px;
+  color: red;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 1;
+  visibility: visible;
+}
+
+.errorMessage.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Button */
+
 .btn {
+  padding: 14px 40px;
+  border-radius: 30px;
+  border: none;
+  background-color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Tablet styles */
+@media screen and (min-width: 768px) {
+  .waterAmountLabel {
+    font-size: 16px;
+  }
+}
+
+/* Desktop styles */
+@media screen and (min-width: 1440px) {
 }
