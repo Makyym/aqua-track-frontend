@@ -18,8 +18,6 @@ const UserSettingsModal = ({ close }) => {
           <svg>
             <use
               href={`${newSprite}#icon-close-cross`}
-              width={28}
-              height={28}
             />
           </svg>
         </button>

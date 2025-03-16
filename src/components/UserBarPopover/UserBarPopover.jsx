@@ -42,8 +42,8 @@ const UserBarPopover = () => {
         Settings
       </button>
       <button className={css.btnSettings} onClick={() => setLogoutOpen(true)}>
-        <svg className={css.iconUpload}>
-          <use href={`${newSprite}#icon-upload`} />
+      <svg className={css.iconSettings}>
+          <use href={`${newSprite}#icon-log-out`} />
         </svg>
         Log out
       </button>

@@ -2,68 +2,51 @@
   position: absolute;
   background-color: var(--main-white);
   width: 137px;
-  height: 72px;
   display: flex;
   flex-direction: column;
   border-radius: 15px;
-  padding: 14px 20px;
+  padding: 10px 20px;
   gap: 8px;
-  bottom: -76px;
+  bottom: -68px;
 }
 
 .btnSettings {
+  font-family: var(--font-family);
+  font-weight: 700;
+  padding: 0;
+  gap: 8px;
   display: flex;
+  align-items: center;
   border: none;
+  font-size: 14px;
+  line-height: 18px; 
   background-color: transparent;
   color: var(--grey-hover-focus);
+  /* transition: color ; */
 }
 
-.btnLogOut {
-  display: flex;
-  padding: 0;
-  border: none;
-  color: var(--grey-hover-focus);
-  background-color: transparent;
-}
 .iconSettings {
   width: 16px;
   height: 16px;
-  margin-right: 10px;
-  fill: var(--grey-hover-focus);
+  stroke: var(--grey-hover-focus);
+  fill: transparent;
 }
-.iconUpload {
-  transform: rotate(90deg);
-  width: 16px;
-  height: 16px;
-  margin-right: 10px;
-  fill: var(--grey-hover-focus);
-}
-.iconSettings:hover,
-.iconSettings:focus {
-  fill: var(--main);
-}
-.btnLogOut:hover,
-.btnLogOut:focus {
-  color: var(--main);
-}
-.iconUpload:hover,
-.iconUpload:focus {
-  fill: var(--main);
-}
+
 .btnSettings:hover,
 .btnSettings:focus {
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 22.4px;
   color: var(--main);
+  & svg {
+    stroke: var(--main);
+  }
 }
+
 @media screen and (min-width: 768px) {
   .vidget {
     width: 157px;
-    height: 82px;
-    bottom: -90px;
+    bottom: -80px;
   }
   .btnSettings {
+    font-size: 15px;
     line-height: 22px;
   }
 }

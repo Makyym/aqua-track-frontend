@@ -1,332 +1,413 @@
-.formDiv {
+.form {
+  width: 303px;
   display: flex;
   flex-direction: column;
-  max-width: 303px;
-  margin-top: 60px;
+  margin-top: 20px;
+  gap: 40px;
+  font-family: var(--font-family);
+  & label {
+    position: relative;
+  }
 }
+
+.avatarUploadDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
 .avatar {
   width: 75px;
   height: 75px;
   border-radius: 50%;
   display: block;
-  margin: 0 auto;
   background-color: transparent;
   object-fit: cover;
 }
-.avatarUploadDiv {
-  margin-bottom: 40px;
-}
-.upload {
-  margin-right: 8px;
-  width: 20px;
-  height: 20px;
-}
-.uploadPhoto {
-  background: none;
-  border: none;
-  color: var(--main);
-  cursor: pointer;
 
-  margin-top: 10px;
-  display: block;
-  margin: 0 auto;
-  font-size: 14px;
-  line-height: 18px;
-}
 .labelUpload {
   display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.allText {
-  font-family: var(--font-family);
+  gap: 8px;
+  align-items: center;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+  letter-spacing: -0.01em;
+  color: var(--main-text);
 }
 
-.boldText {
-  font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
+.upload {
+  width: 18px;
+  height: 18px;
 }
 
-.indentity {
-  margin-bottom: 14px;
-}
-
-.labelRadio {
-  display: block;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .inputRadioDiv {
   display: flex;
   flex-direction: column;
-  margin-bottom: 24px;
-
-  gap: 10px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--main);
-  cursor: pointer;
+  gap: 14px;
+  & p {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    color: var(--main);
+  }
 }
 
 .inputRadioDivContainer {
   display: flex;
+  gap: 20px;
 }
 
-.inputRadioDiv label {
-  margin-right: 10px;
-  /* Відстань між кнопками */
+.labelRadio {
+  display: flex;
+  gap: 10px;
 }
 
 .radioBtn {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radioCustom {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  color: var(--main-text);
+}
+
+.radioCustom::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 20px;
   height: 20px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
 
-  margin-right: 10px;
-  cursor: pointer;
+.radioCustom::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.radioBtn:checked + .radioCustom::after {
+  opacity: 1;
+}
+
+.divNameEmail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .labelNameEmail {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: var(--main);
 }
 
 .inputNameEmail {
-  width: 100%;
-  max-width: 303px;
-  height: 46px;
+  border: 1px solid rgba(47, 47, 47, 0.15);
   border-radius: 15px;
   padding: 14px 16px;
-  border: 1px solid var(--grey-hover-focus);
-  margin-bottom: 14px;
-  margin-top: 8px;
+  width: 303px;
+  height: 46px;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--main-text);
+  line-height: 18px;
   outline: none;
 }
 
 .divDailyNorma {
-  margin-top: 10px;
-  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .dailyNorma {
-  margin-bottom: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: var(--main);
 }
 
-.WMFormula {
-  margin-bottom: 4px;
-  margin-top: 12px;
+.dailyNormDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formulaDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  & p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    color: var(--main-text);
+  }
 }
 
 .formula {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--accent);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    color: var(--accent);
 }
 
 .paragraph {
-  border: 1px solid var(--grey-hover-focus);
+  border: 1px solid rgba(47, 47, 47, 0.15);
   border-radius: 15px;
-  margin-top: 14px;
-  margin-bottom: 14px;
   padding: 16px;
-  color: var(--main-text);
+  width: 303px;
+  height: 140px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  color: rgba(47, 47, 47, 0.6);
 }
 
-.activSign {
-  margin-right: 4px;
+.activeDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  & p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    color: var(--main-text);
+  }
 }
 
-.activeP {
-  margin-bottom: 24px;
+.sign {
+  width: 18px;
+  height: 18px;
+  fill: var(--accent);
+  stroke: var(--accent);
 }
 
 .divWeight {
-  margin-top: 24px;
-  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  & label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    color: var(--main-text);
+  }
 }
 
-.labelYourWeight {
-  margin-bottom: 8px;
+.requiredDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  & p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    color: var(--main-text);
+  }
 }
 
 .requiredAmount {
-  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  & label {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    color: var(--main);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 .saveBtn {
-  min-width: 141px;
-  padding: 14px 40px;
-  background: var(--accent);
-  color: var(--main);
-  border: none;
   border-radius: 30px;
-  cursor: pointer;
-  margin-top: 20px;
+  padding: 14px 40px;
+  width: 116px;
+  height: 46px;
+  background: var(--accent);
+  border: none;
+  outline: none;
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
-  transition: 0.3s;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main);
+}
+
+.saveBtn:hover {
+  background: #87d28d;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
-  .formDiv {
-    min-width: 568px;
-    min-height: 934px;
-    gap: 24px;
-  }
-  .uploadPhoto {
-    display: block;
-    margin: 0 auto;
-    font-size: 16px;
-    line-height: 24px;
-    margin-top: 10px;
+  .form {
+    width: 568px;
   }
   .avatar {
     width: 100px;
     height: 100px;
   }
-  .avatarUploadDiv {
+  .labelUpload {
+    font-size: 16px;
+    line-height: 24px; 
   }
-  .boldText {
+  .upload {
+    width: 20px;
+    height: 20px;
+  }
+  .inputRadioDiv {
+    & p {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+  .radioCustom {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .labelNameEmail {
     font-size: 18px;
     line-height: 24px;
   }
-  .allText {
+  .inputNameEmail {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 16px;
+    width: 568px;
+  }
+  .sign {
+    width: 22px;
+    height: 22px;
+  }
+  .dailyNorma {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .dailyNormDiv {
+    flex-direction: row;
+    gap: 28px;
+  }
+  .formulaDiv {
+    & p {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  .formula {
     font-size: 16px;
     line-height: 24px;
   }
-  .identityTitle {
+  .paragraph {
+    width: 568px;
+    height: 128px;
+    font-size: 16px;
+    line-height: 24px;
   }
-  .labelNameEmail {
-    display: flex;
-    flex-direction: column;
+  .activeDiv {
+    & p {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
-  .inputNameEmail {
-    width: 100%;
-    max-width: 568px;
-    height: 56px;
-
-    padding-top: 16px;
-    padding-bottom: 16px;
+  .divWeight {
+    & label {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
-  .inputRadioDiv {
+  .requiredDiv {
+    flex-direction: row;
+    & p {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  .requiredAmount {
+    & label {
+      font-size: 18px;
+      line-height: 24px;
+    }
   }
   .saveBtn {
+    padding: 16px 50px;
     width: 141px;
+    height: 56px;
     font-size: 16px;
     line-height: 24px;
-    gap: 10px;
-    padding: 16px 50px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .formDiv {
-    max-width: 923px;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    background-color: var(--main-white);
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  .form {
+    width: 840px;
   }
-  .avatarUploadDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+  .wrapper {
+    height: 594px;
+    flex-wrap: wrap;
   }
-
-  .avatar {
-    width: 100px;
-    height: 100px;
-  }
-
-  .uploadPhoto {
-    font-size: 16px;
-    color: var(--main);
-    cursor: pointer;
-  }
-  .inputRadioDiv {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .inputRadioDivContainer {
-    display: flex;
-    gap: 20px;
-  }
-
-  .labelRadio {
-    display: flex;
-    align-items: center;
-
-    cursor: pointer;
-  }
-  .radioBtn {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--accent);
-    appearance: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .radioBtn:checked {
-    background-color: var(--accent);
-    border-color: var(--accent);
-  }
-  .divNameEmail {
-    width: 100%;
-    display: flex;
-    gap: 32px;
-    flex-direction: column;
-  }
-
   .inputNameEmail {
-    width: 100%;
-    max-width: 400px;
-    height: 56px;
-    border-radius: 15px;
-    padding: 16px;
-    font-size: 16px;
+    width: 400px;
   }
-
   .paragraph {
-    width: 100%;
-    font-size: 14px;
-    padding: 16px;
-    border-radius: 15px;
+    width: 400px;
+    height: 152px;
+    font-size: 16px;
+    line-height: 24px;
   }
-
   .divWeight {
-    width: 100%;
-    display: flex;
-    gap: 32px;
-    flex-direction: column;
-  }
-
-  .container {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-  }
-  .divDesktop2 {
-  }
-  .divDesktop1,
-  .divDesktop2 {
-    flex: 1;
-
-    min-width: 400px;
+    margin-top: 86px;
   }
 }
