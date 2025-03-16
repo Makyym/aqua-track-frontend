@@ -8,6 +8,7 @@ export const fetchWaterDay = createAsyncThunk(
       const {
         data: { data },
       } = await axios.get(`water/day?date=${date}`);
+      console.log(date);
       return {
         array: data,
         date,

@@ -16,9 +16,11 @@ export const clearAuthHeader = () => {
 axios.interceptors.response.use(
   (response) => response,
   async (error) => {
-    console.log("Interceptor caught an error", error);
     const { config, response, status } = error;
-    if (status === 401 && response.status === 401 && config._retry) {
+    if (config && config.url && config.url.includes('/users/refresh')) {
+      return Promise.reject(error);
+    }
+    if (status === 401 && response.status === 401 && !config._retry) {
       config._retry = true;
       try {
         const { store } = await import('../store');
@@ -67,7 +69,6 @@ export const signIn = createAsyncThunk(
       setAuthHeader(response.data.data.accessToken);
       const { data } = await axios.get('/users/userinfo');
       data.data.token = response.data.data.accessToken;
-      console.log(data);
       return data;
     } catch (error) {
       const errorMessage = error.response.data.data.message;

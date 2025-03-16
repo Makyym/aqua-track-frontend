@@ -22,7 +22,6 @@ function App() {
   useEffect(() => {
       dispatch(refreshUser())
   }, [dispatch]);
-  const loading = "Loading";
   return isRefreshing ? <LoaderComponent /> : (
     <SharedLayout>
       <Routes>

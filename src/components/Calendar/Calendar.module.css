@@ -13,13 +13,13 @@
 /* tablet */
 @media screen and (min-width: 768px) {
   .calendarList {
-    gap: 15px 48px;
+    gap: 10px 48px;
   }
 }
 
 /* desktop */
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1440px) {
   .calendarList {
-    gap: 15px 43px;
+    gap: 10px 43px;
   }
 }

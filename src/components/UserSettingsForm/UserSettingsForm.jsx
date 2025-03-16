@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import css from './UserSettingsForm.module.css';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import newSprite from '../../assets/newSprite.svg';
 import { selectUser } from '../../redux/auth/selectors';
@@ -41,10 +41,9 @@ const calculateWaterNorm = ({ weight, time, gender }) => {
 };
 
 const UserSettingsForm = ({ onSuccessSubmit }) => {
-  // const [photo, setPhoto] = useState('https://i.pravatar.cc/80');
   const user = useSelector(selectUser);
-  const { name, email, gender, dailySportTime, weight, dailyNorm, avatarUrl } =
-    user;
+  const { name, email, gender, dailySportTime, weight, dailyNorm, avatarUrl } = user;
+  const [preview, setPreview] = useState(avatarUrl);
   const dispatch = useDispatch();
   const {
     register,
@@ -66,20 +65,22 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     },
   });
 
-  const onSubmit = async data => {
-    console.log(data);
-
-    try {
-      await dispatch(updateUserSettings(data));
-      const formData = { ...data, avatarUrl: photo };
-
-      console.log(formData);
+  const onSubmit = (values) => {
+      const file = values.avatarUrl && values.avatarUrl[0];
+      if (!file) return;
+      const formData = new FormData();
+      formData.append('photo', file);
+      formData.append('name', values.name);
+      formData.append('email', values.email);
+      formData.append('gender', values.gender);
+      formData.append('dailySportTime', values.dailySportTime);
+      formData.append('weight', values.weight);
+      formData.append('dailyNorm', values.dailyNorm);
+      dispatch(patchUser(formData));
       reset();
       onSuccessSubmit();
-    } catch (error) {
-      console.log(error.message);
-    }
   };
+  
   const nameUpdate = watch('name');
   const genderUpdate = watch('gender');
   const weightUpdate = watch('weight');
@@ -93,11 +94,26 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     gender,
   });
   const watchedFiles = watch('avatarUrl');
+  useEffect(() => {
+    if (
+      watchedFiles &&
+      ((watchedFiles instanceof FileList && watchedFiles.length > 0) ||
+        (Array.isArray(watchedFiles) && watchedFiles.length > 0))
+    ) {
+      const file = watchedFiles[0];
+      if (file instanceof File) {
+        const previewURL = URL.createObjectURL(file);
+        setPreview(previewURL);
+        return () => URL.revokeObjectURL(previewURL);
+      }
+    }
+  }, [watchedFiles]);
+  
   return (
     <div className={css.formDiv}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         <div className={css.avatarUploadDiv}>
-          <img className={css.avatar} src={avatarUrl} alt="avatar" />
+          <img className={css.avatar} src={preview} alt="avatar" />
           <label className={css.labelUpload}>
             <svg className={css.upload}>
               <use href={`${newSprite}#icon-upload`} />
