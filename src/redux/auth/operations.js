@@ -123,7 +123,10 @@ export const patchUser = createAsyncThunk(
   'auth/patchUser',
   async (body, thunkAPI) => {
     try {
-      const { data } = await axios.patch('/users/userinfo', body);
+      const { data } = await axios.patch('/users/userinfo', body, {headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+      });
       return data;
     } catch (error) {
       const errorMessage = error.response.data.data.message;
