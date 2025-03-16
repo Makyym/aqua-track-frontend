@@ -13,37 +13,43 @@ const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage.jsx'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage.jsx'));
 const TrackerPage = lazy(() => import('./pages/TrackerPage/TrackerPage.jsx'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
-const GoogleAuthPage = lazy(() => import('./pages/GoogleAuthPage/GoogleAuthPage.jsx'));
+const NotFoundPage = lazy(() =>
+  import('./pages/NotFoundPage/NotFoundPage.jsx'),
+);
+const GoogleAuthPage = lazy(() =>
+  import('./pages/GoogleAuthPage/GoogleAuthPage.jsx'),
+);
 
 function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
   useEffect(() => {
-      dispatch(refreshUser())
+    dispatch(refreshUser());
   }, [dispatch]);
-  return isRefreshing ? <LoaderComponent /> : (
+  return isRefreshing ? (
+    <LoaderComponent />
+  ) : (
     <SharedLayout>
       <Routes>
-        <Route path="/"
-        element={
-        <RestrictedRoute component={<HomePage />} redirectTo="/tracker" />
-        } />
+        <Route
+          path="/"
+          element={
+            <RestrictedRoute component={<HomePage />} redirectTo="/tracker" />
+          }
+        />
         <Route
           path="/signup"
           element={
             <RestrictedRoute component={<SignUpPage />} redirectTo="/tracker" />
-        }/>
+          }
+        />
         <Route
           path="/signin"
           element={
             <RestrictedRoute component={<SignInPage />} redirectTo="/tracker" />
           }
         />
-        <Route path="/auth/success"
-        element={
-        <RestrictedRoute component={<GoogleAuthPage />} redirectTo="/tracker" />
-        } />
+        <Route path="/auth/confirm-oauth" element={<GoogleAuthPage />} />
         <Route
           path="/tracker"
           element={
