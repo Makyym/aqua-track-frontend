@@ -2,11 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import UserBarPopover from '../UserBarPopover/UserBarPopover.jsx';
 import newSprite from '../../assets/newSprite.svg';
 import css from './UserBar.module.css';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors.js';
+import clsx from 'clsx';
 
 const UserBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const user = useSelector(selectUser);
+  const {name, email, avatarUrl} = user;
+  const shortEmail = email.split('@')[0];
 
-  const [userName, setUserName] = useState('');
   const userBarRef = useRef(null);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -30,13 +35,13 @@ const UserBar = () => {
   return (
     <div className={css.relativeHeader}>
       <button type="button" onClick={toggleMenu} className={css.btnHeader}>
-        Nadia
+        {name ?? shortEmail}
         <img
-          src="https://i.pravatar.cc/40"
-          alt="User Avatar"
+          src={avatarUrl}
+          alt="avatar"
           className={css.avatar}
         />
-        <svg className={css.btnIcon}>
+        <svg className={isOpen ? clsx(css.btnIcon, css.iconActive) : css.btnIcon}>
           <use href={`${newSprite}#icon-chevron-down`} />
         </svg>
       </button>

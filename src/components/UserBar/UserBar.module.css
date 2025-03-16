@@ -5,7 +5,6 @@
 .btnHeader {
   display: flex;
   align-items: center;
-  width: 137px;
   height: 50px;
   padding: 6px 12px;
   font-family: var(--font-family);
@@ -29,12 +28,17 @@
 .btnIcon {
   width: 16px;
   height: 16px;
-  color: var(--main-white);
+  fill: transparent;
+  stroke: var(--main-white);
+  transition: transform 0.3s ease;
+}
+
+.iconActive {
+  transform: scaleY(-1);
 }
 
 @media screen and (min-width: 768px) {
   .btnHeader {
-    width: 157px;
     height: 56px;
     font-size: 16px;
     line-height: 24px;
