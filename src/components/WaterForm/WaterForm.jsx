@@ -133,7 +133,7 @@ const WaterForm = ({ editValue, dateString, onClose, waterId }) => {
           </label>
         </div>
         <div className={css.timeContainer}>
-          <label className={css.timeLabel} htmlFor="time">
+          <label className={css.waterAmountLabel} htmlFor="time">
             Recording time:
             <input
               className={css.input}
