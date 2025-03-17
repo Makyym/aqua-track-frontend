@@ -9,40 +9,61 @@ import newSprite from '../../assets/newSprite.svg';
 import { selectUser } from '../../redux/auth/selectors';
 import { patchUser } from '../../redux/auth/operations.js';
 
-// const FILE_SIZE = 1024 * 1024 * 5;
+const SUPPORTED_FORMATS = ['image/jpeg', 'image/png'];
 
-// const SUPPORTED_FORMATS = ['image/jpeg', 'image/png'];
-
-const schema = yup
-  .object({
-    gender: yup.string().oneOf(['woman', 'man']).required(),
-    name: yup.string().min(2).max(20).required(),
-    email: yup.string().email().required(),
-    // avatarUrl: yup
-    //   .mixed()
-
-    //   .test('fileSize', 'File size too large', value =>
-    //     value && value[0] ? value[0].size <= FILE_SIZE : true,
-    //   )
-    //   .test('fileFormat', 'Unsupported format', value =>
-    //     value && value[0] ? SUPPORTED_FORMATS.includes(value[0].type) : true,
-    //   ),
-    weight: yup.number().positive().required(),
-    dailySportTime: yup.number().positive().required(),
-    dailyNorm: yup.number().positive().required(),
-  })
-  .required();
+const schema = yup.object({
+  gender: yup.string().oneOf(['woman', 'man']).notRequired(),
+  name: yup
+    .string()
+    .min(2, 'Name must contain at least 2 characters')
+    .max(20, 'Name must contain no more than 20 characters')
+    .notRequired(),
+  email: yup
+    .string()
+    .email('Invalid email format')
+    .required('Email is required'),
+  weight: yup
+    .number()
+    .min(0, 'Weight must be at least 0')
+    .typeError('Weight must be a number')
+    .nullable()
+    .notRequired(),
+  dailySportTime: yup
+    .number()
+    .min(0, 'Time must be at least 0')
+    .typeError('Time must be a number')
+    .nullable()
+    .notRequired(),
+  dailyNorm: yup
+    .number()
+    .positive('Norm must be positive')
+    .typeError('Norm must be a number')
+    .nullable()
+    .notRequired(),
+    avatarUrl: yup
+  .mixed()
+  .notRequired()
+  .test('fileFormat', 'Unsupported Format', (value) => {
+    if (!value || !value[0]) {
+      return true;
+    }
+    return SUPPORTED_FORMATS.includes(value[0].type);
+  }),
+}).required();
 
 const calculateWaterNorm = ({ weight, time, gender }) => {
   const W = parseFloat(weight) || 0;
   const T = parseFloat(time) || 0;
-  const V = gender === 'female' ? W * 0.03 + T * 0.4 : W * 0.04 + T * 0.6;
+  const V = gender === 'woman' ? W * 0.03 + T * 0.4 : W * 0.04 + T * 0.6;
   return V.toFixed(1);
 };
 
 const UserSettingsForm = ({ onSuccessSubmit }) => {
   const user = useSelector(selectUser);
   const { name, email, gender, dailySportTime, weight, dailyNorm, avatarUrl } = user;
+  const defaultDailyNormInLiters = user.dailyNorm
+    ? user.dailyNorm / 1000
+    : 0;
   const [preview, setPreview] = useState(avatarUrl);
   const dispatch = useDispatch();
   const {
@@ -53,46 +74,44 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-
+    mode: 'onBlur',
     defaultValues: {
       name,
       email,
       gender,
       dailySportTime,
       weight,
-      dailyNorm,
+      dailyNorm: defaultDailyNormInLiters,
       avatarUrl,
     },
   });
 
+  const watchedWeight = watch('weight');
+  const watchedDailySportTime = watch('dailySportTime');
+  const watchedGender = watch('gender');
+
   const onSubmit = (values) => {
-      const file = values.avatarUrl && values.avatarUrl[0];
-      if (!file) return;
-      const formData = new FormData();
-      formData.append('photo', file);
-      formData.append('name', values.name);
-      formData.append('email', values.email);
-      formData.append('gender', values.gender);
-      formData.append('dailySportTime', values.dailySportTime);
-      formData.append('weight', values.weight);
-      formData.append('dailyNorm', values.dailyNorm);
-      dispatch(patchUser(formData));
-      reset();
-      onSuccessSubmit();
+    const formData = new FormData();
+    if (values.avatarUrl && values.avatarUrl.length > 0) {
+      formData.append('photo', values.avatarUrl[0]);
+    }
+    formData.append('name', values.name);
+    formData.append('email', values.email);
+    formData.append('gender', values.gender);
+    formData.append('dailySportTime', values.dailySportTime);
+    formData.append('weight', values.weight);
+    formData.append('dailyNorm', values.dailyNorm ? Number(values.dailyNorm) * 1000 : 0);
+    dispatch(patchUser(formData));
+    reset();
+    onSuccessSubmit();
   };
-  
-  const nameUpdate = watch('name');
-  const genderUpdate = watch('gender');
-  const weightUpdate = watch('weight');
-  const dailySportTimeUpdate = watch('dailySportTime');
-  const emailUpdate = watch('email');
-  const uploadedFiles = watch('avatarUrl');
 
   const recommendedWaterNorm = calculateWaterNorm({
-    weight,
-    time: dailySportTime,
-    gender,
+    weight: watchedWeight !== undefined ? watchedWeight : weight,
+    time: watchedDailySportTime !== undefined ? watchedDailySportTime : dailySportTime,
+    gender: watchedGender !== undefined ? watchedGender : gender,
   });
+
   const watchedFiles = watch('avatarUrl');
   useEffect(() => {
     if (
@@ -157,18 +176,19 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
                   <input
                     type="text"
                     {...register('name')}
-                    className={css.inputNameEmail}
+                    className={clsx(css.inputNameEmail, { [css.inputInvalid]: Boolean(errors.name) })}
                   />
-                  <span className={css.allText}> {errors.name?.message}</span>
+                  <span className={css.errorMessage}>{errors.name?.message}</span>
                 </label>
                 <label className={css.labelNameEmail}>
                   Email
                   <input
                     type="text"
                     {...register('email')}
-                    className={css.inputNameEmail}
+                    className={`${css.inputNameEmail} ${errors.email ? css.inputInvalid : ''}`}
+                    // className={errors.email?.message ? clsx(css.inputNameEmail, css.inputInvalid) : css.inputNameEmail }
                   />
-                  <span> {errors.email?.message}</span>
+                  <span className={css.errorMessage}>{errors.email?.message}</span>
                 </label>
               </div>
   
@@ -197,7 +217,6 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
                     <svg className={css.sign}>
                       <use href={`${newSprite}#icon-exclamation-mark`} />
                     </svg>
-                  {/* <span className={css.sign}>!</span> */}
                   <p>Active time in hours</p>
                 </div>
               </div>
@@ -207,18 +226,18 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
                   <input
                     type="text"
                     {...register('weight')}
-                    className={css.inputNameEmail}
+                    className={clsx(css.inputNameEmail, { [css.inputInvalid]: errors.weight })}
                   />
-                  <span>{errors.weight?.message}</span>
+                  <span className={css.errorMessage}>{errors.weight?.message}</span>
                 </label>
                 <label>
                     The time of active participation in sports:
                   <input
                     type="text"
                     {...register('dailySportTime')}
-                    className={css.inputNameEmail}
+                    className={clsx(css.inputNameEmail, { [css.inputInvalid]: errors.dailySportTime })}
                   />
-                  <span>{errors.dailySportTime?.message}</span>
+                  <span className={css.errorMessage}>{errors.dailySportTime?.message}</span>
                 </label>
               </div>
   
@@ -234,9 +253,9 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
                 <input
                   type="text"
                   {...register('dailyNorm')}
-                  className={css.inputNameEmail}
+                  className={clsx(css.inputNameEmail, { [css.inputInvalid]: errors.dailyNorm })}
                 />
-                <span>{errors.dailyNorm?.message}</span>
+                <span className={css.errorMessage}>{errors.dailyNorm?.message}</span>
               </label>
               </div>
         </div>
