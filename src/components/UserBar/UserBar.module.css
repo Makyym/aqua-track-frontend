@@ -21,8 +21,11 @@
 
 .avatar {
   width: 38px;
-  height: 38px;
+  height: auto;
   border-radius: 50%;
+  background-color: var(--main-white);
+  object-fit: cover;
+  object-position: center;
 }
 
 .btnIcon {

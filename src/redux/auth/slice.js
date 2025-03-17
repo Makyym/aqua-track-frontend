@@ -16,7 +16,7 @@ const initialState = {
     dailyNorm: null,
     weight: null,
     dailySportTime: null,
-    avatarUrl: null,
+    avatarUrl: "https://res.cloudinary.com/dvc0lg6q7/image/upload/v1741163238/person_qyhqpa.png",
   },
   token: null,
   isError: null,
