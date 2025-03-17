@@ -9,10 +9,7 @@ const WaterItem = ({ data }) => {
   const { value, date, _id } = data;
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
-  const fullDate = new Date(date);
-  const year = fullDate.getFullYear();
-  const month = (fullDate.getMonth() + 1).toString().padStart(2, '0');
-  const formattedDate = `${year}-${month}`;
+  const dateWaterForm = date.split("T")[0];
   function extractTime(dateTimeString) {
     const dateTime = new Date(dateTimeString);
     let hours = dateTime.getUTCHours();
@@ -46,9 +43,10 @@ const WaterItem = ({ data }) => {
         onRequestClose={() => setIsEditFormOpen(false)}
       >
         <WaterModal
-          date={formattedDate}
+          date={dateWaterForm}
           cardId={_id}
           onClose={() => setIsEditFormOpen(false)}
+          value={value}
         />
       </BaseModal>
       <BaseModal

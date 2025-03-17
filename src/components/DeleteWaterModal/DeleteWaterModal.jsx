@@ -1,6 +1,6 @@
 import css from './DeleteWaterModal.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteWaterEntry, fetchWaterMonth } from '../../redux/water/operations.js';
+import { deleteWaterEntry } from '../../redux/water/operations.js';
 import sprite from '../../assets/newSprite.svg';
 import BtnDelete from '../BtnDelete/BtnDelete.jsx';
 import LoaderComponent from '../LoaderComponent/LoaderComponent.jsx';
@@ -11,10 +11,7 @@ const DeleteWaterModal = ({ waterId, onClose, date }) => {
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
-    const response = await dispatch(deleteWaterEntry(waterId));
-    if (response) {
-      dispatch(fetchWaterMonth(date))
-    }
+    await dispatch(deleteWaterEntry(waterId));
     onClose();
   };  
 

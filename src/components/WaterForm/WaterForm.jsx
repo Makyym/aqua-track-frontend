@@ -27,9 +27,15 @@ const currentTime = new Date().toLocaleTimeString([], {
   minute: '2-digit',
 });
 
-const WaterForm = ({ value, dateString, onClose, waterId }) => {
-  const dispatch = useDispatch();
+function formatTimeString (time) {
+  const [hours, minutes] = time.split(':');
+  const formattedHours = String(hours).padStart(2, '0');
+  return `${formattedHours}:${minutes}`;
+}
 
+const WaterForm = ({ editValue, dateString, onClose, waterId }) => {
+  const dispatch = useDispatch();
+  const oldValue = editValue;
   const {
     register,
     watch,
@@ -42,17 +48,19 @@ const WaterForm = ({ value, dateString, onClose, waterId }) => {
     resolver: yupResolver(AddWaterSchema),
     defaultValues: {
       time: currentTime,
-      value: value ?? 50,
+      value: editValue ?? 50,
     },
   });
 
   const onSubmit = values => {
+    const time = formatTimeString(values.time);
     if (waterId) {
       const onlyDate = dateString.split('T')[0];
       const data = {
         id: waterId,
         value: values.value,
-        date: `${onlyDate}T${values.time}`,
+        date: `${onlyDate}T${time}`,
+        oldValue,
       };
       dispatch(editWaterEntry(data));
       reset();
@@ -61,7 +69,7 @@ const WaterForm = ({ value, dateString, onClose, waterId }) => {
     }
     const data = {
       value: values.value,
-      date: `${dateString}T${values.time}`,
+      date: `${dateString}T${time}`,
     };
     dispatch(addWaterEntry(data));
     reset();
