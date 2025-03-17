@@ -36,6 +36,7 @@ function formatTimeString (time) {
 const WaterForm = ({ editValue, dateString, onClose, waterId }) => {
   const dispatch = useDispatch();
   const oldValue = editValue;
+  const timeOnly = dateString.split("T")[1];
   const {
     register,
     watch,
@@ -47,7 +48,7 @@ const WaterForm = ({ editValue, dateString, onClose, waterId }) => {
     mode: 'onBlur',
     resolver: yupResolver(AddWaterSchema),
     defaultValues: {
-      time: currentTime,
+      time: timeOnly ?? currentTime,
       value: editValue ?? 50,
     },
   });

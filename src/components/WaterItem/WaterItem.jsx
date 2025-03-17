@@ -43,7 +43,7 @@ const WaterItem = ({ data }) => {
         onRequestClose={() => setIsEditFormOpen(false)}
       >
         <WaterModal
-          date={dateWaterForm}
+          date={date}
           cardId={_id}
           onClose={() => setIsEditFormOpen(false)}
           value={value}
