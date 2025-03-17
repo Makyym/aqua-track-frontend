@@ -103,18 +103,20 @@ const slice = createSlice({
       const date = payload.date;
       const dateOnly = date.split("T")[0];
       const waterDay = state.waterMonth[dateOnly];
+      const waterItem = state.waterActiveDay.find(item => item._id === payload._id);
+      const waterCard = state.waterCurrentDay.find(item => item._id === payload._id);
+      if (waterCard) {
+        waterCard.value = payload.value;
+        waterCard.date = payload.date;
+      }
+      if (waterItem) {
+        waterItem.value = payload.value;
+        waterItem.date = payload.date;
+      }
       if (waterDay) {
         state.waterMonth[dateOnly] -= payload.oldValue;
         state.waterMonth[dateOnly] += payload.value;
       }
-      const waterItem = state.waterActiveDay.find(item => item._id === payload._id);
-      if (!waterItem) {
-        const waterCard = state.waterCurrentDay.find(item => item._id === payload._id);
-        waterCard.value = payload.value;
-        waterCard.date = payload.date;
-      }
-      waterItem.value = payload.value;
-      waterItem.date = payload.date;
     })
   }
 });
