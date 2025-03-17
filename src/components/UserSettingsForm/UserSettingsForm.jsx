@@ -94,8 +94,6 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
   const watchedGender = watch('gender');
 
   const onSubmit = (values) => {
-    console.log(errors);
-    console.log(values.avatarUrl);
     const formData = new FormData();
     if (values.avatarUrl && values.avatarUrl.length > 0) {
       formData.append('photo', values.avatarUrl[0]);
