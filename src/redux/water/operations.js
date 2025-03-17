@@ -69,7 +69,6 @@ export const editWaterEntry = createAsyncThunk(
         ...data,
         oldValue,
       };
-      console.log(response);
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

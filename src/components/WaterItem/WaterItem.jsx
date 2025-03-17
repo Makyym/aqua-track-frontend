@@ -9,12 +9,11 @@ const WaterItem = ({ data }) => {
   const { value, date, _id } = data;
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
-  const dateWaterForm = date.split("T")[0];
   function extractTime(dateTimeString) {
     const dateTime = new Date(dateTimeString);
-    let hours = dateTime.getUTCHours();
-    let minutes = dateTime.getUTCMinutes();
-    hours = hours.toString().padStart(1, '0');
+    let hours = dateTime.getHours();
+    let minutes = dateTime.getMinutes();
+    hours = hours.toString().padStart(2, '0');
     minutes = minutes.toString().padStart(2, '0');
     return `${hours}:${minutes}`;
   }
