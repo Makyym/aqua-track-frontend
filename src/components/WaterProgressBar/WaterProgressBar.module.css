@@ -9,14 +9,16 @@
     font-family: var(--font-family);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+
     & h3 {
-    margin-bottom: 18px;
-    font-family: var(--font-family);
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 14px;
-    color: var(--main);
+        margin-bottom: 0;
+        margin-top: 10px;
+        font-family: var(--font-family);
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 14px;
+        color: var(--main);
     }
 }
 
@@ -29,13 +31,13 @@
 }
 
 .waterScaleFill {
-    background-color: var(--accent);;
+    background-color: var(--accent);
+    ;
     border-radius: 9px;
     height: 100%;
     transition: width 0.3s ease;
 }
 
-  /* маркер відсоток */
 .currentMarker {
     position: absolute;
     top: -300%;
@@ -49,15 +51,16 @@
     white-space: nowrap;
 }
 
-  /* Шарик в шкали */
+
 .currentBall {
     position: absolute;
     top: 50%;
-    transform: translate(5%, -50%);
+    transform: translate(-50%, -50%);
     width: 12px;
     height: 12px;
     background-color: var(--main-white);
-    border: 1px solid var(--accent);;
+    border: 1px solid var(--accent);
+    ;
     border-radius: 100%;
 }
 
@@ -76,19 +79,23 @@
         width: 295px;
         padding: 20px;
         margin-top: 87px;
+
         & h3 {
             font-size: 15px;
-            line-height: 22px; 
+            line-height: 22px;
         }
     }
+
     .waterScale {
         width: 255px;
         height: 8px;
     }
+
     .currentMarker {
         font-size: 12px;
         line-height: 22px;
     }
+
     .waterScaleMarkers {
         font-size: 12px;
         line-height: 22px;
