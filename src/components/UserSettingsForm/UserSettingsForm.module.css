@@ -201,6 +201,10 @@
   }
 }
 
+.formulaText {
+  margin-left: auto;
+}
+
 .formula {
     font-weight: 700;
     font-size: 14px;
@@ -262,7 +266,6 @@
 .requiredDiv {
   display: flex;
   flex-direction: column;
-  gap: 5px;
   & p {
     font-weight: 400;
     font-size: 14px;

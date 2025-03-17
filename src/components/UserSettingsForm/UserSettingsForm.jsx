@@ -190,7 +190,6 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
                     type="text"
                     {...register('email')}
                     className={`${css.inputNameEmail} ${errors.email ? css.inputInvalid : ''}`}
-                    // className={errors.email?.message ? clsx(css.inputNameEmail, css.inputInvalid) : css.inputNameEmail }
                   />
                   <span className={css.errorMessage}>{errors.email?.message}</span>
                 </label>
@@ -248,7 +247,7 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
               <div className={css.requiredAmount}>
                 <div className={css.requiredDiv}>
                   <p>The required amount of water in liters per day:</p>
-                  <span className={css.formula}>
+                  <span className={`${css.formula} ${css.formulaText}`}>
                     {recommendedWaterNorm} L
                   </span>
                 </div>
