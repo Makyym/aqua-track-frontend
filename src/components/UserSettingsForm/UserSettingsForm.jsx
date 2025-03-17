@@ -9,7 +9,7 @@ import newSprite from '../../assets/newSprite.svg';
 import { selectUser } from '../../redux/auth/selectors';
 import { patchUser } from '../../redux/auth/operations.js';
 
-const SUPPORTED_FORMATS = ['image/jpeg', 'image/png'];
+const SUPPORTED_EXTENSIONS = ['jpeg', 'jpg', 'png'];
 
 const schema = yup.object({
   gender: yup.string().oneOf(['woman', 'man']).notRequired(),
@@ -46,10 +46,11 @@ const schema = yup.object({
   .mixed()
   .notRequired()
   .test('fileFormat', 'Unsupported Format', (value) => {
-    if (!value || !value[0]) {
-      return true;
-    }
-    return SUPPORTED_FORMATS.includes(value[0].type);
+    if (!value || value.length === 0) return true;
+    const file = value[0];
+    if (!file.name) return true;
+    const fileExtension = file.name.split('.').pop().toLowerCase();
+    return SUPPORTED_EXTENSIONS.includes(fileExtension);
   }),
 }).required();
 
@@ -93,6 +94,8 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
   const watchedGender = watch('gender');
 
   const onSubmit = (values) => {
+    console.log(errors);
+    console.log(values.avatarUrl);
     const formData = new FormData();
     if (values.avatarUrl && values.avatarUrl.length > 0) {
       formData.append('photo', values.avatarUrl[0]);
