@@ -14,10 +14,13 @@ const SUPPORTED_FORMATS = ['image/jpeg', 'image/png'];
 const schema = yup.object({
   gender: yup.string().oneOf(['woman', 'man']).notRequired(),
   name: yup
-    .string()
-    .min(2, 'Name must contain at least 2 characters')
-    .max(20, 'Name must contain no more than 20 characters')
-    .notRequired(),
+  .string()
+  .transform((value, originalValue) =>
+    originalValue.trim() === "" ? undefined : value
+  )
+  .min(2, 'Name must contain at least 2 characters')
+  .max(20, 'Name must contain no more than 20 characters')
+  .notRequired(),
   email: yup
     .string()
     .email('Invalid email format')
@@ -95,7 +98,8 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     if (values.avatarUrl && values.avatarUrl.length > 0) {
       formData.append('photo', values.avatarUrl[0]);
     }
-    formData.append('name', values.name);
+    const finalName = values.name === "" ? user.name : values.name;
+    formData.append('name', finalName);
     formData.append('email', values.email);
     formData.append('gender', values.gender);
     formData.append('dailySportTime', values.dailySportTime);
