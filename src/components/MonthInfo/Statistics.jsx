@@ -6,7 +6,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWaterMonth } from '../../redux/water/operations';
 import { formatCurrentMonth } from './utils/dateUtils';
@@ -17,59 +17,45 @@ import s from './Statistics.module.css';
 const Statistics = ({ month, year }) => {
   const dispatch = useDispatch();
   const waterMonth = useSelector(selectWaterMonth); //дані {YYYY-MM-DD: value, ...}
-  const [chartData, setChartData] = useState([]);
+  const [chartData, setChartData] = useState([]); //дані за місяць
+
+  const today = new Date();
+
+  const isCurrentMonth =
+    year === today.getFullYear() && month === today.getMonth();
 
   const formatedMonth = formatCurrentMonth(year, month); //YYYY-MM string
 
   useEffect(() => {
     dispatch(fetchWaterMonth(formatedMonth));
   }, [dispatch, formatedMonth]);
-  console.log('waterMonth =====', waterMonth);
 
-  //   // Функція для створення масиву останніх 7 днів
-  //   const getLastSevenDays = () => {
-  //     return Array.from({ length: 7 }, (_, i) => {
-  //       const date = new Date(); //дата для кожної ітерації циклу,
+  //--
+  const generateChartData = useMemo(() => {
+    if (!waterMonth || Object.keys(waterMonth).length === 0) return [];
 
-  //       date.setDate(new Date().getDate() - (6 - i)); // Від 7 днів тому до сьогодні
-  //       const formattedDate = date.toISOString().split('T')[0]; // YYYY-MM-DD
+    // Якщо поточний місяць - до сьогодні, попередні - всі дні місяць
+    const lastDay = isCurrentMonth
+      ? today.getDate()
+      : new Date(year, month + 1, 0).getDate(); //останній день попереднього місяця
 
-  //       return {
-  //         name: date.getDate().toString().padStart(2, '0'), // Витягуємо день (DD)
-  //         uv: waterMonth[formattedDate] || 0, // Якщо немає даних, встановлюємо 0
-  //         fullDate: formattedDate, // Зберігаємо повну дату для сортування
-  //       };
-  //     });
-  //   };
-  //   const rawData = getLastSevenDays();
+    return Array.from({ length: lastDay }, (_, i) => {
+      const day = (i + 1).toString().padStart(2, '0');
+      const formattedDate = `${year}-${(month + 1)
+        .toString()
+        .padStart(2, '0')}-${day}`; //2025-01-14 string
 
-  // 🔹 Чекаємо, поки `waterMonth` оновиться
+      return {
+        name: day,
+        water: waterMonth[formattedDate] || 0,
+      };
+    });
+  }, [waterMonth, month, year, isCurrentMonth]);
+  //--
+
   useEffect(() => {
-    if (!waterMonth || Object.keys(waterMonth).length === 0) return;
-
-    const getLastSevenDays = () => {
-      return Array.from({ length: 7 }, (_, i) => {
-        const date = new Date(year, month, new Date().getDate() - (6 - i)); // Враховуємо вибраний місяць
-        const formattedDate = `${year}-${(month + 1)
-          .toString()
-          .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`; // YYYY-MM-DD
-
-        console.log(
-          '📅 Перевіряємо дату:',
-          formattedDate,
-          '💧 Вода:',
-          waterMonth[formattedDate] || 0,
-        );
-
-        return {
-          name: date.getDate().toString().padStart(2, '0'),
-          uv: waterMonth[formattedDate] || 0, // Якщо немає даних, встановлюємо 0
-        };
-      });
-    };
-
-    setChartData(getLastSevenDays());
-  }, [waterMonth, month, year]);
+    setChartData(generateChartData);
+  }, [generateChartData]);
 
   return (
     <div className={s.statisticsContainer}>
@@ -105,7 +91,7 @@ const Statistics = ({ month, year }) => {
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="uv"
+            dataKey="water"
             stroke="#9BE1A0"
             fill="url(#gradient)"
             dot={{
@@ -114,6 +100,7 @@ const Statistics = ({ month, year }) => {
               stroke: '#9BE1A0',
               strokeWidth: 2,
             }}
+            animationDuration={1800} // Плавна анімація
           />
         </AreaChart>
       </ResponsiveContainer>
