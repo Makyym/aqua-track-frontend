@@ -15,11 +15,8 @@ const schema = yup.object({
   gender: yup.string().oneOf(['woman', 'man']).notRequired(),
   name: yup
   .string()
-  .transform((value, originalValue) =>
-    originalValue.trim() === "" ? undefined : value
-  )
-  .min(2, 'Name must contain at least 2 characters')
-  .max(20, 'Name must contain no more than 20 characters')
+  .test('empty-or-length', 'Name must either be empty or contain between 2 and 20 characters', 
+    value => value === '' || (value && value.length >= 2 && value.length <= 20))
   .notRequired(),
   email: yup
     .string()
@@ -98,8 +95,9 @@ const UserSettingsForm = ({ onSuccessSubmit }) => {
     if (values.avatarUrl && values.avatarUrl.length > 0) {
       formData.append('photo', values.avatarUrl[0]);
     }
-    const finalName = values.name === "" ? user.name : values.name;
-    formData.append('name', finalName);
+    if (values.name && values.name !== "") {
+      formData.append('name', values.name);
+    }
     formData.append('email', values.email);
     formData.append('gender', values.gender);
     formData.append('dailySportTime', values.dailySportTime);
