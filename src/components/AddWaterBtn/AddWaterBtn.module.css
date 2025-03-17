@@ -1,11 +1,14 @@
 .icon {
     width: 30px;
     height: 30px;
+    fill: var(--accent);
+    stroke: var(--main);
 }
 
 .iconDaily {
     width: 16px;
     height: 16px;
+    fill: transparent;
     stroke: var(--main-white);
 }
 
@@ -28,6 +31,13 @@
     margin-left: auto;
 }
 
+.button:hover {
+    & svg {
+        fill: var(--main);
+        stroke: var(--main-white);
+    }
+}
+
 .buttonDaily {
     display: flex;
     gap: 10px;
@@ -47,6 +57,13 @@
     background-color: var(--main);
     margin-top: auto;
     margin-left: auto;
+}
+
+.buttonDaily:hover {
+    color: var(--accent);
+    & svg {
+        stroke: var(--accent);
+    }
 }
 
 @media screen and (min-width: 768px) {
