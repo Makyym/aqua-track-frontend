@@ -15,8 +15,9 @@ const schema = yup.object({
   gender: yup.string().oneOf(['woman', 'man']).notRequired(),
   name: yup
   .string()
-  .test('empty-or-length', 'Name must either be empty or contain between 2 and 20 characters', 
-    value => value === '' || (value && value.length >= 2 && value.length <= 20))
+  .transform(value => (value === '' ? undefined : value))
+  .min(3, 'Too short!')
+  .max(50, 'Too long!')
   .notRequired(),
   email: yup
     .string()
@@ -31,6 +32,7 @@ const schema = yup.object({
   dailySportTime: yup
     .number()
     .min(0, 'Time must be at least 0')
+    .max(24, 'Are you a human?')
     .typeError('Time must be a number')
     .nullable()
     .notRequired(),

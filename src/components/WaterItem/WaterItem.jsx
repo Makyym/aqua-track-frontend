@@ -10,11 +10,17 @@ const WaterItem = ({ data }) => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
   function extractTime(dateTimeString) {
+    if (/^\d{2}:\d{2}$/.test(dateTimeString)) {
+      const [hours, minutes] = dateTimeString.split(':');
+      const modHours = hours.replace(/^0/, '');
+      return `${modHours}:${minutes}`;
+    }
     const dateTime = new Date(dateTimeString);
-    let hours = dateTime.getHours();
-    let minutes = dateTime.getMinutes();
-    hours = hours.toString().padStart(2, '0');
-    minutes = minutes.toString().padStart(2, '0');
+    if (isNaN(dateTime)) {
+      throw new Error("Invalid date format");
+    }
+    const hours = dateTime.getHours().toString();
+    const minutes = dateTime.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`;
   }
   const time = extractTime(date);
