@@ -15,6 +15,7 @@ const SharedLayout = ({ children }) => {
       exit="exit"
       variants={variants}
       transition={{ duration: 0.5, ease: "easeInOut" }}
+      style={{ willChange: "transform, opacity" }}
     >
     <div className="container">
       <Suspense fallback={null}>{children}</Suspense>
