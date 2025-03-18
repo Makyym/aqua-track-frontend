@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import { selectUsersCount } from "../../redux/auth/selectors.js";
 
 const AdvantagesSection = () => {
-    const usersCount = useSelector(selectUsersCount);
+    const usersCount = useSelector(selectUsersCount) ?? "";
     return (
         <div className={css.container}>
             <div className={css.customers}>
@@ -21,7 +21,7 @@ const AdvantagesSection = () => {
                     <img src={`${user_2}`} alt="User2" className={css.avatar2}/>
                     <img src={`${user_3}`} alt="User3" className={css.avatar3} />
                 </div>
-                <p>Our happy <b className={css.span}>{usersCount}</b><br/>customers</p>
+                <p>Our <span className={usersCount ? "" : css.span}>happy</span> <b className={css.span}>{usersCount}</b><br/>customers</p>
             </div>
             <div className={css.buttons}>
                 <button className={css.habit}>Habit drive</button>

@@ -19,7 +19,7 @@ const initialState = {
     dailySportTime: 0,
     avatarUrl: "https://res.cloudinary.com/dvc0lg6q7/image/upload/v1741163238/person_qyhqpa.png",
   },
-  usersCount: 0,
+  usersCount: null,
   token: null,
   isError: null,
   isLoggedIn: false,
