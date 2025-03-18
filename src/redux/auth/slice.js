@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  allUsersCount,
   logout,
   patchUser,
   refreshToken,
@@ -18,6 +19,7 @@ const initialState = {
     dailySportTime: 0,
     avatarUrl: "https://res.cloudinary.com/dvc0lg6q7/image/upload/v1741163238/person_qyhqpa.png",
   },
+  usersCount: 0,
   token: null,
   isError: null,
   isLoggedIn: false,
@@ -88,7 +90,14 @@ const slice = createSlice({
           ...state.user,
           ...payload.data,
         };
-      });
+      })
+      .addCase(allUsersCount.pending, handlePending)
+      .addCase(allUsersCount.rejected, handleRejected)
+      .addCase(allUsersCount.fulfilled, (state, { payload }) => {
+        state.isRefreshing = false;
+        state.isError = null;
+        state.usersCount = payload.data.users;
+      })
   },
 });
 

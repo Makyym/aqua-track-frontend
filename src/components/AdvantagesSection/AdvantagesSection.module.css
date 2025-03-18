@@ -28,45 +28,48 @@ screen and (min-resolution: 2dppx) {
     border-radius: 50px;
     box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
-    width: 160px;
+    /* width: 160px; */
     height: 48px;
 }
 
-.customers p{
+.customers p {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-size: 12px;
-    line-height: 1.5;
+    line-height: 14px;
     color: #323f47;
-    text-align: right;
+    text-align: left;
 }
 
-.avatars{
-    display: flex;
+.avatars {
     position: relative;
-    
+    width: 60px;
+    height: 28px;
 }
 
 .avatars img {
-    width: 26.4px;
-    height: 28px;
+    width: 28px;
+    height: auto;
     border-radius: 50px;
     border: 1px solid #fff;
     overflow: hidden;
-    position: relative;
-    margin-right: -15px;
+    position: absolute;
+    top: 0;
 }
 
 .avatars img:first-child {
     z-index: 3;
+    left: 0;
 }
 
 .avatars img:nth-child(2) {
     z-index: 2;
+    left: 18px;
 }
 
 .avatars img:nth-child(3) {
     z-index: 1;
+    left: 36px;
 }
 
 .span {
@@ -141,7 +144,7 @@ screen and (min-resolution: 2dppx) {
         bottom: 96px;
         left: 32px;
         padding: 10px 20px;
-        width: 237px;
+        /* width: 237px; */
         height: 67px;
     }
     
@@ -149,11 +152,26 @@ screen and (min-resolution: 2dppx) {
         font-size: 15px;
     }
 
+    .avatars {
+        width: 103px;
+        height: 47px;
+    }
+
     .avatars img {
         width: 47px;
         height: 47px;
     }
-
+    .avatars img:first-child {
+        left: 0;
+    }
+    
+    .avatars img:nth-child(2) {
+        left: 28px;
+    }
+    
+    .avatars img:nth-child(3) {
+        left: 56px;
+    }
     .buttons{
         left: 408px;
         width: 242px;
@@ -197,7 +215,6 @@ screen and (min-resolution: 2dppx) {
         bottom: 132px;
         left: 32px;
         padding: 10px 20px;
-        width: 237px;
         height: 67px;
     }
     .customers p {

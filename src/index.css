@@ -11,6 +11,7 @@
   --grey-hover-focus: #bcbcbc;
   --font-family: 'Poppins', sans-serif;
   --font-family2: 'Gilroy', sans-serif;
+  animation: pageTransition 0.5s ease-in-out;
 }
 
 html,
@@ -42,6 +43,17 @@ html {
   min-width: 320px;
   margin: 0 auto;
   background: var(--main-white);
+}
+
+@keyframes pageTransition {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* tablet */
