@@ -8,7 +8,6 @@
   padding: 10px 20px;
   gap: 8px;
   bottom: -68px;
-  right: 0;
 }
 
 .btnSettings {
@@ -45,6 +44,7 @@
   .vidget {
     width: 157px;
     bottom: -80px;
+    right: 0;
   }
   .btnSettings {
     font-size: 15px;
