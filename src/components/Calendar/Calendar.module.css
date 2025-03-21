@@ -1,7 +1,7 @@
 .calendarList {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 20px 18px;
+  gap: 16px 18px;
   padding: 0;
 
   text-align: center;
@@ -15,13 +15,13 @@
 /* tablet */
 @media screen and (min-width: 768px) {
   .calendarList {
-    gap: 10px 48px;
+    gap: 5px 48px;
   }
 }
 
 /* desktop */
 @media screen and (min-width: 1440px) {
   .calendarList {
-    gap: 10px 43px;
+    gap: 5px 43px;
   }
 }
