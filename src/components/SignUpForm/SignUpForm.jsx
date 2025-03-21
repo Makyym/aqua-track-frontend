@@ -25,8 +25,19 @@ const SignUpForm = () => {
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
+    .trim()
+    .lowercase()
+    .email('Invalid email address')
+    .required('Email is required')
+    .test(
+      'Invalid email domain',
+      (value) => {
+        if (!value) return false;
+        const parts = value.split('@');
+        if (parts.length < 2) return false;
+        return parts[1].includes('.') && parts[1].split('.').filter(Boolean).length > 1;
+      }
+    ),
     password: Yup.string()
       .min(6, 'Password must be at least 6 characters')
       .required('Password is required'),
