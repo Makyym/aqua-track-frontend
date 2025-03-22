@@ -6,7 +6,10 @@ import { selectUser } from "../../redux/auth/selectors.js";
 const UserPanel = () => {
     const user = useSelector(selectUser);
     const {name, email} = user;
-    const shortEmail = email.split('@')[0];
+    let shortEmail = email.split('@')[0];
+    if (shortEmail.length > 8) {
+        shortEmail = `${shortEmail.slice(0, 6)}...`;
+    }
     return (
         <div className={s.div}>
             <h1 className={s.hello}>
