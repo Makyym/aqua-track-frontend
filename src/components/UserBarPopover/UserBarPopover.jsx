@@ -5,27 +5,6 @@ import LogOutModal from '../LogOutModal/LogOutModal.jsx';
 import BaseModal from '../BaseModal/BaseModal.jsx';
 import newSprite from '../../assets/newSprite.svg';
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    padding: '0',
-    borderRadius: '15px',
-    border: 'none',
-    outline: 'none',
-    maxHeight: '90vh',
-    overflowY: 'scroll',
-    overflowX: 'hidden'
-  },
-  overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-};
-
 const UserBarPopover = () => {
   const [isSettingsOpen, setSettingsOpen] = useState(false);
   const [isLogoutOpen, setLogoutOpen] = useState(false);
@@ -50,7 +29,6 @@ const UserBarPopover = () => {
       <BaseModal
         isOpen={isSettingsOpen}
         onRequestClose={handleModalClose}
-        settingsStyle={customStyles}
       >
         <UserSettingsModal close={handleModalClose} />
       </BaseModal>
