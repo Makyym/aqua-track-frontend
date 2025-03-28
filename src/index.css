@@ -70,3 +70,16 @@ html {
     max-width: 1440px;
   }
 }
+
+html::-webkit-scrollbar-button {
+  display: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+html::-webkit-scrollbar-track {
+  display: none;
+}
+html::-webkit-scrollbar-thumb {
+  display: none;
+}

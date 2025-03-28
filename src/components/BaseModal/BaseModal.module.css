@@ -1,0 +1,38 @@
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    max-height: 90vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal::-webkit-scrollbar-button {
+    display: none;
+}
+.modal::-webkit-scrollbar {
+    display: none;
+}
+.modal::-webkit-scrollbar-track {
+    display: none;
+}
+.modal::-webkit-scrollbar-thumb {
+    display: none;
+}
