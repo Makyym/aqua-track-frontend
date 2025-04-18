@@ -3,6 +3,7 @@
   padding: 40px 20px;
   width: 343px;
   border-radius: 15px;
+  background-color: var(--main-white);
 }
 
 .closeBtn {
@@ -19,6 +20,7 @@
   align-items: center;
   fill: #2f2f2f;
   stroke: #2f2f2f;
+  cursor: pointer;
   /* fill: var(--main-text);
   stroke: var(--main-text); */
 }
