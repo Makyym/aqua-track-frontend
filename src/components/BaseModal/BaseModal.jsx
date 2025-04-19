@@ -15,7 +15,12 @@ const BaseModal = ({ isOpen, onRequestClose, children }) => {
     };
   }, [isOpen]);
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose} className={s.modal} overlayClassName={s.overlay}>
+    <Modal
+    isOpen={isOpen}
+    onRequestClose={onRequestClose}
+    className={s.modal}
+    closeTimeoutMS={300}
+    overlayClassName={s.overlay}>
       {children}
     </Modal>
   );

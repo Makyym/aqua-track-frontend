@@ -15,37 +15,46 @@ const variants = {
 const UserBarPopover = ({isVisible, closePopover}) => {
   const [isSettingsOpen, setSettingsOpen] = useState(false);
   const [isLogoutOpen, setLogoutOpen] = useState(false);
+  const handleModalOpen = () => {
+    setSettingsOpen(true);
+    closePopover();
+  };
+  const handleLogOutOpen = () => {
+    setLogoutOpen(true);
+    closePopover();
+  };
   const handleModalClose = () => {
     setSettingsOpen(false);
-    closePopover();
   };
   const handleCloseLogout = () => {
     setLogoutOpen(false);
-    closePopover();
   };
   return (
-    <AnimatePresence>
-      {isVisible && (<motion.div
-      initial="hidden"
-      animate="enter"
-      exit="exit"
-      variants={variants}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
-      style={{ willChange: "transform, opacity" }}
-      className={css.vidget}>
-        <button className={css.btnSettings} onClick={() => setSettingsOpen(true)}>
+    <>
+      <AnimatePresence>
+        {isVisible && (<motion.div
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        variants={variants}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        style={{ willChange: "transform, opacity" }}
+        className={css.vidget}>
+          <button className={css.btnSettings} onClick={handleModalOpen}>
+            <svg className={css.iconSettings}>
+              <use href={`${newSprite}#icon-settings`} />
+            </svg>
+            Settings
+          </button>
+          <button className={css.btnSettings} onClick={handleLogOutOpen}>
           <svg className={css.iconSettings}>
-            <use href={`${newSprite}#icon-settings`} />
-          </svg>
-          Settings
-        </button>
-        <button className={css.btnSettings} onClick={() => setLogoutOpen(true)}>
-        <svg className={css.iconSettings}>
-            <use href={`${newSprite}#icon-log-out`} />
-          </svg>
-          Log out
-        </button>
-        <BaseModal
+              <use href={`${newSprite}#icon-log-out`} />
+            </svg>
+            Log out
+          </button>
+        </motion.div>)}
+      </AnimatePresence>
+      <BaseModal
           isOpen={isSettingsOpen}
           onRequestClose={handleModalClose}
         >
@@ -54,8 +63,7 @@ const UserBarPopover = ({isVisible, closePopover}) => {
         <BaseModal isOpen={isLogoutOpen} onRequestClose={handleCloseLogout}>
           <LogOutModal onClose={handleCloseLogout} />
         </BaseModal>
-      </motion.div>)}
-    </AnimatePresence>
+    </>
   );
 };
 
