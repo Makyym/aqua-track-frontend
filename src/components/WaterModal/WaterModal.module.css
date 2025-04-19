@@ -21,12 +21,13 @@
   fill: #2f2f2f;
   stroke: #2f2f2f;
   cursor: pointer;
-  /* fill: var(--main-text);
-  stroke: var(--main-text); */
+  fill: var(--main-text);
+  stroke: var(--main-text);
+  transition: stroke 0.3s ease-in-out;
 }
 
 .closeBtn:hover {
-  /* stroke: var(--accent); // не працює чомусь */
+  stroke: var(--accent);
 }
 
 .svg {

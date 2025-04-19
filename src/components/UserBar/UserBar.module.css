@@ -17,6 +17,7 @@
   color: var(--main-white);
   background-color: var(--main);
   border: none;
+  cursor: pointer;
 }
 
 .avatar {

@@ -27,18 +27,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  fill: #323f47;
-  stroke: #323f47;
+  cursor: pointer;
 }
 
-.closeBtn:hover {
-  stroke: #87d28d;
+.closeBtn:hover .svg {
+  stroke: var(--accent);
 }
 
 .svg {
   width: 100%;
   height: 100%;
-  /* position: absolute; */
+  stroke: var(--main);
+  transition: stroke 0.3s ease-in-out;
 }
 
 .modalTextBox {
@@ -97,6 +97,8 @@
   line-height: 1.29;
   letter-spacing: -0.01em;
   color: rgba(50, 63, 71, 0.3);
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .btnCancel:hover {

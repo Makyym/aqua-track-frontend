@@ -47,7 +47,7 @@ const UserBar = () => {
           <use href={`${newSprite}#icon-chevron-down`} />
         </svg>
       </button>
-      {isOpen && <UserBarPopover closePopover={() => setIsOpen(false)} />}
+      <UserBarPopover closePopover={() => setIsOpen(false)} isVisible={isOpen}/>
     </div>
   );
 };

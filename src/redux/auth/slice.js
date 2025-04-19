@@ -91,7 +91,7 @@ const slice = createSlice({
           ...payload.data,
         };
       })
-      .addCase(allUsersCount.pending, handlePending)
+      // .addCase(allUsersCount.pending, handlePending)
       .addCase(allUsersCount.rejected, handleRejected)
       .addCase(allUsersCount.fulfilled, (state, { payload }) => {
         state.isRefreshing = false;

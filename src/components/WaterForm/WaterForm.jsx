@@ -115,7 +115,7 @@ const WaterForm = ({ editValue, dateString, onClose, waterId }) => {
                 type="button"
                 onClick={handleMinusClick}
               >
-                <svg className={css.plusMinusSvg} width={40} height={40}>
+                <svg className={css.minusSvg} width={40} height={40}>
                   <use href={`${newSprite}#icon-minus`} />
                 </svg>
               </button>
@@ -125,7 +125,7 @@ const WaterForm = ({ editValue, dateString, onClose, waterId }) => {
                 type="button"
                 onClick={handlePlusClick}
               >
-                <svg className={css.plusMinusSvg} width={40} height={40}>
+                <svg className={css.plusSvg} width={40} height={40}>
                   <use href={`${newSprite}#icon-plus`} />
                 </svg>
               </button>

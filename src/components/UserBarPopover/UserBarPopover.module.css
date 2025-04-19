@@ -22,7 +22,8 @@
   line-height: 18px; 
   background-color: transparent;
   color: var(--grey-hover-focus);
-  /* transition: color ; */
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
 }
 
 .iconSettings {
@@ -30,6 +31,7 @@
   height: 16px;
   stroke: var(--grey-hover-focus);
   fill: transparent;
+  transition: stroke 0.3s ease-in-out;
 }
 
 .btnSettings:hover,

@@ -25,6 +25,14 @@
   & svg {
     width: 24px;
     height: 24px;
+    stroke: var(--main);
+    transition: stroke 0.3s ease-in-out;
+  }
+}
+
+.closeButton:hover {
+  & svg {
+    stroke: var(--accent);
   }
 }
 

@@ -17,6 +17,11 @@
   justify-content: center;
   border: none;
   cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.calendarDay:hover {
+  box-shadow: 0 2px 4px var(--main);
 }
 
 .dayNotEnough {
@@ -25,6 +30,10 @@
 .isToday {
   border: 2px solid #9be1a0;
   background-color: #9be1a0;
+  box-shadow: 0px 4px 12px rgba(155, 225, 160, 0.6);
+}
+
+.isToday:hover {
   box-shadow: 0px 4px 12px rgba(155, 225, 160, 0.6);
 }
 .isActive {
