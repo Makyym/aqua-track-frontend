@@ -1,7 +1,6 @@
 import CalendarPagination from '../CalendarPagination/CalendarPagination';
 import Calendar from '../Calendar/Calendar';
 import s from './MonthInfo.module.css';
-import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -21,7 +20,6 @@ import {
 } from './utils/calendarUtils';
 
 const MonthInfo = () => {
-  //dailyNorm
   const user = useSelector(selectUser);
   const dailyNorm = user?.dailyNorm || 1500;
 
@@ -33,14 +31,16 @@ const MonthInfo = () => {
   const [month, setMonth] = useState(currentDate.getMonth());
   const [year, setYear] = useState(currentDate.getFullYear());
 
-  const formatedMonth = formatCurrentMonth(year, month);
+  const formattedMonth = formatCurrentMonth(year, month);
 
   useEffect(() => {
-    dispatch(fetchWaterMonth(formatedMonth));
-  }, [dispatch, formatedMonth]);
+    const selectedDate = new Date(year, month, 1);
+    const currentMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    if (selectedDate > currentMonthDate) return;
+    dispatch(fetchWaterMonth(formattedMonth));
+  }, [dispatch, formattedMonth]);
 
   return (
-    //   прибрати className={s.monthInfo} ?? при desktop задає width: 608px;
     <div className={s.monthInfo}>
       <CalendarPagination
         month={month}
