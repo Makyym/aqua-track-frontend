@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { lazy } from 'react';
 
 axios.defaults.baseURL = 'https://project-aqt-api.onrender.com';
 axios.defaults.withCredentials = true;
@@ -142,6 +141,19 @@ export const googleAuthUser = createAsyncThunk(
     try {
       const { data } = await axios.get('/auth/get-oauth-url');
       window.location.href = data.data.url;
+    } catch (error) {
+      const errorMessage = error.response.data.data.message;
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  },
+);
+
+export const allUsersCount = createAsyncThunk(
+  'auth/usersCount',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get('/users/count');
+      return data;
     } catch (error) {
       const errorMessage = error.response.data.data.message;
       return thunkAPI.rejectWithValue(errorMessage);

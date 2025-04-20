@@ -38,6 +38,14 @@
 .iconsEntry {
     width: 14px;
     height: 14px;
+    fill: transparent;
+    stroke: var(--main);
+    cursor: pointer;
+    transition: stroke 0.3s ease-in-out;
+}
+
+.iconsEntry:hover {
+    stroke: var(--accent);
 }
 
 .iconsDiv {

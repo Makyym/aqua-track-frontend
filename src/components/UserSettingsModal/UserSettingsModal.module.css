@@ -25,6 +25,14 @@
   & svg {
     width: 24px;
     height: 24px;
+    stroke: var(--main);
+    transition: stroke 0.3s ease-in-out;
+  }
+}
+
+.closeButton:hover {
+  & svg {
+    stroke: var(--accent);
   }
 }
 
@@ -52,5 +60,9 @@
 @media screen and (min-width: 1440px) {
   .modalSettings {
     width: 920px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 28px;
   }
 }

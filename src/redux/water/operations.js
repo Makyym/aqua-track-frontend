@@ -39,7 +39,6 @@ export const addWaterEntry = createAsyncThunk(
       const {
         data
       } = await axios.post('water', body);
-      console.log(data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -59,16 +58,18 @@ export const deleteWaterEntry = createAsyncThunk(
   },
 );
 
-// возвращать айди в удалении
-
 export const editWaterEntry = createAsyncThunk(
   'water/editWaterEntry',
-  async ({ id, value, date }, thunkAPI) => {
+  async ({ id, value, date, oldValue }, thunkAPI) => {
     try {
       const {
         data: { data },
       } = await axios.patch(`water/${id}`, { value, date });
-      return data;
+      const response = {
+        ...data,
+        oldValue,
+      };
+      return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

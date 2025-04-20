@@ -8,7 +8,6 @@
   padding: 10px 20px;
   gap: 8px;
   bottom: -68px;
-  right: 0;
 }
 
 .btnSettings {
@@ -23,7 +22,8 @@
   line-height: 18px; 
   background-color: transparent;
   color: var(--grey-hover-focus);
-  /* transition: color ; */
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
 }
 
 .iconSettings {
@@ -31,6 +31,7 @@
   height: 16px;
   stroke: var(--grey-hover-focus);
   fill: transparent;
+  transition: stroke 0.3s ease-in-out;
 }
 
 .btnSettings:hover,
@@ -45,6 +46,7 @@
   .vidget {
     width: 157px;
     bottom: -80px;
+    right: 0;
   }
   .btnSettings {
     font-size: 15px;

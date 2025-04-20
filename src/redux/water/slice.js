@@ -10,11 +10,11 @@ const formattedDate = `${year}-${month}-${day}`;
 const initialState = {
   waterActiveDay: [],
   waterCurrentDay: [],
-  waterMonth: [],
+  waterMonth: {},
   isLoading: false,
   isError: null,
   currentDate: formattedDate,
-  activeDate: null, // Початково день не вибраний
+  activeDate: null,
 };
 
 const handlePending = state => {
@@ -66,6 +66,12 @@ const slice = createSlice({
       state.isError = null;
       const fullDate = payload.data.date;
       const dateOnly = fullDate.split("T")[0];
+      const waterDay = state.waterMonth[dateOnly];
+      if (waterDay) {
+        state.waterMonth[dateOnly] += payload.data.value;
+      } else {
+        state.waterMonth[dateOnly] = payload.data.value;
+      }
       if (state.activeDate && dateOnly === state.activeDate) {
         state.waterActiveDay.push(payload.data);
       }
@@ -80,25 +86,37 @@ const slice = createSlice({
       state.isError = null;
       const date = payload.data.date;
       const dateOnly = date.split("T")[0];
+      const waterDay = state.waterMonth[dateOnly];
+      if (waterDay) {
+        state.waterMonth[dateOnly] -= payload.data.value;
+      }
       if (dateOnly === state.currentDate) {
         state.waterCurrentDay = state.waterCurrentDay.filter(item => item._id !== payload.data._id);
       }
-      state.waterActiveDay = state.waterActiveDay.filter(item => item._id !== payload.data._id);
-      
+      state.waterActiveDay = state.waterActiveDay.filter(item => item._id !== payload.data._id)
     })
     .addCase(editWaterEntry.pending, handlePending)
     .addCase(editWaterEntry.rejected, handleRejected)
     .addCase(editWaterEntry.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.isError = null;
+      const date = payload.date;
+      const dateOnly = date.split("T")[0];
+      const waterDay = state.waterMonth[dateOnly];
       const waterItem = state.waterActiveDay.find(item => item._id === payload._id);
-      if (!waterItem) {
-        const waterCard = state.waterCurrentDay.find(item => item._id === payload._id);
+      const waterCard = state.waterCurrentDay.find(item => item._id === payload._id);
+      if (waterCard) {
         waterCard.value = payload.value;
         waterCard.date = payload.date;
       }
-      waterItem.value = payload.value;
-      waterItem.date = payload.date;
+      if (waterItem) {
+        waterItem.value = payload.value;
+        waterItem.date = payload.date;
+      }
+      if (waterDay) {
+        state.waterMonth[dateOnly] -= payload.oldValue;
+        state.waterMonth[dateOnly] += payload.value;
+      }
     })
   }
 });

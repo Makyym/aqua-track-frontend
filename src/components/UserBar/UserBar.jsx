@@ -10,8 +10,10 @@ const UserBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const user = useSelector(selectUser);
   const {name, email, avatarUrl} = user;
-  const shortEmail = email.split('@')[0];
-
+  let shortEmail = email.split('@')[0];
+  if (shortEmail.length > 8) {
+      shortEmail = `${shortEmail.slice(0, 6)}...`;
+  }
   const userBarRef = useRef(null);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -45,7 +47,7 @@ const UserBar = () => {
           <use href={`${newSprite}#icon-chevron-down`} />
         </svg>
       </button>
-      {isOpen && <UserBarPopover closePopover={() => setIsOpen(false)} />}
+      <UserBarPopover closePopover={() => setIsOpen(false)} isVisible={isOpen}/>
     </div>
   );
 };

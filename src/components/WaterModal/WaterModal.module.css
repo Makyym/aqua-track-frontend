@@ -3,6 +3,7 @@
   padding: 40px 20px;
   width: 343px;
   border-radius: 15px;
+  background-color: var(--main-white);
 }
 
 .closeBtn {
@@ -19,12 +20,14 @@
   align-items: center;
   fill: #2f2f2f;
   stroke: #2f2f2f;
-  /* fill: var(--main-text);
-  stroke: var(--main-text); */
+  cursor: pointer;
+  fill: var(--main-text);
+  stroke: var(--main-text);
+  transition: stroke 0.3s ease-in-out;
 }
 
 .closeBtn:hover {
-  /* stroke: var(--accent); // не працює чомусь */
+  stroke: var(--accent);
 }
 
 .svg {

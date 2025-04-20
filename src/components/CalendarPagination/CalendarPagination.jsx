@@ -33,7 +33,7 @@ const CalendarPagination = ({
       <div className={s.paginationWrapper}>
         <div className={s.calendarPagination}>
           <button onClick={handlePrevMonth} className={s.btnCalendarPagination}>
-            <svg className={s.icon}>
+            <svg className={s.iconLeft}>
               <use href={`${sprite}#icon-chevron-left`} />
             </svg>
           </button>
@@ -41,7 +41,7 @@ const CalendarPagination = ({
             {nameMonth}, {year}
           </p>
           <button onClick={handleNextMonth} className={s.btnCalendarPagination}>
-            <svg className={s.icon}>
+            <svg className={s.iconRight}>
               <use href={`${sprite}#icon-chevron-rigth`} />
             </svg>
           </button>

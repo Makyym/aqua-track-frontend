@@ -11,6 +11,7 @@
   --grey-hover-focus: #bcbcbc;
   --font-family: 'Poppins', sans-serif;
   --font-family2: 'Gilroy', sans-serif;
+  animation: pageTransition 0.5s ease-in-out;
 }
 
 html,
@@ -44,6 +45,17 @@ html {
   background: var(--main-white);
 }
 
+@keyframes pageTransition {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* tablet */
 @media screen and (min-width: 768px) {
   .container {
@@ -57,4 +69,30 @@ html {
   .container {
     max-width: 1440px;
   }
+}
+
+html::-webkit-scrollbar-button {
+  display: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+html::-webkit-scrollbar-track {
+  display: none;
+}
+html::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
 }

@@ -1,12 +1,17 @@
 .icon {
     width: 30px;
     height: 30px;
+    fill: var(--accent);
+    stroke: var(--main);
+    transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out;
 }
 
 .iconDaily {
     width: 16px;
     height: 16px;
+    fill: transparent;
     stroke: var(--main-white);
+    transition: stroke 0.3s ease-in-out;
 }
 
 .button {
@@ -26,6 +31,14 @@
     color: var(--main);
     background-color: transparent;
     margin-left: auto;
+    cursor: pointer;
+}
+
+.button:hover {
+    & svg {
+        fill: var(--main);
+        stroke: var(--main-white);
+    }
 }
 
 .buttonDaily {
@@ -47,6 +60,15 @@
     background-color: var(--main);
     margin-top: auto;
     margin-left: auto;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.buttonDaily:hover {
+    color: var(--accent);
+    & svg {
+        stroke: var(--accent);
+    }
 }
 
 @media screen and (min-width: 768px) {

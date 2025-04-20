@@ -27,9 +27,16 @@ const currentTime = new Date().toLocaleTimeString([], {
   minute: '2-digit',
 });
 
-const WaterForm = ({ value, dateString, onClose, waterId }) => {
-  const dispatch = useDispatch();
+function formatTimeString (time) {
+  const [hours, minutes] = time.split(':');
+  const formattedHours = String(hours).padStart(2, '0');
+  return `${formattedHours}:${minutes}`;
+}
 
+const WaterForm = ({ editValue, dateString, onClose, waterId }) => {
+  const dispatch = useDispatch();
+  const oldValue = editValue;
+  const timeOnly = dateString.split("T")[1];
   const {
     register,
     watch,
@@ -41,18 +48,20 @@ const WaterForm = ({ value, dateString, onClose, waterId }) => {
     mode: 'onBlur',
     resolver: yupResolver(AddWaterSchema),
     defaultValues: {
-      time: currentTime,
-      value: value ?? 50,
+      time: timeOnly ?? currentTime,
+      value: editValue ?? 50,
     },
   });
 
   const onSubmit = values => {
+    const time = formatTimeString(values.time);
     if (waterId) {
       const onlyDate = dateString.split('T')[0];
       const data = {
         id: waterId,
         value: values.value,
-        date: `${onlyDate}T${values.time}`,
+        date: `${onlyDate}T${time}`,
+        oldValue,
       };
       dispatch(editWaterEntry(data));
       reset();
@@ -61,7 +70,7 @@ const WaterForm = ({ value, dateString, onClose, waterId }) => {
     }
     const data = {
       value: values.value,
-      date: `${dateString}T${values.time}`,
+      date: `${dateString}T${time}`,
     };
     dispatch(addWaterEntry(data));
     reset();
@@ -106,7 +115,7 @@ const WaterForm = ({ value, dateString, onClose, waterId }) => {
                 type="button"
                 onClick={handleMinusClick}
               >
-                <svg className={css.plusMinusSvg} width={40} height={40}>
+                <svg className={css.minusSvg} width={40} height={40}>
                   <use href={`${newSprite}#icon-minus`} />
                 </svg>
               </button>
@@ -116,7 +125,7 @@ const WaterForm = ({ value, dateString, onClose, waterId }) => {
                 type="button"
                 onClick={handlePlusClick}
               >
-                <svg className={css.plusMinusSvg} width={40} height={40}>
+                <svg className={css.plusSvg} width={40} height={40}>
                   <use href={`${newSprite}#icon-plus`} />
                 </svg>
               </button>
@@ -124,7 +133,7 @@ const WaterForm = ({ value, dateString, onClose, waterId }) => {
           </label>
         </div>
         <div className={css.timeContainer}>
-          <label className={css.timeLabel} htmlFor="time">
+          <label className={css.waterAmountLabel} htmlFor="time">
             Recording time:
             <input
               className={css.input}
