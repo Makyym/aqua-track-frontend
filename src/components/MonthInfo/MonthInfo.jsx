@@ -18,6 +18,8 @@ import {
   handleNextMonth,
   handlePrevMonth,
 } from './utils/calendarUtils';
+//
+import Statistics from './Statistics';
 
 const MonthInfo = () => {
   const user = useSelector(selectUser);
@@ -40,6 +42,9 @@ const MonthInfo = () => {
     dispatch(fetchWaterMonth(formattedMonth));
   }, [dispatch, formattedMonth]);
 
+  //
+  const [showStatistics, setShowStatistics] = useState(false); //перемикання на графік
+
   return (
     <div className={s.monthInfo}>
       <CalendarPagination
@@ -47,26 +52,32 @@ const MonthInfo = () => {
         year={year}
         handlePrevMonth={() => handlePrevMonth(month, year, setMonth, setYear)}
         handleNextMonth={() => handleNextMonth(month, year, setMonth, setYear)}
+        toggleStatistics={() => setShowStatistics(!showStatistics)} //протилежне до поточного значення
+        showStatistics={showStatistics}
       />
-      <Calendar
-        month={month}
-        year={year}
-        activeDate={activeDate}
-        handleActiveDay={day =>
-          handleActiveDay(
-            day,
-            month,
-            year,
-            activeDate,
-            dispatch,
-            resetActiveDate,
-            updateActiveDate,
-          )
-        }
-        percentage={day =>
-          calculateWaterPercentage(day, year, month, waterMonth, dailyNorm)
-        }
-      />
+      {showStatistics ? (
+        <Statistics month={month} year={year} />
+      ) : (
+        <Calendar
+          month={month}
+          year={year}
+          activeDate={activeDate}
+          handleActiveDay={day =>
+            handleActiveDay(
+              day,
+              month,
+              year,
+              activeDate,
+              dispatch,
+              resetActiveDate,
+              updateActiveDate,
+            )
+          }
+          percentage={day =>
+            calculateWaterPercentage(day, year, month, waterMonth, dailyNorm)
+          }
+        />
+      )}
     </div>
   );
 };

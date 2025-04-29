@@ -1,11 +1,13 @@
 import s from './CalendarPagination.module.css';
-import sprite from "../../assets/newSprite.svg";
+import sprite from '../../assets/newSprite.svg';
 
 const CalendarPagination = ({
   month,
   year,
   handlePrevMonth,
   handleNextMonth,
+  toggleStatistics,
+  showStatistics,
 }) => {
   const monthNames = [
     'January',
@@ -25,7 +27,9 @@ const CalendarPagination = ({
 
   return (
     <div className={s.calendarPaginationContainer}>
-      <h3 className={s.calendarTitle}>Month</h3>
+      <h3 className={s.calendarTitle}>
+        {showStatistics ? 'Statistics' : 'Month'}
+      </h3>
       <div className={s.paginationWrapper}>
         <div className={s.calendarPagination}>
           <button onClick={handlePrevMonth} className={s.btnCalendarPagination}>
@@ -42,9 +46,14 @@ const CalendarPagination = ({
             </svg>
           </button>
         </div>
-        <svg className={s.iconStatistic}>
-          <use href={`${sprite}#icon-statistics`} />
-        </svg>
+        <button
+          style={{ border: 'none', cursor: 'pointer' }}
+          onClick={toggleStatistics}
+        >
+          <svg className={s.iconStatistic}>
+            <use href={`${sprite}#icon-statistics`} />
+          </svg>
+        </button>
       </div>
     </div>
   );
